@@ -362,7 +362,7 @@ $today = strtotime($todays_date);
 
 																		<div class="form-group">
                                                                             <label>Region</label>
-																				<select name="country" id="country" class="form-control input-lg">
+																				<select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_text').value=this.options[this.selectedIndex].text">
 																					<option value="">Select Region</option>
 																				</select>
 																		</div>
@@ -727,13 +727,13 @@ $today = strtotime($todays_date);
 
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-																				<div class="input-group mb-3">
-																					<input type="file" class="form-control" id="shipping_permit" name="shipping" accept="image/*" capture>
+																				<div class="input-group mb-3" id="to_hide">
+																					<input type="file" class="form-control" id="shipping_permit"  name="shipping" accept="image/*" capture required>
 																					<label class="input-group-text" for="" >Shipping Permit</label>
 																				</div>
 
 																				<div class="input-group mb-3">
-																					<input type="file" name="veterenary" class="form-control" id="veterinary">
+																					<input type="file" name="veterenary" class="form-control" id="veterinary" required>
 																					<label class="input-group-text" for="" >Veterinary Health Certificate (VHC)</label>
 																				</div>
                                                                             </div>
@@ -886,20 +886,25 @@ $today = strtotime($todays_date);
 
 
 	<script type="text/javascript">
+	
 		$(document).ready(function() {
 		    $('.js-example-basic-single').select2();
 
-			$('.trigger').change(function() {	
-
-					if ($(this).val() === 'Commercial') {
-						$("#shipping_permit").prop('required',true);
-						$("#veterinary").prop('required',true);
-					}
-					else
-					{
+			$('#country').change(function() {	
+				var current_region = '<?php echo $_SESSION['me_region_code'] ?>';
+				var region = $('#country  option:selected ').text();
+				
+				if(current_region == region)
+				{
 						$("#shipping_permit").prop('required',false);
-						$("#veterinary").prop('required',true);
-					}
+						$("#to_hide").hide();
+				}
+				else
+				{
+					$("#to_hide").show();
+				}
+				// alert(region)
+					
 			})
 
 				
