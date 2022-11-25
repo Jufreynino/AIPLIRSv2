@@ -1,0 +1,401 @@
+body {
+  
+    background-color: #e9e9e9 !important;
+    font-family: Arial !important;
+}
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -8px;
+    top: 70%;
+    margin-top: 10px !important;
+}
+
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    position: absolute;
+    top: 5px !important;
+    width: 1.8em;
+    height: 1.8em;
+}
+
+
+ table> th> td{
+    padding:10px !important;
+    font-size:14px;
+    border:1px solid black;
+}
+.dataTables_filter input {
+    outline: 0;
+    width: 14.5rem  !important;
+    padding: 0.4375rem 0.875rem;
+    padding-right: 2rem;
+    font-size: .8125rem;
+    line-height: 1.5385;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.1875rem;
+}
+
+
+.wrapper {
+  position: relative;
+  overflow: auto;
+  white-space: nowrap;
+}
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white !important;
+}
+
+.first-col {
+  width: 200px !important;
+  left: 0px !important;
+  color: black !important;
+}
+
+.second-col {
+  width: 220px !important;
+  left: 200px !important;
+}
+
+.third-col {
+    width: 220px !important;
+    left: 280px !important;
+  }
+
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 20px !important;
+}
+.select2-selection--single:not([class*=bg-]):not([class*=border-]) {
+    border-color: #4d4444 !important;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-search--dropdown:after {
+    content: "";
+    font-family: icomoon;
+    position: absolute;
+    top: 50%;
+    left: 17.875rem !important;
+    color: inherit;
+    display: block;
+    font-size: .8125rem;
+    margin-top: -0.40625rem;
+    line-height: 1;
+    opacity: .6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.multiselect.btn-light {
+    background-color: #fff;
+    border-color: #4e4444 !important;
+}
+
+
+.navbar-dark {
+    color: rgba(255,255,255,.9);
+    background-color: #007cd5 !important;
+    border-bottom-color: rgba(255,255,255,.1);
+}
+
+
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    height: calc(1.5385em + 0.875rem + 2px);
+    padding: 0.4375rem 2.1875rem 0.4375rem 0.875rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5385;
+    color: #333;
+    vertical-align: middle;
+    background: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right 0.875rem center/8px 10px;
+    background-color: #fff;
+    border: 1px solid #4d4444;
+    border-radius: 0.1875rem;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.my-float{
+	margin-top:22px;
+}
+.floating-right-bottom-btn
+{
+    position: fixed;
+    bottom: 70px;
+    right: 50px;
+    height: 0px;
+    width: 80px;
+    border-radius:50px;
+    background-color: rgb(38, 205, 0);
+    border:1px solid rgb(250, 0, 0);
+}
+
+.p-4 {
+    padding: 1rem!important;
+}
+
+.fab {
+    width: 100px;
+    height: 80px;
+    background-color: rgb(1, 183, 4);
+    border-radius:50%;
+    box-shadow: 0 6px 10px 0 #666;
+    transition: all 0.1s ease-in-out;
+    z-index: 1000;
+    font-size: 20px;
+    color: white;
+    padding: 20px !important; 
+    text-align: center;
+    line-height: 20px;
+    border:0;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+ }
+  
+ .fab:hover {
+    box-shadow: 0 6px 14px 0 #666;
+    transform: scale(1.05);
+ }
+
+
+.l-bg-cherry {
+    background: linear-gradient(to right, #493240, #f09) !important;
+    color: #fff;
+}
+
+.l-bg-blue-dark {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+
+.l-bg-green-dark {
+    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+
+.l-bg-orange-dark {
+    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+    font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+    text-align: center;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: -5px;
+    top: 20px;
+    opacity: 0.1;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.l-bg-green {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+}
+
+.l-bg-orange {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled), .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link, .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled), .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    background-color: #3BA699!important;
+    color: #fff !important;
+}
+
+.input-group-text {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.4375rem 0.875rem;
+    margin-bottom: 0;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5385;
+    color: #f5f2f2;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #263238;
+    border: 1px solid #ddd;
+    border-radius: 0.1875rem;
+}
+.select2-selection--single {
+ 
+    border: 1px solid black !important;
+   
+}
+.text-capitalize-css {
+    text-transform: capitalize;
+}
+#leftbox {
+    float:left; 
+    width:25%;
+    padding:6px;
+}
+#middlebox{
+    float:left; 
+    background:Green;
+    width:50%;
+}
+#rightbox{
+    float:right;
+    width:25%;
+    padding:6px;
+}
+h1{
+    color:green;
+    text-align:center;
+}
+
+
+/* Styles for the drop-down. Feel free to change the styles to suit your website. :-) */
+
+.cb-dropdown-wrap {
+    max-height: 25px; /* At most, around 3/4 visible items. */
+    position: relative;
+    height: 25px;
+  }
+  
+  .cb-dropdown,
+  .cb-dropdown li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .cb-dropdown {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgb(0, 0, 0);
+    margin-top:20px;
+    font-size:15px;
+    color:black;
+  }
+  
+  /* For selected filter. */
+  .active .cb-dropdown {
+    background: rgb(255, 255, 255) !important;
+    height: 25px;
+  }
+  
+  .cb-dropdown-wrap:hover .cb-dropdown {
+    height: 100px;
+    overflow: auto;
+    transition: 0.2s height ease-in-out;
+  }
+  
+  /* For selected items. */
+  .cb-dropdown li.active {
+    background: rgb(35, 35, 22) !important;
+    color:white;
+  }
+  
+  .cb-dropdown li label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    line-height: 19px; /* Match height of .cb-dropdown-wrap */
+  }
+  
+  .cb-dropdown li label > input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+  }
+  
+  .cb-dropdown li label > span {
+    display: block;
+    margin-left: 3px;
+    margin-right: 20px; /* At least, width of the checkbox. */
+    font-family: sans-serif;
+    font-size: 0.8em;
+    font-weight: normal;
+    text-align: left;
+  }
+  
+  /* This fixes the vertical aligning of the sorting icon. */
+  table.dataTable thead .sorting,
+  table.dataTable thead .sorting_asc,
+  table.dataTable thead .sorting_desc,
+  table.dataTable thead .sorting_asc_disabled,
+  table.dataTable thead .sorting_desc_disabled {
+    background-position: 100% 100px;
+  }
+
+  input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 3px;
+}
+
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+    padding: 4px;
+    border-top-right-radius: 30;
+    border-bottom-right-radius: 0;
+}
+
+#disease_code_error
+{
+    bottom: 8px;
+    left:17px;
+    font-size: 12px;
+    color: red !important;
+    text-align: center !important;
+
+}
+
+
+.alert-danger {
+    color: #030303;
+    background-color: #ffffff;
+    border-color: #f55246;
+}
+
+
+
+
+.alert-warning {
+    color: #853a23;
+    background-color: #ffffff;
+    border-color: #ff7b52;
+}
