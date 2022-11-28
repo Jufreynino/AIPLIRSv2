@@ -48,6 +48,9 @@ else{
 	<link href="../../assets/css/components.min.css" rel="stylesheet" type="text/css">
 	<link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
 	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.23/dist/sweetalert2.css" rel="stylesheet" type="text/css">
 
 	<script src="../../global_assets/js/main/jquery.min.js"></script>
@@ -58,20 +61,9 @@ else{
 	
 	<script src="../../global_assets/js/demo_pages/dashboard.js"></script>
 
-	<script src="../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
-	<script src="../../global_assets/js/plugins/notifications/pnotify.min.js"></script>
-	<script src="../../global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-
-	<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
 	
-
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.23/dist/sweetalert2.js"></script>
-	<script src="../../global_assets/js/demo_pages/form_multiselect.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/pt-br.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
 	<style>
 		.test {
 		border-collapse: collapse;
@@ -262,7 +254,6 @@ else{
 								<a href="#">
 								<img class=" text-warning-400  img-circle" width="38" height="38"  src="../../global_assets/images/download.png"></i>
                                 
-                                
                                 </a>
 							</div>
 
@@ -295,7 +286,6 @@ else{
 
 							<div class="ml-3 align-self-center">
 								<a href="mio_profile.php" class="text-white"><i class="icon-cog3"></i></a>
-
 							</div>
 						</div>
 					</div>
@@ -333,14 +323,14 @@ else{
 
 						<li class="nav-item-header text-center" style="background-color:#833737;"><div class="text-uppercase font-size-xs line-height-xs " style="font-size: 15px; color:white;">Summary of Meat Inspection Report </div> <i class="icon-menu" title="Data visualization"></i></li>
 								
-						<li class="nav-item nav-item-submenu   nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link"><i class="icon-file-text3"></i> <span>Receiving of Animals</span>
 							</a>
 							<ul class="nav nav-group-sub" data-submenu-title="Form components">
 								
 
 								<li class="nav-item">
-									<a href="by_meat_establishment_receiving_report.php" class="nav-link active">Meat Establishment Data
+									<a href="by_meat_establishment_receiving_report.php" class="nav-link">Meat Establishment Data
 									</a>
 								</li>
 
@@ -408,145 +398,128 @@ else{
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="card">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card " style="border-radius: 0;">
-                                        <div class="card-body ">
-                                            <div class="text-center">
-                                                <h1><b>Receiving of Animals</b></h1>
-                                                <?php if(isset($_POST['search_me_data_fit_for_slaughter_me'])) { ?>
-                                                    <p style="font-size:15px; ">For the period of <?php echo date('F d, Y', strtotime($_POST['from'])); ?> to <?php echo date('F d, Y', strtotime($_POST['to'])); ?></p>
-                                                    
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+							<div class="card-header header-elements-inline" style="background-color:#26a69a; color:white;">
+							<h4 class="card-title" style="font-weight:bold;">Profile</h4>
+
+							</div>
 							<br>
 							<br>
 							<div class="card-body py-0">	
-                                <form method="POST">
-													<div class="col-md-12">
-														<div class="row">
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label class="col-form-label text-right">From</label>
-																					<input class="form-control datepicker" type="date" id="from" name="from" required max="<?php echo date('Y-m-d') ?>">
-																		</div>
-																	</div>
-
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label class="col-form-label text-right">To</label>
-																					<input class="form-control month" type="date" id="from" name="to" required max="<?php echo date('Y-m-d') ?>">
-																		</div>
-																	</div>
 
 
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label class="col-form-label text-right">Meat Establishment</label>
-                                                                                <select class="form-control multiselect"  name="meat_establishments[]"  multiple>
-                                                                                      <?php echo fetch_me_assigned() ?>
+										<div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="card card-body border-top-info">
+                                                    <div class="text-center">
+                                                        <h2 class="font-weight-semibold mb-0">Account Details</h2>
+                                                    </div>
+                                                    <br>
+
+                                                   <?php echo update_mio_account() ?>
+                                                   
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="card card-body border-top-info">
+                                                    <div class="text-center">
+                                                        <h2 class="font-weight-semibold mb-0">Password</h2>
+                                                    </div>
+                                                    <br>
+
+                                                    <form action="#">
+                                                            <fieldset class="mb-3">
+
+                                                                <div class="form-group ">
+                                                                    <label class="col-form-label">Current Password</label>
+                                                                        <input type="text" class="form-control" placeholder="***************">
+                                                                </div>
+
+
+                                                                <div class="form-group">
+                                                                    <label class="col-form-label">New Password</label>
+                                                                        <input type="text" class="form-control" placeholder="***************">
+                                                                </div>
+
+                                                                <div class="form-group ">
+                                                                    <label class="col-form-label">Confirm Password</label>
+                                                                        <input type="text" class="form-control" placeholder="***************">
+                                                                </div>
+
+
+                                                                <div class="form-group row">
+                                                                    <div class="col-lg-12  text-right">
+                                                                        <button type="submit" class="btn btn-primary btn-flat">Update</button>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                
+                                                            </fieldset>
+                                                        </form>
+                                                   
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-4">
+                                                <div class="card card-body border-top-info">
+                                                    <div class="text-center">
+                                                        <h2 class="font-weight-semibold mb-0">Region</h2>
+                                                    </div>
+                                                <br>
+                                                    <div class="text-center">
+                                                        <h4 class="font-weight-semibold mb-0"><?php echo $_SESSION['region'] ?></h4>
+                                                        <p class="font-weight-semibold mb-0">Current Region</p>
+                                                    </div>
+                                                    <br>
+
+                                                    <form action="#">
+                                                            <fieldset class="mb-3">
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group form-group-feedback form-group-feedback-right">
+                                                                            <label class="col-form-label text-right">Region</label>
+                                                                                <select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_content').value=this.options[this.selectedIndex].text">
+                                                                                    <option value="">Select Region</option>
                                                                                 </select>
+                                                                                        <input type="hidden" name="region_content" id="region_content"  />
+                                                                                        <input type="hidden" name="region_code" id="country"  />
 
-																		</div>
-																	</div>
-                                                                   
+                                                                            <div class="form-control-feedback">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
-												
-                                    
-
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label class="col-form-label text-right"></label>
-																			<br>
-																				<button type="submit" name="search_me_data_fit_for_slaughter_me" class="btn btn-primary" style="margin-top:13px;">Filter</button>
-																		</div>
-																	</div>
-																	</form>
-														</div>
-													</div>
-
-																<div class="row">
-																	<div class="col-md-12">
-																		
-																	<div class="wrapper">
-																		<table class="table table-bordered table-striped ">
-																			<thead style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
-																				<tr class="text-center">
-																					<th rowspan="2" class="sticky-col first-col" style="font-weight:bold;  background-color:white !important; color:black;">Meat Establishment</th>
-																					<!-- <th rowspan="2" >Region</th> -->
-																					<th  style="font-weight:bold;  background-color:white !important; color:black;" rowspan="2" >Region</th>
-																					<th  style="font-weight:bold;  background-color:white !important; color:black;" rowspan="2" >Province</th>
-																					<th  style="font-weight:bold;  background-color:white !important; color:black;" rowspan="2" >Type</th>
-																					<th  style="font-weight:bold;  background-color:white !important; color:black;" rowspan="2" >LTO Number</th>
-																					<th   colspan="2" style=" font-weight:bold !important; background-color: #3bb8d5; color:white;  text-align:center;">HOG </th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #eb5555fa; color:white;  text-align:center;">CHICKEN</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #a277f7; color:white;  text-align:center;">CATTLE</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #77a4f7; color:white;  text-align:center;">CARABAO</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #7fc998; color:white;  text-align:center;">HORSE</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #2cb1a4; color:white;  text-align:center;">GOAT</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #f7a677; color:white;  text-align:center;">SHEEP</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #4faf44; color:white;  text-align:center;">DUCK</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #e77393; color:white;  text-align:center;">PIGEON</th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #ba7abb; color:white;  text-align:center;">OSTRICH </th>
-																					<th    colspan="2" style=" font-weight:bold !important; background-color: #f7a677; color:white;  text-align:center;">CROCODILE </th>
+                                                                
+                                                                <div class="form-group ">
+                                                                    <div class="col-lg-12  text-right">
+                                                                        <button type="submit" class="btn btn-primary btn-flat">Update</button>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                
+                                                            </fieldset>
+                                                        </form>
+                                                   
+                                                </div>
+                                            </div>
 
 
-																				</tr>
-																				<tr style="font-weight:bold !important">
-																													<th  style=" font-weight:bold !important; background-color: #3bb8d5; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #3bb8d5; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-																														<th style=" font-weight:bold !important; background-color: #eb5555fa; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #eb5555fa; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-																													<th style=" font-weight:bold !important; background-color: #a277f7; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #a277f7; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-																													<th style=" font-weight:bold !important; background-color: #77a4f7; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #77a4f7; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-																												
-																													<th style=" font-weight:bold !important; background-color: #7fc998; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #7fc998; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-																													<th style=" font-weight:bold !important; background-color: #2cb1a4; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #2cb1a4; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-																													<th style=" font-weight:bold !important; background-color: #f7a677; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #f7a677; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-
-																													<th style=" font-weight:bold !important; background-color: #4faf44; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #4faf44; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
+                                     </div>
 
 
+										
+						</div>
+					</div>
+				</div>
+				</div>
 
 
-																													<th style=" font-weight:bold !important; background-color: #e77393; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #e77393; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
+			</div>
 
 
-																													<th style=" font-weight:bold !important; background-color: #ba7abb; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #ba7abb; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-
-
-																													<th style=" font-weight:bold !important; background-color: #f7a677; color:white;"><p style="font-size:14px; text-align:center;">Heads</p></th>
-																													<th style=" font-weight:bold !important; background-color: #f7a677; color:white;"><p style="font-size:14px; text-align:center;">Weight (kg)</p></th>
-
-
-																												</tr>
-																			</thead>
-																			<tbody>
-
-																				<?php echo me_receiving_report_posmd_mio() ?>
-																				
-																			</tbody>
-																		</table>
-																</div>
-																</div>
-																	</div>
-																</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 			<div class="navbar navbar-expand-lg navbar-light">
 				<div class="text-center d-lg-none w-100">
@@ -562,16 +535,92 @@ else{
 				</div>
 			</div>
 		</div>
-		<script>
-		$(function(){
-			$('.datepicker').datepicker({
-				format: 'mm-dd-yyyy', 
-				autoclose:true, 
-				endDate: "today", 
-				maxDate: today 
+
+		
+<script>
+$(document).ready(function(){
+
+ load_json_data('country');
+
+ function load_json_data(id, parent_id)
+ {
+
+  var html_code = '';
+  $.getJSON('https://psgc.gitlab.io/api/regions/', function(data){
+
+   html_code += '<option value="">Select Region</option>';
+   $.each(data, function(key, value){
+  
+     if(value.parent_id == parent_id)
+     {
+      html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+     }
+   });
+   $('#'+id).html(html_code);
+  });
+ }
+
+ $(document).on('change', '#country', function(){
+  var html_code = '';
+  var region = $(this).val();
+  $("#city").html("<option>Select city</option>");
+		$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/provinces/', function(data){
+		if(data =='')
+		{
+  			var html_code = '';
+			var region = $('#country').val();
+			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/districts/', function(data){
+				$.each(data, function(key, value){
+				html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 			});
+   			$('#province').html(html_code);
+
+			   $(document).on('change', '#province', function(){
+					var html_code = '';
+					var province = $('#province').val();
+					
+					$.getJSON('https://psgc.gitlab.io/api/districts/'+province+'/cities-municipalities/', function(data){
+					$.each(data, function(key, value){
+							html_code += '<option value="'+value.name+'">'+value.name+'</option>';
+					});
+					$('#city').html(html_code);
+					
+				});
+
+				
+			});
+			});
+		}
+		else
+		{
+			var html_code = '';
+			var region = $('#country').val();
+			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/provinces/', function(data){
+				$.each(data, function(key, value){
+					html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+				});
+   				$('#province').html(html_code);
+
+			   $(document).on('change', '#province', function(){
+					var html_code = '';
+					var province = $('#province').val();
+					
+					$.getJSON('https://psgc.gitlab.io/api/provinces/'+province+'/cities-municipalities/', function(data){
+					$.each(data, function(key, value){
+							html_code += '<option value="'+value.name+'">'+value.name+'</option>';
+					});
+					$('#city').html(html_code);
+					
+				});
+			});
+			});
+		}
 		});
-		</script>
+ });
+
+});
+</script>
+
 	</div>
 </body>
 </html>

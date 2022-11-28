@@ -35,7 +35,67 @@ function charts_data(){
 }
 
 
+function update_mio_account()
+{
+    global $con;
 
+    $id =   $_SESSION['employee_id'];
+    $sql = "SELECT * FROM employee_tbl WHERE employee_id='$id'";
+    $result = $con->query($sql);
+    $row = mysqli_fetch_assoc($result)
+    ?>
+    <form method="POST">
+        <fieldset class="mb-3">
+
+            <div class="form-group ">
+                <label class="col-form-label ">Username</label>
+                    <input type="text" name="username" class="form-control" value="<?php echo $row['username'] ?>">
+            </div>
+
+            <div class="form-group ">
+                <label class="col-form-label ">Email</label>
+                    <input type="email" name="email" class="form-control" value="<?php echo $row['email'] ?>">
+            </div>
+
+            <div class="form-group ">
+                <label class="col-form-label ">Contact number</label>
+                    <input type="text" name="contact" class="form-control" value="<?php echo $row['contact'] ?>">
+            </div>
+
+            <div class="form-group ">
+                <div class="col-lg-12  text-right">
+                    <button type="submit" name="update_mio_account" class="btn btn-primary btn-flat">Update</button>
+                </div>
+            </div>
+            
+        </fieldset>
+    </form>
+    <?php
+
+    if(isset($_POST['update_mio_account']))
+    {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $contact = $_POST['contact'];
+        $id = $_SESSION['employee_id'];
+
+
+        $sql_update_mio = mysqli_query($con, "UPDATE employee_tbl SET  email='$email', username='$username', contact='$contact'  WHERE employee_id ='$id'");
+
+        ?>
+            <script>
+                $(document).ready(function () {
+                    Swal.fire({
+                            title: 'Successfully update!',
+                            icon: 'success',
+                            }), window.setTimeout(function() {
+                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                }, 2000);
+            });
+            </script>
+        <?php
+    }
+}
 function charts(){
     global $con;
     $sql = "SELECT * FROM ddr_table GROUP BY drr_species ";
