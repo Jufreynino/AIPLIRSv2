@@ -34,6 +34,190 @@ function charts_data(){
                  
 }
 
+function update_mio_region()
+{
+    global $con;
+    $employee_id = $_SESSION['employee_id'];
+    $sql = "SELECT * FROM employee_tbl WHERE employee_id='$employee_id'";
+        $result = $con->query($sql);
+        $row = mysqli_fetch_assoc($result);
+    ?>
+    
+       <div class="text-center">
+            <h4 class="font-weight-semibold mb-0"><?php echo $row['region'] ?></h4>
+            <p class="font-weight-semibold mb-0">Current Region</p>
+        </div>
+        <br>
+        
+        <form method="POST">
+            <fieldset class="mb-3">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-feedback form-group-feedback-right">
+                            <label class="col-form-label text-right">Region</label>
+                                <select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_content').value=this.options[this.selectedIndex].text">
+                                    <option value="">Select Region</option>
+                                </select>
+                                        <input type="hidden" name="region_content" id="region_content"  />
+                                        <input type="hidden" name="region_code" id="country"  />
+
+                            <div class="form-control-feedback">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group ">
+                    <div class="col-lg-12  text-right">
+                        <button type="submit" name="update_mio_region" class="btn btn-primary btn-flat">Update</button>
+                    </div>
+                </div>
+            
+                
+            </fieldset>
+        </form>
+
+    <?php 
+
+
+    if(isset($_POST['update_mio_region']))
+    {
+        $region_content = $_POST['region_content'];
+        $employee_id = $_SESSION['employee_id'];
+
+        $sql = "SELECT * FROM employee_tbl WHERE employee_id='$employee_id'";
+        $result = $con->query($sql);
+        $row = mysqli_fetch_assoc($result);
+        if($region_content == $row['region'])
+        {
+                ?>
+                <script>
+                    $(document).ready(function () {
+                        Swal.fire({
+                                title: 'Currently in this region <?php echo $row['region'] ?> ',
+                                icon: 'error',
+                                }), window.setTimeout(function() {
+                        window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                    }, 2000);
+                });
+                </script>
+            <?php
+        }
+        else
+        {
+            $sql_update_mio_region = mysqli_query($con, "UPDATE employee_tbl SET   region='$region_content'  WHERE employee_id ='$employee_id'");
+
+                ?>
+                    <script>
+                        $(document).ready(function () {
+                            Swal.fire({
+                                    title: 'Region updated!<br><?php echo $region_content ?>',
+                                    icon: 'success',
+                                    }), window.setTimeout(function() {
+                            window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                        }, 2000);
+                    });
+                    </script>
+                <?php
+        }
+    }
+
+}
+
+  
+
+function update_mio_password()
+{
+    global $con;
+    ?>
+
+
+    <?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; } ?>
+            <div class="form-group ">
+                <label class="col-form-label">Current Password</label>
+                    <input type="password" name="current_password" class="form-control" placeholder="***************" required>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-form-label">New Password</label>
+                    <input type="password" name="new_password" class="form-control" placeholder="***************" required>
+            </div>
+
+            <div class="form-group ">
+                <label class="col-form-label">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" placeholder="***************" required>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-lg-12  text-right">
+                    <button type="submit" name="update_mio_password" class="btn btn-primary btn-flat">Update</button>
+                </div>
+            </div>
+        
+            
+        </fieldset>
+    </form>
+    <?php
+    if(isset($_POST['update_mio_password']))
+    {
+        $current_password = $_POST['current_password'];
+        $new_password = $_POST['new_password'];
+        $confirm_password = $_POST['confirm_password'];
+        $employee_id = $_SESSION['employee_id'];
+
+        $sql = "SELECT * FROM employee_tbl WHERE employee_id='$employee_id'";
+        $result = $con->query($sql);
+        $row = mysqli_fetch_assoc($result);
+
+        if($current_password != $row['password'])
+        {
+            ?>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Incorrect current password',
+                        })
+                </script>
+            <?php
+        }
+        else
+        {
+            if($new_password != $confirm_password)
+            {
+                ?>
+                    <script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Password not match',
+                            })
+                    </script>
+                <?php
+            }
+            else
+            {
+
+                $sql_update_mio_password = mysqli_query($con, "UPDATE employee_tbl SET password='$new_password'  WHERE employee_id ='$employee_id'");
+                ?>
+                    <script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Password successfully updated',
+                            }), window.setTimeout(function() {
+                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                }, 2000);
+                    </script>
+                <?php
+            }
+        }
+
+    }
+}
 
 function update_mio_account()
 {
@@ -42,7 +226,7 @@ function update_mio_account()
     $id =   $_SESSION['employee_id'];
     $sql = "SELECT * FROM employee_tbl WHERE employee_id='$id'";
     $result = $con->query($sql);
-    $row = mysqli_fetch_assoc($result)
+    $row = mysqli_fetch_assoc($result);
     ?>
     <form method="POST">
         <fieldset class="mb-3">

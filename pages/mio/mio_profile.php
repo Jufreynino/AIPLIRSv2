@@ -426,37 +426,9 @@ else{
                                                         <h2 class="font-weight-semibold mb-0">Password</h2>
                                                     </div>
                                                     <br>
-
-                                                    <form action="#">
-                                                            <fieldset class="mb-3">
-
-                                                                <div class="form-group ">
-                                                                    <label class="col-form-label">Current Password</label>
-                                                                        <input type="text" class="form-control" placeholder="***************">
-                                                                </div>
-
-
-                                                                <div class="form-group">
-                                                                    <label class="col-form-label">New Password</label>
-                                                                        <input type="text" class="form-control" placeholder="***************">
-                                                                </div>
-
-                                                                <div class="form-group ">
-                                                                    <label class="col-form-label">Confirm Password</label>
-                                                                        <input type="text" class="form-control" placeholder="***************">
-                                                                </div>
-
-
-                                                                <div class="form-group row">
-                                                                    <div class="col-lg-12  text-right">
-                                                                        <button type="submit" class="btn btn-primary btn-flat">Update</button>
-                                                                    </div>
-                                                                </div>
-                                                            
-                                                                
-                                                            </fieldset>
-                                                        </form>
-                                                   
+													<form method="POST">
+        												<fieldset class="mb-3">
+													<?php echo update_mio_password() ?>
                                                 </div>
                                             </div>
 
@@ -467,41 +439,8 @@ else{
                                                         <h2 class="font-weight-semibold mb-0">Region</h2>
                                                     </div>
                                                 <br>
-                                                    <div class="text-center">
-                                                        <h4 class="font-weight-semibold mb-0"><?php echo $_SESSION['region'] ?></h4>
-                                                        <p class="font-weight-semibold mb-0">Current Region</p>
-                                                    </div>
-                                                    <br>
-
-                                                    <form action="#">
-                                                            <fieldset class="mb-3">
-
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group form-group-feedback form-group-feedback-right">
-                                                                            <label class="col-form-label text-right">Region</label>
-                                                                                <select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_content').value=this.options[this.selectedIndex].text">
-                                                                                    <option value="">Select Region</option>
-                                                                                </select>
-                                                                                        <input type="hidden" name="region_content" id="region_content"  />
-                                                                                        <input type="hidden" name="region_code" id="country"  />
-
-                                                                            <div class="form-control-feedback">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                
-                                                                <div class="form-group ">
-                                                                    <div class="col-lg-12  text-right">
-                                                                        <button type="submit" class="btn btn-primary btn-flat">Update</button>
-                                                                    </div>
-                                                                </div>
-                                                            
-                                                                
-                                                            </fieldset>
-                                                        </form>
+                                                 
+													<?php echo update_mio_region() ?>
                                                    
                                                 </div>
                                             </div>
