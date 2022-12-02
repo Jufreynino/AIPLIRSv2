@@ -334,52 +334,95 @@ $today = strtotime($todays_date);
 			</script>
 
 
+<script>
+$(document).ready(function(){
 
-	      <script type="text/javascript">
-            
-            var my_handlers = {
+ load_json_data('country');
 
-             
+ function load_json_data(id, parent_id)
+ {
 
-                fill_cities: function(){
+  var html_code = '';
+  $.getJSON('https://psgc.gitlab.io/api/regions/', function(data){
 
-                    var province_code = $(this).val();
-                    $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-                },
+   html_code += '<option value="">Select Region</option>';
+   $.each(data, function(key, value){
+  
+     if(value.parent_id == parent_id)
+     {
+      html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+     }
+   });
+   $('#'+id).html(html_code);
+  });
+ }
 
+ $(document).on('change', '#country', function(){
+  var html_code = '';
+  var region = $(this).val();
+  $("#city").html("<option>Select city</option>");
+		$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/provinces/', function(data){
+		if(data =='')
+		{
+  			var html_code = '';
+			var region = $('#country').val();
+			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/districts/', function(data){
+				$.each(data, function(key, value){
+				html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+			});
+   			$('#province').html(html_code);
 
-                fill_barangays: function(){
+			   $(document).on('change', '#province', function(){
+					var html_code = '';
+					var province = $(this).val();
+					
 
-                    var city_code = $(this).val();
-                    $('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
-                }
-            };
+					alert(province);
+					$.getJSON('https://psgc.gitlab.io/api/districts/'+province+'/cities-municipalities/', function(data){
+					$.each(data, function(key, value){
+							html_code += '<option value="'+value.name+'">'+value.name+'</option>';
+					});
+					$('#city').html(html_code);
+					
+				});
 
-            $(function(){
-                $('#province').on('change', my_handlers.fill_cities);
-                $('#city').on('change', my_handlers.fill_barangays);
+				
+			});
+			});
+		}
+		else
+		{
+			var html_code = '';
+			var region = $('#country').val();
+			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/provinces/', function(data){
+				$.each(data, function(key, value){
+					html_code += '<option  value="'+value.code+'">'+value.name+'</option>';
+				});
+   				$('#province').html(html_code);
 
-                $('#province').ph_locations({'location_type': 'provinces'});
-                $('#city').ph_locations({'location_type': 'cities'});
-                $('#barangay').ph_locations({'location_type': 'barangays'});
+			   $(document).on('change', '#province', function(){
+					var html_code = '';
+					var province = $(this).val();
+					
+					
+					$.getJSON('https://psgc.gitlab.io/api/provinces/'+province+'/cities-municipalities/', function(data){
+					$.each(data, function(key, value){
+							html_code += '<option value="'+value.name+'">'+value.name+'</option>';
+					});
+					$('#city').html(html_code);
+					
+				});
+			});
+			});
+		}
+		});
+ });
 
-                $('#province').ph_locations('fetch_list');
-            });
-        </script>
-		<script>
-$(document).ready(function () {
-
-    Swal.fire({
-                            title: 'Successfully updated!',
-                            text: 'Wait for the approval of your transaction',
-                            icon: 'success',
-                            confirmButtonText: 'Okay',
-                            confirmButtonColor: '#a0d781'
-                            }, function() {
-                            window.location = "http://localhost/AIPLIRSv2/pages/me/edit_drr.php?details=<?php echo $drr_id ?>";
-                        });
 });
 </script>
+
+
+	
 
 		
 </body>

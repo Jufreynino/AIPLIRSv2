@@ -590,30 +590,41 @@ function edit_daily_receiving()
                                             </div>
 
 
+
+
                                             <div class="form-group">
-                                                <label>Province</label>
-                                            <select id="province" onchange="document.getElementById('text_content').value=this.options[this.selectedIndex].text" class="form-control  js-example-basic-single" id="province" required ></select>
-                                                    <input type="hidden" name="province" id="text_content" value="" />
+                                                <label>Region</label>
+                                                    <select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_text').value=this.options[this.selectedIndex].text">
+                                                        <option value="">Select Region</option>
+                                                    </select>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Province</label>
+                                                    <select name="province" id="province" class="form-control input-lg" onchange="document.getElementById('text_content').value=this.options[this.selectedIndex].text"
+                                                    >
+                                                        <option value="">Select Province</option>
+                                                    </select>
+                                                    <input type="hidden" name="province" id="text_content" value="" />
+
+                                                    
+                                            </div>
 
                                             <div class="form-group">
                                                 <label>Municipality / City</label>
-                                                <select id="city" onchange="document.getElementById('city_text').value=this.options[this.selectedIndex].text" class="form-control  js-example-basic-single" id="city" required ></select>
-                                                    <input type="hidden" name="city" id="city_text" value="" />
+                                                    <select name="city" id="city" class="form-control input-lg">
+                                                        <option value="">Select City</option>
+                                                    </select>
                                             </div>
 
 
 
-
-
-                                            <div class="form-group">
-                                                <label>Barangay</label>
-                                                <select id="barangay" onchange="document.getElementById('barangay_text').value=this.options[this.selectedIndex].text" class="form-control  js-example-basic-single" id="barangay" required ></select>
-                                                    <input type="hidden" name="barangay" id="barangay_text" value="" />
-                                            </div>
 
                                            
+
+
+
+
 
 
 
@@ -1077,33 +1088,33 @@ if(isset($_POST['update_veterinary_attachment']))
     <?php
 }
 
-if(isset($_POST['update_shipping_permit']))
-{
-    $drr_id =  $_GET['details'];
+// if(isset($_POST['update_shipping_permit']))
+// {
+//     $drr_id =  $_GET['details'];
 
-    $sqls = mysqli_query($con, "UPDATE ddr_table SET 
-    drr_species = '$species', 
-    drr_category = '$category', 
-    drr_meat_dealer = '$meat_dealer', 
-    drr_batch_number = '$batch_number', 
-    drr_holding_pen = '$holding_pen', 
-    drr_region_code = '$region',
-    drr_province_code = '$province', 
-    drr_city_code = '$city', 
-    drr_barangay_code = '$barangay',
-    drr_boiler_head = '$broiler_heads',
-    drr_broiler_weight = '$broiler_weight', 
-    drr_culled_head = '$culled_layer_heads', 
-    drr_culled_weight = '$culled_layer_weight',
-    drr_native_head = '$native_heads', 
-    drr_native_weight = '$native_weight',
-    drr_total_head = '$total_heads', 
-    drr_total_weight = '$total_weight',
-    drr_farm_source = '$farm_source',
-    drr_report_status='3',
-    drr_farm_souce_type ='$type_farm_source'  WHERE drr_id ='$drr_id'
-    ");
-}
+//     $sqls = mysqli_query($con, "UPDATE ddr_table SET 
+//     drr_species = '$species', 
+//     drr_category = '$category', 
+//     drr_meat_dealer = '$meat_dealer', 
+//     drr_batch_number = '$batch_number', 
+//     drr_holding_pen = '$holding_pen', 
+//     drr_region_code = '$region',
+//     drr_province_code = '$province', 
+//     drr_city_code = '$city', 
+//     drr_barangay_code = '$barangay',
+//     drr_boiler_head = '$broiler_heads',
+//     drr_broiler_weight = '$broiler_weight', 
+//     drr_culled_head = '$culled_layer_heads', 
+//     drr_culled_weight = '$culled_layer_weight',
+//     drr_native_head = '$native_heads', 
+//     drr_native_weight = '$native_weight',
+//     drr_total_head = '$total_heads', 
+//     drr_total_weight = '$total_weight',
+//     drr_farm_source = '$farm_source',
+//     drr_report_status='3',
+//     drr_farm_souce_type ='$type_farm_source'  WHERE drr_id ='$drr_id'
+//     ");
+// }
 if(isset($_POST['update_drr']))
 {
     $drr_id =  $_GET['details'];
@@ -1116,6 +1127,7 @@ if(isset($_POST['update_drr']))
     $meat_dealer_lastname = mysqli_real_escape_string($con, $_POST['meat_dealer_lastname']);
     $batch_number = mysqli_real_escape_string($con, $_POST['batch_number']);
     $holding_pen = mysqli_real_escape_string($con, $_POST['holding_pen']);
+    $province = mysqli_real_escape_string($con, $_POST['country']);
     $province = mysqli_real_escape_string($con, $_POST['province']);
     $city = mysqli_real_escape_string($con, $_POST['city']);
     $barangay = mysqli_real_escape_string($con, $_POST['barangay']);
@@ -1146,7 +1158,6 @@ if(isset($_POST['update_drr']))
                                 drr_region_code = '$region',
                                 drr_province_code = '$province', 
                                 drr_city_code = '$city', 
-                                drr_barangay_code = '$barangay',
                                 drr_boiler_head = '$broiler_heads',
                                 drr_broiler_weight = '$broiler_weight', 
                                 drr_culled_head = '$culled_layer_heads', 
@@ -1310,22 +1321,23 @@ if(isset($_POST['update_drr']))
           
        }
         
-        ?>
+                ?>
                 <script>
                     $(document).ready(function () {
 
                         Swal.fire({
-                                                title: 'Successfully updated!',
-                                                text: 'Wait for the approval of your transaction',
-                                                icon: 'success',
-                                                confirmButtonText: 'Okay',
-                                                confirmButtonColor: '#a0d781'
-                                                }, function() {
-                                                window.location = "http://localhost/AIPLIRSv2/pages/me/edit_drr.php?details=<?php echo $row['drr_id'] ?>";
-                                            });
+                                title: 'Successfully updated!',
+                                text: 'Wait for the approval of your transaction',
+                                icon: 'success',
+                                confirmButtonText: 'Okay',
+                                confirmButtonColor: '#a0d781'
+                                }), window.setTimeout(function() {
+                            window.location.href='http://localhost/AIPLIRSv2/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
+                        }, 1000);
+            
                     });
                 </script>
-<?php
+            <?php
  
     
 }
@@ -23848,7 +23860,7 @@ function me_per_reg_posms()
 
                  setTimeout(function () {
                       window.location = "me_per_region.php";
-                    }, 10000); 
+                    }, 2000); 
                 
             </script>
             <?php
@@ -23870,7 +23882,7 @@ function me_per_reg_posms()
 
                  setTimeout(function () {
                       window.location = "me_per_region.php";
-                    }, 10000); 
+                    }, 2000); 
                 
             </script>
          <?php
