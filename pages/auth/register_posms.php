@@ -205,7 +205,7 @@ include '../../function/function.php';
 
 
 								
-									<h4 style="margin-bottom:-20px; margin-top: 20px;">Account Information</h4>
+									<h4 style="margin-bottom:-20px; margin-top: 20px;">Contact Information</h4>
 									<hr>
                   				<div class="row">
 										<div class="col-md-6">
@@ -227,7 +227,7 @@ include '../../function/function.php';
 										</div>
 									</div>
 
-									<h4 style="margin-bottom:-20px; margin-top: 20px;">Account Credentials</h4>
+									<h4 style="margin-bottom:-20px; margin-top: 20px;">Account Details</h4>
 									<hr>
 
 

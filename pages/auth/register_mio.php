@@ -124,7 +124,7 @@ include '../../function/function.php';
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group form-group-feedback form-group-feedback-right">
-										<input type="text" class="form-control" id="employee_code" name="employee_code" placeholder="Employee code" >
+										<input type="text" class="form-control" id="employee_code" name="employee_code" placeholder="Employee Number" >
 
 												
 											</div>
@@ -262,11 +262,6 @@ include '../../function/function.php';
 
 
 									</div>
-
-									<div class="tab-pane fade" id="highlighted-justified-tab3">
-										Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
-									</div>
-
 
 									
 								</div>

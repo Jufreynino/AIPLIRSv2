@@ -115,7 +115,7 @@ else{
 								<div class="media-title font-weight-semibold"><?php echo $_SESSION['lastname'].', '.$_SESSION['firstname'] ?></div>
 								<div class="font-size-xs opacity-50">
 
-								<?php echo $_SESSION['region'] ?>
+								<?php echo $_SESSION['region_code'] ?>
 
 
 								</div>

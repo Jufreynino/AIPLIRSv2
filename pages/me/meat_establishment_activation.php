@@ -8,7 +8,7 @@ if(isset($_SESSION['me_id']))
 
 }
 else{
-    header('location: ../../pages/auth/login.php');
+    header('location: ../../pages/auth/index.php');
 }
 ?>
 <!DOCTYPE html>

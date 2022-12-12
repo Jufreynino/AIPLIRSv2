@@ -286,7 +286,8 @@ else{
 							</div>
 
 							<div class="ml-3 align-self-center">
-								<a href="#" class="text-white"><i class="icon-cog3"></i></a>
+								<a href="mio_profile.php" class="text-white"><i class="icon-cog3"></i></a>
+
 							</div>
 						</div>
 					</div>

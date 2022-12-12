@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
 header("Access-Control-Allow-Origin: *");
 // use PHPMailer\PHPMailer\PHPMailer;
 
@@ -23916,6 +23916,231 @@ function assign_mio()
                                                 <?php
                                              }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function posms_update_application()
+{
+    global $con;
+
+    ?>
+                 <form method="POST" >
+                        <?php if(isset($error_classification)){echo $error_classification; }?>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card mb-0">
+
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <i class="icon-plus3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3 mt-1"></i>
+                                                <h5 class="mb-0">Update account</h5>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                <input type="text" class="form-control" id="employee_code" name="employee_code" value="<?php echo $_SESSION['employee_code'] ?>" >
+
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                        <input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $_SESSION['firstname'] ?>" >
+                                                        <div class="form-control-feedback">
+                                                            <i class="icon-file-empty2 text-muted"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                        <input type="text" class="form-control" id="lastname" name="lastname" value="<?php echo $_SESSION['lastname'] ?>" >
+                                                        <div class="form-control-feedback">
+                                                            <i class="icon-file-empty2 text-muted"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                        <legend style="font-weight: bold; font-size:20px;">Region</legend>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                    
+                                                        <select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_content').value=this.options[this.selectedIndex].text" required>
+                                                            <option value="">Select Region</option>
+                                                        </select>
+
+
+
+
+                                                        <input type="hidden" name="me_region" id="region_content" value="" required>
+
+                                                        <div class="form-control-feedback">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <legend style="font-weight: bold; font-size:20px;">Contact Information</legend>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="col-form-label ">Contact Number <i style="color: red;"></i></label>
+                                                                        <input type="text" class="form-control" name="contact" value="<?php echo $_SESSION['contact'] ?>" >
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="col-form-label ">Email</label>
+                                                                        <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['email'] ?>" >
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <legend style="font-weight: bold; font-size:20px;">Account Details</legend>
+
+                                        <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                        <label>Username</label>
+                                                        <input type="text" class="form-control" name="username" id="username" value="<?php echo $_SESSION['username'] ?>" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                        <label>Password</label>
+                                                        <input type="password" class="form-control" name="password" id="password" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                                        <label>Confirm Password</label>
+                                                        <input type="password" class="form-control" name="confirm_me_password" id="confirm_me_password"  required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="text-right">
+                                                <button type="submit" name="btn_update_posms"  id="butsave" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-plus3"></i></b> Submit Changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+    <?php
+    if(isset($_POST['btn_update_posms']))
+    {
+        $employee_code = $_POST['employee_code'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $region  = $_POST['country'];
+        $region_code  = $_POST['me_region'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $confirm_me_password = $_POST['confirm_me_password'];
+
+        $sql = mysqli_query($con, "UPDATE employee_tbl SET
+
+        employee_code ='$employee_code',
+        firstname ='$firstname',
+        lastname ='$lastname',
+        region ='$region_code',
+        region_code ='$region',
+        contact ='$contact',
+        username ='$username',
+        password ='$password',
+        account_status ='Pending'
+
+
+        WHERE employee_id ='".$_SESSION['employee_id']."' ");
+        ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                text: 'Successfully updated, please wait for the approval of your account',
+                    }), window.setTimeout(function() {
+                window.location.href='http://localhost/AIPLIRSv2/pages/auth/posms_update.php';
+            }, 2000);
+            </script>
+        <?php
+
+    }
+}
+
 function update_application_information()
 {
 
@@ -25673,9 +25898,9 @@ function mio_accounts()
                         if($row['account_status'] == 'Pending'){
                             ?><p class="text-orange-300 btn-block">Pending</p><?php
                             }
-                            else if($row['account_status'] == 'Rejected')
+                            else if($row['account_status'] == 'Disapproved')
                             {
-                            ?><p class="text-orange-800  btn-block">Deactivated</p><?php
+                            ?><p class="text-orange-800  btn-block">Disapproved</p><?php
     
                             }
                             else if($row['account_status'] == 'Deactivated')
@@ -25695,6 +25920,7 @@ function mio_accounts()
 
                        <?php if($row['account_status'] == 'Pending'){ ?>
                             <button  type="button" class="btn bg-success" data-toggle="modal" data-target="#approve_mio_accouts<?php echo $row['employee_id'] ?>">Approve</button>
+                            <button  type="button" class="btn bg-danger" data-toggle="modal" data-target="#reject_mio_accouts<?php echo $row['employee_id'] ?>">Disapprove</button>
 
 
 
@@ -25710,6 +25936,19 @@ function mio_accounts()
                             <button type="button" class="btn bg-info" data-toggle="modal" data-target="#edit_posmd_accouts<?php echo $row['employee_id'] ?>">Set Account status</button>
 
                             <a style="display:none;"  href="assigned_meat_establishment.php?emp_id=<?php echo $row['employee_id'] ?>" class="btn bg-teal">View details</a>
+
+
+
+                        <?php }  else if($row['account_status'] == 'Disapproved') { ?>
+
+
+                            <button  type="button" class="btn bg-success" data-toggle="modal" data-target="#approve_mio_accouts<?php echo $row['employee_id'] ?>">Approve</button>
+
+
+
+
+
+
 
                         <?php } else{ ?>
 
@@ -25731,7 +25970,7 @@ function mio_accounts()
                             <form method="POST">
                             <div class="modal-body">
                                 <input type="hidden" name="e_id" value="<?php echo $row['employee_id'] ?>">
-                                    <p> <h5 class="text-center">Are you sure you want to approved this appilcation?</h5> </p>                                
+                                    <p> <h5 class="text-center">Are you sure you want to approved this application?</h5> </p>                                
                             </div>
                             <div class="text-center">
                                 <button type="submit" name="btn_approved_mio_account" class="btn bg-success">Yes</button>
@@ -25743,6 +25982,25 @@ function mio_accounts()
                     </div>
                 </div>
 
+                <div id="reject_mio_accouts<?php echo $row['employee_id'] ?>" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST">
+                            <div class="modal-body">
+                                <input type="hidden" name="e_id" value="<?php echo $row['employee_id'] ?>">
+                                    <p> <h5 class="text-center">Are you sure you want to disapprove this application?</h5> </p> 
+                                    <textarea name="remarks" class="form-control" placeholder="Remarks"></textarea>                               
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" name="btn_reject_mio_account" class="btn bg-success">Yes</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                            </div>
+                            <br>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                
 
 
                 <div id="edit_posmd_accouts<?php echo $row['employee_id'] ?>" class="modal fade" tabindex="-1">
@@ -25832,11 +26090,48 @@ function mio_accounts()
                     $sql = mysqli_query($con, "UPDATE employee_tbl SET account_status='Active' WHERE employee_id='$e_id' ");
                     ?>
                         <script type="text/javascript">
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Successfully approved',
+                                text: 'MIO account successfully approved',
+                                }), window.setTimeout(function() {
+                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
+                            }, 2000);
+
+
+                        </script>
+                    <?php
+                }
+
+                if(isset($_POST['btn_reject_mio_account']))
+                {
+                    $e_id = $_POST['e_id'];
+                    $remarks = $_POST['remarks'];
+                    $sql = mysqli_query($con, "UPDATE employee_tbl SET remarks='$remarks', account_status='Disapproved' WHERE employee_id='$e_id' ");
+                    ?>
+
+
+                        <script type="text/javascript">
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Account disapproved',
+                                text: 'MIO account successfully disapproved',
+                                }), window.setTimeout(function() {
+                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
+                            }, 2000);
+
+
+                        </script>
+
+
+                        <script type="text/javascript">
                             window.location = "meat_inspector_account.php";
                         </script>
                     <?php
                 }
 
+
+                
                 
                 ?>
                 </td>
@@ -28466,7 +28761,9 @@ function posms_accounts()
                             <form method="POST">
                             <div class="modal-body">
                                 <input type="hidden" name="e_id" value="<?php echo $row['employee_id'] ?>">
-                                    <h5 class="text-center">Are you sure you want to disapprove this applicant?</h5>                                
+                                    <h5 class="text-center">Are you sure you want to disapprove this applicant?</h5> 
+                                    
+                                    <textarea name="remarks" class="form-control" rows="2" placeholder="Remarks" required></textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit" name="btn_rej_mio_account" class="btn bg-success">Yes</button>
@@ -28513,8 +28810,63 @@ function posms_accounts()
                 if(isset($_POST['btn_rej_mio_account']))
                 {
                     $emp_id = $_POST['e_id'];
-                  
-                    $sql = mysqli_query($con, "UPDATE employee_tbl SET account_status='Disapproved' WHERE employee_id='$emp_id'");
+                    $email = $row['email']; 
+                    $remarks = $_POST['remarks']; 
+                    $sql = mysqli_query($con, "UPDATE employee_tbl SET remarks='$remarks', account_status='Disapproved' WHERE employee_id='$emp_id'");
+                    
+
+
+                    $mail = new PHPMailer();
+                    $mail->isSMTP();  
+                    $mail->SMTPOptions = array(
+                        'ssl' => array(
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        )
+                    );                                          // Set mailer to use SMTP
+                    $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                    $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                    $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                    $mail->Port       = 587;  
+                    $mail->isHTML(true);
+                    $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
+                    $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
+
+                    $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
+
+                    $mail->Subject = 'Account Disapproved!';
+
+                    $mail->Body = ' <div style=" margin:auto; width:600px;">
+                            <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
+
+                                <center>
+
+                                <img src="cid:Kartka">
+
+                                <h1>Good day! </h1>
+                                </center>
+
+                                <p style="text-indent: 100px; font-size:15px;">Your account has been disapproved<br><br>
+                                <center>
+                                <b>Remarks: </b>
+                                   <h2> '.$remarks.' </h2>
+                                </center>
+                                
+                                <br><br><br>
+                                
+                                <b>Department of Agriculture</b> <br>
+                                <b style="font-size:15px;">National Meat Inspection Service</b><br>
+                                Plant Operation Standards and Monitoring Section ( POSMS )
+                            </div>
+                        </div>';
+                    $mail->AddAddress($email);
+                    $mail->send();
+
+                   
+                   
                     ?>
                         <script type="text/javascript">
                             window.location = "posms_account.php";
@@ -32135,7 +32487,7 @@ if(isset($_POST['send_remarks']))
                 text: 'Remarks successfully sent',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location.href='http://localhost:7882/AIPLIRSv2/pages/mio/assigned_me.php';
+        window.location.href='http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
     }, 1000);
 });
     </script>
@@ -32161,7 +32513,7 @@ if(isset($_POST['update_proceedstatus']))
                 text: 'Transaction successfully approved you can inspect now',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location=' http://localhost:7882/AIPLIRSv2/pages/mio/assigned_me.php';
+        window.location=' http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
     }, 2000);
 });
     </script>
@@ -39848,7 +40200,6 @@ function login()
         $sql = mysqli_query($con, "SELECT * FROM employee_tbl WHERE username='$user'");
         $row = mysqli_fetch_assoc($sql);
 
-
         if($row)
         {
             if($row['password'] != $pass)
@@ -39862,27 +40213,40 @@ function login()
             }
             else
             {
-
                 if($row['account_activation'] =='0')
                   {
                     ?>
-                            <div class="alert alert-danger border-0 alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                                <span class="font-weight-semibold">Please check your inbox to activate email</a>.
-                            </div>
+                        <div class="alert alert-danger border-0 alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                            <span class="font-weight-semibold">Please check your inbox to activate email</a>.
+                        </div>
                     <?php
                   }
                   else
                   {
-            
-                      if($row['account_status'] == 'Rejected')
+                      if($row['account_status'] == 'Disapproved')
                         {
-                            ?> 
-                                <div class="alert alert-danger border-0 alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                                    <span class="font-weight-semibold">Your application was rejected</a>.
-                                </div>
-                            <?php
+                            session_start();
+                            $_SESSION['employee_id'] = $row['employee_id'];
+                            $_SESSION['firstname'] = $row['firstname'];
+                            $_SESSION['employee_code'] = $row['employee_code'];
+                            $_SESSION['username'] = $row['username'];
+                            $_SESSION['lastname'] = $row['lastname'];
+                            $_SESSION['role'] = $row['role'];
+                            $_SESSION['plant_name'] = $row['plant_name'];
+                            $_SESSION['region'] = $row['region'];
+                            $_SESSION['email'] = $row['email'];
+                            $_SESSION['contact'] = $row['contact'];
+                            $_SESSION['region_code']  = $row['region_code'];
+
+                            if($row['role'] == 2)
+                            {
+                                header("location: ../../pages/auth/mio_update.php");
+                            }
+                            else if($row['role'] == 1)
+                            {
+                                header("location: ../../pages/auth/posms_update.php");
+                            }
                        }
                        else if($row['account_status'] == 'Pending')
                        {

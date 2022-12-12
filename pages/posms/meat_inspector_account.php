@@ -59,6 +59,8 @@ else{
 	<script src="../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/styling/switch.min.js"></script>
 	<script src="../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     </head>
 <body>
 
