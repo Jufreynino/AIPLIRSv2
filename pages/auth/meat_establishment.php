@@ -700,9 +700,36 @@ $(document).ready(function(){
 			$('.class').change(function(){
 			$('#output2').val($(this).val());
 		});
-		</script>
 
 
+		$('#me_expiration_date').change(function(){
+			const startDate = new Date(); // Feb 12th 2020
+			const endDate = new Date($('#me_expiration_date').val()); // April 18th 2022
+
+			const monthDiff = endDate.getMonth() - startDate.getMonth() +
+			(12 * (endDate.getFullYear() - startDate.getFullYear()));
+			if(monthDiff == 0)
+			{
+				alert('Your license to operated is expired');
+
+				$('#me_expiration_date').val('');
+			}
+			else
+			{
+				if(monthDiff >= 12)
+				{
+				}
+				else
+				{
+					alert(monthDiff+' months remaining before your License to operate is expired');
+				}
+			}
+			
+		});
+
+
+		
+	</script>	
 		</div>
 	</div>
 </body>

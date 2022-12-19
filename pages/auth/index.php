@@ -34,7 +34,7 @@ else{
 	<script src="../../global_assets/js/main/bootstrap.bundle.min.js"></script>
 	<script src="../../global_assets/js/plugins/loaders/blockui.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.js"></script>
 	<script src="../../assets/js/app.js"></script>
 	<script src="../../global_assets/js/demo_pages/login.js"></script>
 
@@ -103,7 +103,7 @@ else{
 						</div>
 					</div>
 				</form>
-
+				
 
 			</div>
 		</div>
