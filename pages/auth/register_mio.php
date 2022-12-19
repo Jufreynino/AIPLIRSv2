@@ -182,7 +182,7 @@ include '../../function/function.php';
 
                                         <div class="col-md-6">
 											<div class="form-group form-group-feedback form-group-feedback-right">
-												<input type="text" class="form-control" name="contact" id="contact" placeholder="Contact #">
+												<input type="text" class="form-control" name="contact" id="contact" placeholder="Mobile Number (9XXXXXXXXX)">
 												<div class="form-control-feedback">
 													<i class="icon-phone2 text-muted"></i>
 												</div>

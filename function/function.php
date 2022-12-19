@@ -1,5 +1,5 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 header("Access-Control-Allow-Origin: *");
 // use PHPMailer\PHPMailer\PHPMailer;
 
@@ -32037,7 +32037,7 @@ function show_mio_drr()
                                                                                </div>
                                                                                <div class="col-md-12">
                                                                                     <p style="font-weight:bold; margin-bottom:-20px; ">Address</p> <br>
-                                                                                    <?php echo $row['drr_barangay_code']  ?>, <?php echo $row['drr_city_code']  ?>, <?php echo $row['drr_province_code']  ?>
+                                                                                    <?php echo $row['drr_city_code']  ?>, <?php echo $row['drr_province_code']  ?>
                                                                                </div>
                                                                                
                                                                             </div>

@@ -126,7 +126,7 @@ include '../../function/function.php';
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group form-group-feedback form-group-feedback-right">
-										<input type="text" class="form-control" id="employee_code" name="employee_code" placeholder="Employee code" >
+										<input type="text" class="form-control" id="employee_code" name="employee_code" placeholder="Employee Number" >
 
 												
 											</div>
@@ -219,7 +219,7 @@ include '../../function/function.php';
 
                                         <div class="col-md-6">
 											<div class="form-group form-group-feedback form-group-feedback-right">
-												<input type="text" class="form-control" name="contact" id="contact" placeholder="Mobile Number (09XXXXXXXXX)" value="<?php if(isset($_POST['contact'])){ echo $_POST['contact']; }?>">
+												<input type="text" class="form-control" name="contact" id="contact" placeholder="Mobile Number (9XXXXXXXXX)" value="<?php if(isset($_POST['contact'])){ echo $_POST['contact']; }?>">
 												<div class="form-control-feedback">
 													<i class="icon-phone2 text-muted"></i>
 												</div>
