@@ -355,57 +355,34 @@ else{
 									<a href="by_national_summary_report.php" class="nav-link">National Data
 									</a>
 								</li>
-							
-
 							</ul>
 						</li>
-
-						
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="content-wrapper">
 			<div class="page-header page-header-light">
-				
-
-				
 			</div>
-		
 			<div class="content">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card  border-top-2 border-top-slate border-bottom-2 border-bottom-slate rounded-0" style="border-radius: 0;">
 									<div class="card-body ">
                                     <div class="text-center">
-
-                                           
 											<?php if(isset($_POST['search_national_data_receiving_for_slaughter'])) { ?>
 												<?php if(empty($_POST['region']) && empty($_POST['province']) && empty($_POST['city'])) {?>
 													<h1><b>National Data</b></h1>
-
-										
-
 												<?php } else if(empty($_POST['province']) && empty($_POST['city'])){ ?>
 													<h1><b>Regional</b></h1>
-												
 													<?php } else if(empty($_POST['city'])){ ?>
-
 													<h1><b>Provincial</b></h1>
-
-
 												<?php } else { ?>
 													<h1><b>Municipality</b></h1>
 												<?php } ?>
 										<?php } ?>
-										
 										<h2 >    Receiving of Animals</h2>
 											<p style="font-size:15px; margin-top:20px; "><?php if(isset($_POST['search_national_data_receiving_for_slaughter'])) { ?>For the period of <?php echo date('F d, Y', strtotime($_POST['from'])); ?> to <?php echo date('F d, Y', strtotime($_POST['to'])); }?></p>
-
-
-											
-
-
 												</div>
 									</div>
 								</div>
@@ -417,46 +394,32 @@ else{
 								<div class="card  border-top-2 border-top-slate border-bottom-2 border-bottom-slate rounded-0">
 									<div class="card-body py-0">
 									<br>	
-
 									<form method="POST" >
-									
 											<div class="row">
 												<div class="col-md-12">
 													<div class="col-md-12">
 														<div class="row">
-
 																	<div class="col-md-2">
 																		<div class="form-group">
 																			<label class="col-form-label text-right">From</label>
 																					<input class="form-control" type="date" id="from" name="from" required  max="<?php echo date('Y-m-d') ?>">
 																		</div>
 																	</div>
-
 																	<div class="col-md-2">
 																		<div class="form-group">
 																			<label class="col-form-label text-right">To</label>
 																					<input class="form-control" type="date" id="from" name="to" required  max="<?php echo date('Y-m-d') ?>">
 																		</div>
 																	</div>
-
-
-
 																	<div class="col-md-3">
 																		<div class="form-group">
-
-
-																			
-																		
 																			<label class="col-form-label text-right">Region</label>
 																				<select name="country" id="country" class="form-control input-lg" onchange="document.getElementById('region_content').value=this.options[this.selectedIndex].text">
 																					<option value="">Select Region</option>
 																				</select>
 																				<input type="hidden" name="region" id="region_content" value="" >
-
-																		
 																		</div>
 																	</div>
-
 																	<div class="col-md-2">
 																		<div class="form-group">
 																			<label class="col-form-label text-right">Province</label>
@@ -465,13 +428,8 @@ else{
 																					<option value="">Select Province</option>
 																				</select>
 																				<input type="hidden" name="province" id="text_content" value="" />
-
-
 																		</div>
 																	</div>
-
-
-
 																	<div class="col-md-3">
 																		<div class="form-group">
 																			<label class="col-form-label text-right">Municipality / City</label>
@@ -480,9 +438,6 @@ else{
 																						<input type="hidden" name="city" id="city_text" value=""  />
 																		</div>
 																	</div>
-
-																	
-
 																	<div class="col-md-12 text-right">
 																		<div class="form-group">
 																			<label class="col-form-label text-right"></label>

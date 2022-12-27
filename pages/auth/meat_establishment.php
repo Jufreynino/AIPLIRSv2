@@ -700,8 +700,6 @@ $(document).ready(function(){
 			$('.class').change(function(){
 			$('#output2').val($(this).val());
 		});
-
-
 		$('#me_expiration_date').change(function(){
 			const startDate = new Date(); // Feb 12th 2020
 			const endDate = new Date($('#me_expiration_date').val()); // April 18th 2022
@@ -718,6 +716,7 @@ $(document).ready(function(){
 			{
 				if(monthDiff >= 12)
 				{
+					
 				}
 				else
 				{
