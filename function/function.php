@@ -35147,82 +35147,124 @@ function add_postmortem_slaughter_disease()
         $disease_code = ucwords(mysqli_real_escape_string($con, $_POST['disease_code']));
         $disease_description = ucwords(mysqli_real_escape_string($con, $_POST['disease_description']));
         $disease_kind_of_species =  $_POST['disease_kind_of_species'];
-        $disease_kind_of_meat = mysqli_real_escape_string($con, $_POST['disease_kind_of_meat']);
+
+        $disease_kind_of_meat = $_POST['disease_kind_of_meat'];
+
+
         $notifiable = mysqli_real_escape_string($con, $_POST['notifiable']);
         $judgement = mysqli_real_escape_string($con, $_POST['judgement']);
         $disease_type = 'SLH';
         $disease_category = 'Postmortem';
 
 
-    
 
 
 
                
 
-                    foreach($disease_kind_of_species as $key => $disease_kind_of_speciess)
-		            {
+                //     foreach($disease_kind_of_species as $key => $disease_kind_of_speciess)
+		        //     {
 
-                            $cpt = $disease_kind_of_species[$key];
+                //             $cpt = $disease_kind_of_species[$key];
 			
-                            $check_existing = "SELECT * FROM disease_tbl WHERE disease_code='$disease_code' AND 
-                            disease_description='$disease_description' AND
-                            disease_type='$disease_type' AND 
-                            disease_category='$disease_category' AND 
-                            disease_kind_of_meat='$disease_kind_of_meat' AND 
-                            disease_species='$cpt'";
+                //             $check_existing = "SELECT * FROM disease_tbl WHERE disease_code='$disease_code' AND 
+                //             disease_description='$disease_description' AND
+                //             disease_type='$disease_type' AND 
+                //             disease_category='$disease_category' AND 
+                //             disease_kind_of_meat='$disease_kind_of_meat' AND 
+                //             disease_species='$cpt'";
                     
-                            $result = $con->query($check_existing);
-                            $row = $result->fetch_assoc();
-                            if($row > 0 )
-                            {
+                //             $result = $con->query($check_existing);
+                //             $row = $result->fetch_assoc();
+                //             if($row > 0 )
+                //             {
 
 
-                             return $error_classification = '
+                //              return $error_classification = '
 
-                                            <div class="alert bg-danger text-white alert-styled-left alert-dismissible">
-                                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                                                <span class="font-weight-semibold">
+                //                             <div class="alert bg-danger text-white alert-styled-left alert-dismissible">
+                //                                 <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                //                                 <span class="font-weight-semibold">
 
-                                                Code: '.$disease_code.' &nbsp;&nbsp;&nbsp;&nbsp;
-                                                Disease / Condition: '.$disease_description.' &nbsp;&nbsp;&nbsp;&nbsp;
-                                                Species: '.$cpt.' &nbsp;&nbsp;&nbsp;&nbsp;
-                                                Judgment: '.$disease_kind_of_meat.' is already exists
+                //                                 Code: '.$disease_code.' &nbsp;&nbsp;&nbsp;&nbsp;
+                //                                 Disease / Condition: '.$disease_description.' &nbsp;&nbsp;&nbsp;&nbsp;
+                //                                 Species: '.$cpt.' &nbsp;&nbsp;&nbsp;&nbsp;
+                //                                 Judgment: '.$disease_kind_of_meat.' is already exists
 
-                                                </span>
-                                            </div>
+                //                                 </span>
+                //                             </div>
 
                                         
-                                        ';
+                //                         ';
 
 
 
-                            }
-                            else
-                            {
+                //             }
+                //             else
+                //             {
 
-                        $sql = mysqli_query($con, "INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species,disease_judgement)
-                                                                VALUES('$disease_code','$disease_description','Critical','Active','$disease_type','$disease_category','$date','$time','$notifiable','$disease_kind_of_meat','$cpt','$judgement')");
-
+                       
 
 	
-		            }
+		        //     }
                                     
 
+                // }
+
+
+                for ($i = 0 ; $i < count($disease_kind_of_meat); $i++) {
+                    for ($r = 0 ; $r < count($disease_kind_of_species); $r++) {
+                        // foreach($colors as $o){
+                          
+    
+                            // o var_dump($disease_kind_of_meat) . "<br>";
+             
+                        // }
+
+                        $check_existing = "SELECT * FROM disease_tbl WHERE disease_code='$disease_code' AND 
+                        disease_description='$disease_description' AND
+                        disease_type='$disease_type' AND 
+                        disease_category='$disease_category' AND 
+                        disease_kind_of_meat='$disease_kind_of_meat[$i]' AND 
+                        disease_species='$disease_kind_of_species[$r]'";
+
+                        $result = $con->query($check_existing);
+                        $row = $result->fetch_assoc();
+                                if($row > 0 )
+                                {
+                                    print_r($disease_kind_of_meat[$i]);die();
+                                //  return $error_classification = '
+                                // echo '
+                                //                 <div class="alert bg-danger text-white alert-styled-left alert-dismissible">
+                                //                     <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                                //                     <span class="font-weight-semibold">
+
+                                //                     Code: '.$disease_code.' &nbsp;&nbsp;&nbsp;&nbsp;
+                                //                     Disease / Condition: '.$disease_description.' &nbsp;&nbsp;&nbsp;&nbsp;
+                                //                     Species: '.$disease_kind_of_species[$r].' &nbsp;&nbsp;&nbsp;&nbsp;
+                                //                     Organs: '.$disease_kind_of_meat[$i].' &nbsp;&nbsp;&nbsp;&nbsp;<b> is already exists! </b>
+
+                                //                     </span>
+                                //                 </div>
+                                //             ';
+                                            
+                                }
+
+                                else
+                                {
+                                    print_r($disease_kind_of_meat[$i]);die();
+                                    // $sql = mysqli_query($con, "INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species,disease_judgement)
+                                    // VALUES('$disease_code','$disease_description','Critical','Active','$disease_type','$disease_category','$date','$time','$notifiable','$disease_kind_of_meat[$i]','$disease_kind_of_species[$r]','$judgement')");
+                                }
+
+
+                    }
                 }
 
-
-                   
-                
-
-                    ?>
-                    <script type="text/javascript">
-                        window.location = "postmortem_slh.php";
-                    </script>
-                    <?php
+                 
 
                 }
-}
+            }
 
 function show_pdp_disease()
 {

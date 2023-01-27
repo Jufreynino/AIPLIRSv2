@@ -813,13 +813,13 @@ function cbDropdown(column) {
 						},
 						success:function(data)
 						{
-							// console.log(data);
-							new PNotify({
-								title: data.title,
-								text: data.msg,
-								icon: data.icon,
-								type: data.alert
-							});
+							console.log(data);
+							// new PNotify({
+							// 	title: data.title,
+							// 	text: data.msg,
+							// 	icon: data.icon,
+							// 	type: data.alert
+							// });
 							
 							
 						},

@@ -381,7 +381,6 @@ else{
                                             <div class="card">
                                                 <div class="card-body">
                                                 	<br>
-															 <!-- echo add_postmortem_slaughter_disease()  -->
                                                                             <div id="modal_theme_primary" class="modal fade" data-backdrop="static" tabindex="-1">
                                                                                     <div class="modal-dialog">
                                                                                         <div class="modal-content">
@@ -390,6 +389,7 @@ else{
                                                                                             </div>
                                                                                             <div class="modal-body">
                                                                                                     <form method="POST">
+															<?php echo add_postmortem_slaughter_disease() ?>
                                                                                                             <div class="form-group">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-sm-3">
@@ -417,7 +417,7 @@ else{
                                                                                                                 <div class="row">
 																													<div class="col-sm-6">
                                                                                                                         <label class="kom">Organs / Parts</label>
-                                                                                                                        <select class="form-control  multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_meat" name="disease_kind_of_meat" required data-fouc>
+                                                                                                                        <select class="form-control  multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_meat" name="disease_kind_of_meat[]" required data-fouc>
                                                                                                                             <option value="Carcass">Carcass</option>
                                                                                                                             <option value="Lungs">Lungs</option>
                                                                                                                             <option value="Liver">Liver</option>
@@ -499,7 +499,7 @@ else{
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
                                                                                                             <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                                                                                                            <button type="submit"  name="btn_add_slaughter_postmortem" class="btn bg-primary">Submit</button>
+                                                                                                            <button type="button"   id="save"class="btn bg-primary">Submit</button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     </form>
@@ -644,7 +644,10 @@ function cbDropdown(column) {
 			var disease_kind_of_meat = $('#disease_kind_of_meat').val();
 			
 			var btn_add_am_disease_slh = '0';
-			var btn_add_pm_disease_pdp = '1';
+			var btn_add_am_disease_pdp = '0';
+
+			var btn_add_pm_disease_pdp = '0';
+			var btn_add_pm_disease_slh = '1';
 			var btn_add_mio = '0';
 			var btn_add_meat_establishment  = '0';
 			var btn_add_posms  = '0';
@@ -664,11 +667,12 @@ function cbDropdown(column) {
 
 
 							disease_kind_of_species:disease_kind_of_species,
-							disease_kind_of_meat:disease_kind_of_meat, 
 
 
 							btn_add_am_disease_slh: btn_add_am_disease_slh,
 							btn_add_pm_disease_pdp: btn_add_pm_disease_pdp,
+							btn_add_am_disease_pdp: btn_add_am_disease_pdp,
+							btn_add_pm_disease_slh: btn_add_pm_disease_slh,
 							btn_add_posms: btn_add_posms,
 							btn_add_mio: btn_add_mio,
 							btn_add_meat_establishment:btn_add_meat_establishment, 
