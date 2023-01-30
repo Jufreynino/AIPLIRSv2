@@ -50,6 +50,7 @@ else{
 	<script src="../../global_assets/js/plugins/tables/datatables/datatables.min.js"></script>  
 	<script src="../../global_assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../global_assets/js/plugins/notifications/pnotify.min.js"></script>
 	<script src="../../assets/js/app.js"></script>
 	<script src="../../global_assets/js/demo_pages/dashboard.js"></script>
   
@@ -67,6 +68,7 @@ else{
 	<script src="../../global_assets/js/demo_pages/form_multiselect.js"></script>
 
 	<script src="../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+	<script src="../../global_assets/js/demo_pages/extra_pnotify.js"></script>
 
 	
 </head>
@@ -394,15 +396,15 @@ else{
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-sm-3">
                                                                                                                         <label>Code</label>
-                                                                                                                        <input type="text" placeholder="Disease Code" name="disease_code" class="form-control text-capitalize-css" required>
+                                                                                                                        <input type="text" placeholder="Disease Code" name="disease_code" id="disease_code" class="form-control text-capitalize-css" required>
                                                                                                                     </div>
                                                                                                                     <div class="col-sm-5">
                                                                                                                         <label>Disease / Condition</label>
-                                                                                                                        <input type="text" placeholder="Disease" name="disease_description" class="form-control text-capitalize-css" required>
+                                                                                                                        <input type="text" placeholder="Disease" name="disease_description" id="disease_description" class="form-control text-capitalize-css" required>
                                                                                                                     </div>
 																													<div class="col-sm-4">
                                                                                                                         <label>Judgement</label>
-																														<select class="form-control "  name="judgement" >
+																														<select class="form-control "  name="judgement" id="judgement"  >
 
                                                                                                                            	<option value="Suspect">Suspect</option>
                                                                                                                             <option value="Rejected">Rejected</option>
@@ -459,14 +461,14 @@ else{
 																																	<label class="d-block font-weight-semibold">Disease Status</label>
 																																	<div class="form-check form-check-inline">
 																																		<label class="form-check-label">
-																																			<input type="radio" class="form-check-input" name="notifiable" value="0" checked>
+																																			<input type="radio" class="form-check-input" name="notifiable"   id="notifiable"  value="0" checked>
 																																			Notifiable
 																																		</label>
 																																	</div>
 
 																																	<div class="form-check form-check-inline">
 																																		<label class="form-check-label">
-																																			<input type="radio" class="form-check-input" name="notifiable" value="1">
+																																			<input type="radio" class="form-check-input" name="notifiable"  id="notifiable"  value="1">
 																																			Not Notifiable
 																																		</label>
 																																	</div>
@@ -481,14 +483,14 @@ else{
 																																<label class="d-block font-weight-semibold">Disease Claassification</label>
 																																<div class="form-check form-check-inline">
 																																	<label class="form-check-label">
-																																		<input type="radio" class="form-check-input" name="classification" value="0" checked>
+																																		<input type="radio" class="form-check-input" name="classification" id="classification" value="0" checked>
 																																		Generalized
 																																	</label>
 																																</div>
 
 																																<div class="form-check form-check-inline">
 																																	<label class="form-check-label">
-																																		<input type="radio" class="form-check-input" name="classification" value="1">
+																																		<input type="radio" class="form-check-input" name="classification" id="classification" value="1">
 																																		Partial
 																																	</label>
 																																</div>
@@ -499,7 +501,7 @@ else{
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
                                                                                                             <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                                                                                                            <button type="button"   id="save"class="btn bg-primary">Submit</button>
+                                                                                                            <button type="button"   id="save" class="btn bg-primary">Submit</button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     </form>
@@ -638,6 +640,7 @@ function cbDropdown(column) {
 			
 			var disease_category = $('#disease_category').val();
 			var notifiable = $('#notifiable').val();
+			var judgement = $('#judgement').val();
 			
 
 			var disease_kind_of_species = $('#disease_kind_of_species').val();
@@ -662,8 +665,8 @@ function cbDropdown(column) {
 							disease_code:disease_code,
 							disease_description:disease_description,
 							disease_kind_of_meat: disease_kind_of_meat,
-							disease_category: disease_category,
 							notifiable: notifiable,
+							judgement: judgement,
 
 
 							disease_kind_of_species:disease_kind_of_species,
