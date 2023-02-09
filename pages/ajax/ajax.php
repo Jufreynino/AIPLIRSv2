@@ -841,9 +841,6 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                                     $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species) 
                                     VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","SLH","'.$disease_category_clean.'","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'");';
         
-        
-        
-        
                                 }
                         }
                     }
@@ -854,7 +851,7 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                         $response['theme'] = 'alert bg-info text-white alert-styled-left p-0';
                         $response['title'] = "Already Exist! ";
                         $response['icon'] = "icon-spam";
-                        $response['msg'] =  join(', ',$speciesExistingData);
+                        $response['msg'] =  join($speciesExistingData);
                         $response['alert'] = 'info';
                         echo json_encode($response);
         
@@ -968,10 +965,12 @@ else if($_POST['btn_add_pm_disease_slh'] == 1){
                             // }
                             $speciesRow = mysqli_fetch_object($species_sql_data);
                             array_push($speciesExistingData, $speciesRow->disease_species);
+                            $speciesExistingDatatset = array_unique($speciesExistingData, SORT_REGULAR);
+
                     }
                     else{
-                        // $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species) 
-                        // VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","SLH","Postmortem","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'");';
+                        $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species) 
+                        VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","SLH","Postmortem","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'");';
                     }
             }
         }
@@ -982,7 +981,7 @@ else if($_POST['btn_add_pm_disease_slh'] == 1){
         $response['theme'] = 'alert bg-info text-white alert-styled-left p-0';
         $response['title'] = "Already Exist! ";
         $response['icon'] = "icon-spam";
-        $response['msg'] =  json_encode(array_unique($speciesExistingData));
+        $response['msg'] =  str_replace(array('&quot;','[',']',','), '<p style="margin-bottom:-5px !important">', htmlspecialchars(json_encode(array_values($speciesExistingDatatset))));
         $response['alert'] = 'info';
         echo json_encode($response);
     }
@@ -993,7 +992,7 @@ else if($_POST['btn_add_pm_disease_slh'] == 1){
                 $response['theme'] = 'alert bg-success text-white alert-styled-left p-0';
                 $response['title'] = "Successfully Added ";
                 $response['icon'] = "icon-checkmark4";
-                $response['msg'] =  join(', ',$speciesExistingData);
+                $response['msg'] =  join($speciesExistingData);
                 $response['alert'] = 'success';
 
                 mysqli_multi_query($con, $query);
