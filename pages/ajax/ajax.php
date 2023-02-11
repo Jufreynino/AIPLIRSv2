@@ -851,7 +851,7 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                         $response['theme'] = 'alert bg-info text-white alert-styled-left p-0';
                         $response['title'] = "Already Exist! ";
                         $response['icon'] = "icon-spam";
-                        $response['msg'] =  join($speciesExistingData);
+                        $response['msg'] =  join(', ',$speciesExistingData);
                         $response['alert'] = 'info';
                         echo json_encode($response);
         
@@ -944,6 +944,7 @@ else if($_POST['btn_add_pm_disease_slh'] == 1){
             $disease_description_clean = mysqli_real_escape_string($con, $disease_description);
             $disease_kind_of_meat_clean = mysqli_real_escape_string($con, $disease_kind_of_meat[$r]);
             $notifiable_clean = mysqli_real_escape_string($con, $notifiable);
+            $judgement_clean = mysqli_real_escape_string($con, $judgement);
 
 
             $species_clean = mysqli_real_escape_string($con, $disease_kind_of_species[$count]);
@@ -969,8 +970,8 @@ else if($_POST['btn_add_pm_disease_slh'] == 1){
 
                     }
                     else{
-                        $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species) 
-                        VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","SLH","Postmortem","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'");';
+                        $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species, disease_judgement) 
+                        VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","SLH","Postmortem","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'","'.$judgement_clean.'");';
                     }
             }
         }

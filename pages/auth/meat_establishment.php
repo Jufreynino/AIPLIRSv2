@@ -714,9 +714,11 @@ $(document).ready(function(){
 			}
 			else
 			{
-				if(monthDiff >= 12)
+				if(monthDiff <= 12)
 				{
+					alert('Your License to operate is expired '+Math.abs(monthDiff)+' months ago ');
 					
+				$('#me_expiration_date').val('');
 				}
 				else
 				{

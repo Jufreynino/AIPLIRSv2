@@ -453,7 +453,7 @@ else{
 																													
 																												<div class="col-sm-6">
                                                                                                                         <label>Species</label>
-																														<select class="form-control multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_species" name="disease_kind_of_species[]" data-fouc>
+																														<select class="form-control multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_species" name="disease_kind_of_species[]" >
                                                                                                                             <option value="Chicken">Chicken</option>
                                                                                                                             <option value="Duck">Duck</option>
                                                                                                                             <option value="Pigeon">Pigeon</option>
@@ -464,15 +464,11 @@ else{
 
                                                                                                                         <div class="form-group mb-3 mb-md-2">
                                                                                                                             <label class="d-block font-weight-semibold">Disease Status</label>
-                                                                                                                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                                                                                                                <input type="radio" class="custom-control-input " name="notifiable"  id="notifiable" value="0" id="custom_radio_inline_right_checked" checked>
-                                                                                                                                <label class="custom-control-label position-static"  for="custom_radio_inline_right_checked">Notifiable</label>
-                                                                                                                            </div>
+                                                                                                                                <input type="radio" name="notifiable"  id="notifiable" value="0"  checked>
+                                                                                                                                <label class="position-static"  >Notifiable</label>
 
-                                                                                                                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                                                                                                                <input type="radio" class="custom-control-input" value="1"   id="notifiable" name="notifiable" id="custom_radio_inline_right_unchecked">
-                                                                                                                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Not Notifiable</label>
-                                                                                                                            </div>
+                                                                                                                                <input type="radio"  value="1"   id="notifiable" name="notifiable" >
+                                                                                                                                <label class=" position-static" >Not Notifiable</label>
                                                                                                                         </div>
                                                                                                                     </div>
 
@@ -481,7 +477,7 @@ else{
                                                                                                         </div>
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
-                                                                                                            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                                                                                                            <a href="antemortem_pdp.php" class="btn btn-link" >Close</a>
                                                                                                             <button type="button" name="btn_add_pdp" id="save_ante_pdp" class="btn bg-primary">Submit</button>
                                                                                                         </div>
                                                                                                     </div>

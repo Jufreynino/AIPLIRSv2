@@ -526,7 +526,7 @@ else{
 							</div>
 					</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+					<a href="antemortem_slh.php" class="btn btn-link" >Close</a>
 					<button type="button" name="btn_add_slaughter" id="save" class="btn bg-primary">Submit</button>
 				</div>
 			</div>
@@ -814,12 +814,12 @@ function cbDropdown(column) {
 						success:function(data)
 						{
 							console.log(data);
-							// new PNotify({
-							// 	title: data.title,
-							// 	text: data.msg,
-							// 	icon: data.icon,
-							// 	type: data.alert
-							// });
+							new PNotify({
+								title: data.title,
+								text: data.msg,
+								icon: data.icon,
+								type: data.alert
+							});
 							
 							
 						},

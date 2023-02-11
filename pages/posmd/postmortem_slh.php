@@ -500,7 +500,7 @@ else{
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
-                                                                                                            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                                                                                                            <a href="postmortem_slh.php" class="btn btn-link" >Close</a>
                                                                                                             <button type="button"   id="save" class="btn bg-primary">Submit</button>
                                                                                                         </div>
                                                                                                     </div>
