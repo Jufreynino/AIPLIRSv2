@@ -1037,55 +1037,88 @@ else if($_POST['btn_add_pm_disease_slh'] == 1){
 else if($_POST['btn_add_pm_disease_pdp'] == 1){
 
 
-    // $arr1=array("32,45,67,89");
-    // $arr2=array("5,3,2,1");
-
-    // foreach($arr1 as $key => $val){
-    //     $val2 = $arr2[$key];
-    //     echo $val2;
-    // }
-
-
+    date_default_timezone_set('Asia/Manila');
+    $today = date("m/d/Y h:i:sa");
+    $date = date("m/d/Y");
+    $time = date("h:i:sa");
+    
+    $judgement = $_POST['judgement'];
+    $disease_code = $_POST['disease_code'];
+    $disease_description = $_POST['disease_description'];
+    $notifiable = $_POST['notifiable'];
+    
     $disease_kind_of_meat = $_POST['disease_kind_of_meat'];
     $disease_kind_of_species = $_POST['disease_kind_of_species'];
-
-    $First = array($disease_kind_of_meat);
-    $Second = array($disease_kind_of_species);
-
     
-    // foreach($First as $indx) {
-    //     foreach($Second as $indxs) {
-    //         echo print_r($indxs[$indx]);
-    //     }
-    // }
 
-    for($count = 0; $count<count($disease_kind_of_species); $count++)
-    {
+    $query = '';
         
-        echo json_encode($disease_kind_of_species);die;
+    $speciesExistingData=array();
 
-    }
+     for($count = 0; $count<count($disease_kind_of_species); $count++)
+     {
+        for ($r = 0 ; $r < count($disease_kind_of_meat); $r++) {
+            $code_clean = mysqli_real_escape_string($con, $disease_code);
+            $disease_description_clean = mysqli_real_escape_string($con, $disease_description);
+            $disease_kind_of_meat_clean = mysqli_real_escape_string($con, $disease_kind_of_meat[$r]);
+            $notifiable_clean = mysqli_real_escape_string($con, $notifiable);
+            $judgement_clean = mysqli_real_escape_string($con, $judgement);
 
 
-    // $array[array($disease_kind_of_meat)] =  array($disease_kind_of_species);
-    //     $disease_kind_of_meat_clean = mysqli_real_escape_string($con, $disease_kind_of_meat);
-
-
-    //     $species_clean = mysqli_real_escape_string($con, $disease_kind_of_species[$count]);
-
-    //     for($count = 0; $count<count($disease_kind_of_meat); $count++)
-    //     {
-    //         echo json_encode($disease_kind_of_meat);die;
-
-    //     }
-
-    //     $array = array();
-
-        //
+            $species_clean = mysqli_real_escape_string($con, $disease_kind_of_species[$count]);
             
-           
-        // }
+            if($code_clean == '' && $species_clean == '')
+            {
+            
+            }
+            else
+            {
+                $species_sql = "SELECT * FROM disease_tbl WHERE disease_code='$code_clean' AND disease_species='$species_clean' AND disease_kind_of_meat='$disease_kind_of_meat_clean'";
+                $species_sql_data = mysqli_query($con, $species_sql);
+                $coundData= mysqli_num_rows($species_sql_data);
 
+
+                    if($coundData  > 0)
+                    {
+                        // while($species_sql_result = mysqli_fetch_object($species_sql_data)){
+                            // }
+                            $speciesRow = mysqli_fetch_object($species_sql_data);
+                            array_push($speciesExistingData, $speciesRow->disease_species);
+                            $speciesExistingDatatset = array_unique($speciesExistingData, SORT_REGULAR);
+
+                    }
+                    else{
+                        $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species, disease_judgement) 
+                        VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","PDP","Postmortem","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'","'.$judgement_clean.'");';
+                    }
+            }
+        }
+     }
+
+     if (count($speciesExistingData) > 0) {
+
+        $response['theme'] = 'alert bg-info text-white alert-styled-left p-0';
+        $response['title'] = "Already Exist! ";
+        $response['icon'] = "icon-spam";
+        $response['msg'] =  str_replace(array('&quot;','[',']',','), '<p style="margin-bottom:-5px !important">', htmlspecialchars(json_encode(array_values($speciesExistingDatatset))));
+        $response['alert'] = 'info';
+        echo json_encode($response);
+    }
+    else
+    {
+        // continue to inster other data if not existing
+
+                $response['theme'] = 'alert bg-success text-white alert-styled-left p-0';
+                $response['title'] = "Successfully Added ";
+                $response['icon'] = "icon-checkmark4";
+                $response['msg'] =  join($speciesExistingData);
+                $response['alert'] = 'success';
+
+                mysqli_multi_query($con, $query);
+
+                echo json_encode($response);
+    
+    }
     }
 
 

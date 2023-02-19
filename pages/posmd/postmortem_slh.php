@@ -457,7 +457,7 @@ else{
                                                                                                             <div class="form-group">
                                                                                                                 <div class="row">
 																														<div class="col-sm-6">
-																															<div class="form-group mb-3 mb-md-2">
+																																<div class="form-group mb-3 mb-md-2">
 																																	<label class="d-block font-weight-semibold">Disease Status</label>
 																																	<div class="form-check form-check-inline">
 																																		<label class="form-check-label">

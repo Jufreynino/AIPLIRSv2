@@ -50,6 +50,7 @@ else{
 	<script src="../../global_assets/js/plugins/tables/datatables/datatables.min.js"></script>  
 	<script src="../../global_assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../global_assets/js/plugins/notifications/pnotify.min.js"></script>
 	<script src="../../assets/js/app.js"></script>
 	<script src="../../global_assets/js/demo_pages/dashboard.js"></script>
 
@@ -65,6 +66,7 @@ else{
 	<script src="../../global_assets/js/demo_pages/form_multiselect.js"></script>
 
 	<script src="../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+	<script src="../../global_assets/js/demo_pages/extra_pnotify.js"></script>
 
 </head>
 
@@ -401,8 +403,6 @@ else{
                                             <div class="card">
                                                 <div class="card-body">
                                                 	<br>
-                                                                                            <?php echo add_postmortem_poultry_disease() ?>
-
 
 
 
@@ -418,19 +418,40 @@ else{
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-sm-3">
                                                                                                                         <label>Code</label>
-                                                                                                                        <input type="text" placeholder="code" name="disease_code" class="form-control text-capitalize-css" required>
+                                                                                                                        <input type="text" placeholder="code" id="disease_code" name="disease_code" class="form-control text-capitalize-css" required>
                                                                                                                     </div>
 
                                                                                                                     <div class="col-sm-5">
                                                                                                                         <label>Disease / Condition</label>
-                                                                                                                        <input type="text" placeholder="Disease" name="disease_description" class="form-control text-capitalize-css" required>
+                                                                                                                        <input type="text" placeholder="Disease" id="disease_description" name="disease_description" class="form-control text-capitalize-css" required>
                                                                                                                     </div>
 
 
 																													<div class="col-sm-4">
+                                                                                                                        <label>Judgement</label>
+
+																														<select class="form-control" id="judgement"  name="judgement">
+                                                                                                                            <option value="Suspect">Suspect</option>
+                                                                                                                            <option value="Rejected">Rejected</option>
+                                                                                                                            <option value="Condemned">Condemned</option>
+                                                                                                                            <option value="Passed for Sterilization">Passed for Sterilization</option>
+                                                                                                                            <option value="Passed for Refrigeration">Passed for Refrigeration</option>
+                                                                                                                        </select>
+                                                                                                                    </div>
+																												
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            
+                                                                                                            <div class="form-group">
+                                                                                                                <div class="row">
+
+
+
+																													<div class="col-sm-5">
                                                                                                                         <label>Organs / Parts</label>
 
-                                                                                                                        <select class="form-control" name="disease_kind_of_meat" required>
+                                                                                                                        <select class="form-control multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_meat" name="disease_kind_of_meat[]" data-fouc>
                                                                                                                             <option value="Carcass">Carcass</option>
                                                                                                                             <option value="Lungs">Lungs</option>
                                                                                                                             <option value="Liver">Liver</option>
@@ -442,28 +463,10 @@ else{
                                                                                                                         </select>
                                                                                                                     </div>
 
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            
-                                                                                                            <div class="form-group">
-                                                                                                                <div class="row">
-
-																													<div class="col-sm-5">
-                                                                                                                        <label>Judgement</label>
-
-																														<select class="form-control"  name="judgement">
-                                                                                                                            <option value="Suspect">Suspect</option>
-                                                                                                                            <option value="Rejected">Rejected</option>
-                                                                                                                            <option value="Condemned">Condemned</option>
-                                                                                                                            <option value="Passed for Sterilization">Passed for Sterilization</option>
-                                                                                                                            <option value="Passed for Refrigeration">Passed for Refrigeration</option>
-                                                                                                                        </select>
-                                                                                                                    </div>
-
 																													<div class="col-sm-5">
                                                                                                                         <label>Species</label>
 
-																														<select class="form-control multiselect-select-all-filtering" multiple="multiple" name="disease_kind_of_species[]" data-fouc>
+																														<select class="form-control multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_species" name="disease_kind_of_species[]" data-fouc>
                                                                                                                             <option value="Chicken">Chicken</option>
                                                                                                                             <option value="Duck">Duck</option>
                                                                                                                             <option value="Pigeon">Pigeon</option>
@@ -481,18 +484,22 @@ else{
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-sm-6">
 
-                                                                                                                    	<div class="form-group mb-3 mb-md-2">
-                                                                                                                            <label class="d-block font-weight-semibold">Disease Status</label>
-                                                                                                                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                                                                                                                <input type="radio" class="custom-control-input " name="notifiable" value="0" id="custom_radio_inline_right_checked" checked>
-                                                                                                                                <label class="custom-control-label position-static"  for="custom_radio_inline_right_checked">Notifiable</label>
-                                                                                                                            </div>
+																																<div class="form-group mb-3 mb-md-2">
+																																	<label class="d-block font-weight-semibold">Disease Status</label>
+																																	<div class="form-check form-check-inline">
+																																		<label class="form-check-label">
+																																			<input type="radio" class="form-check-input" name="notifiable"   id="notifiable"  value="0" checked>
+																																			Notifiable
+																																		</label>
+																																	</div>
 
-                                                                                                                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                                                                                                                <input type="radio" class="custom-control-input" value="1" name="notifiable" id="custom_radio_inline_right_unchecked">
-                                                                                                                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Not Notifiable</label>
-                                                                                                                            </div>
-                                                                                                                        </div>
+																																	<div class="form-check form-check-inline">
+																																		<label class="form-check-label">
+																																			<input type="radio" class="form-check-input" name="notifiable"  id="notifiable"  value="1">
+																																			Not Notifiable
+																																		</label>
+																																	</div>
+																																</div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -502,7 +509,7 @@ else{
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
                                                                                                             <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                                                                                                            <button type="submit" name="btn_add_poultry_postmortem" class="btn bg-primary">Submit</button>
+                                                                                                            <button type="button" id="save" class="btn bg-primary">Submit</button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     </form>
@@ -549,6 +556,82 @@ else{
 			</div>
 		</div>
 	</div>
+
+	
+<script>
+
+	$(document).ready(function (){
+		$('#save').click(function(){
+			var disease_code = $('#disease_code').val();
+			var disease_description = $('#disease_description').val();
+			var judgement = $('#judgement').val();
+			
+			var disease_kind_of_meat = $('#disease_kind_of_meat').val();
+			var disease_kind_of_species = $('#disease_kind_of_species').val();
+			var notifiable = $('#notifiable').val();
+			
+			var btn_add_am_disease_slh = '0';
+			var btn_add_am_disease_pdp = '0';
+
+			var btn_add_pm_disease_pdp = '1';
+			var btn_add_pm_disease_slh = '0';
+			var btn_add_mio = '0';
+			var btn_add_meat_establishment  = '0';
+			var btn_add_posms  = '0';
+
+
+			
+				$.ajax({
+						url: "../../pages/ajax/ajax.php",
+						method: "POST",
+						dataType : 'json',
+						data:{
+							disease_code:disease_code,
+							disease_description:disease_description,
+							disease_kind_of_meat: disease_kind_of_meat,
+							notifiable: notifiable,
+							judgement: judgement,
+
+
+							disease_kind_of_species:disease_kind_of_species,
+
+
+							btn_add_am_disease_slh: btn_add_am_disease_slh,
+							btn_add_pm_disease_pdp: btn_add_pm_disease_pdp,
+							btn_add_am_disease_pdp: btn_add_am_disease_pdp,
+							btn_add_pm_disease_slh: btn_add_pm_disease_slh,
+							btn_add_posms: btn_add_posms,
+							btn_add_mio: btn_add_mio,
+							btn_add_meat_establishment:btn_add_meat_establishment, 
+
+						},
+						success:function(data)
+						{
+							console.log(data);
+							new PNotify({
+								title: data.title,
+								text: data.msg,
+								icon: data.icon,
+								type: data.alert
+							});
+							
+							
+						},
+						error:function(response)
+						{
+							console.log(response);
+						}
+						
+					});
+			
+		});
+	});
+
+</script>
+
+
+
+
 	<script>
 		$('.datatable-responsive').dataTable( {
 			"order": [],

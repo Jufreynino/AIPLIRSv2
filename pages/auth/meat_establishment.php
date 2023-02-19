@@ -708,21 +708,21 @@ $(document).ready(function(){
 			(12 * (endDate.getFullYear() - startDate.getFullYear()));
 			if(monthDiff == 0)
 			{
-				alert('Your license to operated is expired');
+				alert('Your license to operated is expired ');
 
 				$('#me_expiration_date').val('');
 			}
 			else
 			{
-				if(monthDiff <= 12)
+				if(monthDiff >= 1)
 				{
-					alert('Your License to operate is expired '+Math.abs(monthDiff)+' months ago ');
+					alert(monthDiff+' months remaining before your License to operate is expired');
 					
-				$('#me_expiration_date').val('');
 				}
 				else
 				{
-					alert(monthDiff+' months remaining before your License to operate is expired');
+					alert('Your License to operate is expired '+Math.abs(monthDiff)+' months ago ');
+				$('#me_expiration_date').val('');
 				}
 			}
 			
