@@ -40255,17 +40255,16 @@ function login()
             }
             else
             {
-                if($row['account_activation'] =='0')
-                  {
-                    ?>
-                        <div class="alert alert-danger border-0 alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                            <span class="font-weight-semibold">Please check your inbox to activate email</a>.
-                        </div>
-                    <?php
-                  }
-                  else
-                  {
+                // if($row['account_activation'] =='0')
+                //   {
+                //         <div class="alert alert-danger border-0 alert-dismissible">
+                //             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                //             <span class="font-weight-semibold">Please check your inbox to activate email</a>.
+                //         </div>
+                //     <?php
+                //   }
+                //   else
+                //   {
                       if($row['account_status'] == 'Disapproved')
                         {
                             session_start();
@@ -40342,7 +40341,7 @@ function login()
                                 header("location: ../../pages/posmd/dashboard.php");
                             }
                         }
-              }
+            //   }
             }
         }
         else{

@@ -747,14 +747,9 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                         else{
                             $query .= 'INSERT INTO disease_tbl (disease_code,disease_description,disease_level,disease_status,disease_type,disease_category,disease_date,disease_time,disease_notifiable,disease_kind_of_meat,disease_species) 
                             VALUES ("'.$code_clean.'","'.$disease_description_clean.'","Critical","Active","PDP","'.$disease_category_clean.'","'.$date.'","'.$time.'","'.$notifiable_clean.'","'.$disease_kind_of_meat_clean.'","'.$species_clean.'");';
-
-
-
-
                         }
                 }
             }
-
 
             if (count($speciesExistingData) > 0) {
 
@@ -764,8 +759,6 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                 $response['msg'] =  join(', ',$speciesExistingData);
                 $response['alert'] = 'info';
                 echo json_encode($response);
-
-                
             }
             else
             {
