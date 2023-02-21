@@ -98,7 +98,7 @@ function update_mio_region()
                                 title: 'Currently in this region <?php echo $row['region'] ?> ',
                                 icon: 'error',
                                 }), window.setTimeout(function() {
-                        window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                        window.location.href='http://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                     }, 2000);
                 });
                 </script>
@@ -115,7 +115,7 @@ function update_mio_region()
                                     title: 'Region updated!<br><?php echo $region_content ?>',
                                     icon: 'success',
                                     }), window.setTimeout(function() {
-                            window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                            window.location.href='http://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                         }, 2000);
                     });
                     </script>
@@ -209,7 +209,7 @@ function update_mio_password()
                             title: 'Success',
                             text: 'Password successfully updated',
                             }), window.setTimeout(function() {
-                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                    window.location.href='http://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                 }, 2000);
                     </script>
                 <?php
@@ -273,7 +273,7 @@ function update_mio_account()
                             title: 'Successfully update!',
                             icon: 'success',
                             }), window.setTimeout(function() {
-                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                    window.location.href='http://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                 }, 2000);
             });
             </script>
@@ -1332,7 +1332,7 @@ if(isset($_POST['update_drr']))
                                 confirmButtonText: 'Okay',
                                 confirmButtonColor: '#a0d781'
                                 }), window.setTimeout(function() {
-                            window.location.href='http://localhost/AIPLIRSv2/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
+                            window.location.href='http://iplirs.nmis.gov.ph/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
                         }, 1000);
             
                     });
@@ -22129,7 +22129,7 @@ function email(){
 
 //                                     <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
 //                                     <center>
-//                                      <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id=$last_id" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+//                                      <a href="http://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id=$last_id" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
 //                                     </center>
                                     
 //                                     <br><br><br>
@@ -22267,7 +22267,7 @@ $mail->Subject = 'AIPLIRS Notification';
 
                 <p style="text-indent: 100px;">To activate your email, please click the button below  <br><br>
                 <center>
-                 <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                 <a href="http://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                 </center>
                 
                 <br><br><br>
@@ -23789,7 +23789,7 @@ function me_per_reg_posms()
 
              Your application for an account in Automated In-Plant Line Inspection Reporting System (AIPLIRS) has been approved. You may sign in now.<br><br>
              <center>
-             <a href="http://localhost/AIPLIRSv2/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
+             <a href="http://iplirs.nmis.gov.ph/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
              </center>
              
              <br><br><br>
@@ -24133,7 +24133,7 @@ function posms_update_application()
                 icon: 'success',
                 text: 'Successfully updated, please wait for the approval of your account',
                     }), window.setTimeout(function() {
-                window.location.href='http://localhost/AIPLIRSv2/pages/auth/posms_update.php';
+                window.location.href='http://iplirs.nmis.gov.ph/pages/auth/posms_update.php';
             }, 2000);
             </script>
         <?php
@@ -24796,7 +24796,7 @@ if(isset($_POST['btn_add_mio'])){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                         <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                         <a href="http://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
@@ -25034,7 +25034,7 @@ if(isset($_POST['btn_add_mio'])){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                         <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                         <a href="http://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
@@ -26095,7 +26095,7 @@ function mio_accounts()
                                 title: 'Successfully approved',
                                 text: 'MIO account successfully approved',
                                 }), window.setTimeout(function() {
-                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
+                                window.location.href='http://iplirs.nmis.gov.ph/pages/posms/meat_inspector_account.php';
                             }, 2000);
 
 
@@ -26117,7 +26117,7 @@ function mio_accounts()
                                 title: 'Account disapproved',
                                 text: 'MIO account successfully disapproved',
                                 }), window.setTimeout(function() {
-                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
+                                window.location.href='http://iplirs.nmis.gov.ph/pages/posms/meat_inspector_account.php';
                             }, 2000);
 
 
@@ -29510,7 +29510,7 @@ function add_meat_establishment_account()
   
                                       <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
                                       <center>
-                                       <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                       <a href="http://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                       </center>
                                       
                                       <br><br><br>
@@ -29525,7 +29525,7 @@ function add_meat_establishment_account()
                               return $error_classification = '
                                   <div class="alert bg-success text-white alert-styled-left alert-dismissible">
                                       <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                                      <span class="font-weight-semibold">Successfully Register</span><a href="http://localhost/AIPLIRSv2/pages/auth/login.php" class="alert-link" style="color:white; font-size:20px;"> Click here</a> to login.
+                                      <span class="font-weight-semibold">Successfully Register</span><a href="http://iplirs.nmis.gov.ph/pages/auth/login.php" class="alert-link" style="color:white; font-size:20px;"> Click here</a> to login.
                                   </div>
                               ';
           
@@ -32487,7 +32487,7 @@ if(isset($_POST['send_remarks']))
                 text: 'Remarks successfully sent',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location.href='http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
+        window.location.href='http://iplirs.nmis.gov.ph/pages/mio/assigned_me.php';
     }, 1000);
 });
     </script>
@@ -32513,7 +32513,7 @@ if(isset($_POST['update_proceedstatus']))
                 text: 'Transaction successfully approved you can inspect now',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location=' http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
+        window.location=' http://iplirs.nmis.gov.ph/pages/mio/assigned_me.php';
     }, 2000);
 });
     </script>
@@ -34601,8 +34601,8 @@ function show_md_drr_mio()
             <td><b> <?php echo $row['drr_species']  ?></b></td>
             <td> <?php echo $row['drr_province_code'].', '.$row['drr_city_code'].', '.$row['drr_barangay_code']  ?></td>
             <td> 
-                 <a href="http://localhost/AIPLIRSv2/global_assets/images/<?php echo $row['s_permit'] ?>" class="btn btn-link" target="_blank">Shipping Permit </a><br>
-                        <a href="http://localhost/AIPLIRSv2/global_assets/images/<?php echo $row['veterenary_certificate'] ?>" class="btn btn-link" target="_blank">Veterinary Health Certificate</a>
+                 <a href="http://iplirs.nmis.gov.ph/global_assets/images/<?php echo $row['s_permit'] ?>" class="btn btn-link" target="_blank">Shipping Permit </a><br>
+                        <a href="http://iplirs.nmis.gov.ph/global_assets/images/<?php echo $row['veterenary_certificate'] ?>" class="btn btn-link" target="_blank">Veterinary Health Certificate</a>
             </td>
             <td>
                 <?php if($row['drr_status'] == 0) {?>
