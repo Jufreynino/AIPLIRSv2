@@ -211,54 +211,54 @@ if($_POST['btn_add_meat_establishment'] == 1){
                         $sql = mysqli_query($con, "INSERT INTO meat_establishment_tbl (me_code,me_plant_name,me_type,me_classification,me_lto_number,me_region_code,me_province_code,me_city_code,me_barangay_code,me_address,me_status,me_date_created,me_expiry,me_remarks,me_username,me_password,me_setup_account,me_contact,me_email, me_owner,region_code)
                             VALUES('$code','$me_plant_name','$me_category','$me_classification','$me_category-$me_lto-$me_classification','$region_content','$province','$city','$barangay','$me_address','Pending','$todays_date','$me_expiration_date','no','$me_username','$me_password','test','$me_contact','$me_email','$me_owner','$region_code')");
 
-                            $last_id = $con->insert_id;
-                            $mail = new PHPMailer();
-                            $mail->isSMTP();  
-                            $mail->SMTPOptions = array(
-                                'ssl' => array(
-                                    'verify_peer' => false,
-                                    'verify_peer_name' => false,
-                                    'allow_self_signed' => true
-                                )
-                            );                                          // Set mailer to use SMTP
-                            $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                            $mail->Username   = 'jufreyninsbayog@gmail.com';                     // SMTP username
-                            $mail->Password   = 'crryguqkfqzlstnz';                              //SMTP password
-                            $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-                            $mail->Port       = 587;  
-                            $mail->isHTML(true);
-                            $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
-                            $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
+                            // $last_id = $con->insert_id;
+                            // $mail = new PHPMailer();
+                            // $mail->isSMTP();  
+                            // $mail->SMTPOptions = array(
+                            //     'ssl' => array(
+                            //         'verify_peer' => false,
+                            //         'verify_peer_name' => false,
+                            //         'allow_self_signed' => true
+                            //     )
+                            // );                                          // Set mailer to use SMTP
+                            // $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                            // $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                            // $mail->Username   = 'jufreyninsbayog@gmail.com';                     // SMTP username
+                            // $mail->Password   = 'crryguqkfqzlstnz';                              //SMTP password
+                            // $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                            // $mail->Port       = 587;  
+                            // $mail->isHTML(true);
+                            // $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
+                            // $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
 
-                            $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
+                            // $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
 
-                            $mail->Subject = 'Successfully Registered';
+                            // $mail->Subject = 'Successfully Registered';
 
-                            $mail->Body = ' <div style=" margin:auto; width:600px;">
-                                    <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
+                            // $mail->Body = ' <div style=" margin:auto; width:600px;">
+                            //         <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
 
-                                        <center>
+                            //             <center>
 
-                                        <img src="cid:Kartka">
+                            //             <img src="cid:Kartka">
 
-                                        <h1>Good day! </h1>
-                                        </center>
+                            //             <h1>Good day! </h1>
+                            //             </center>
 
-                                        <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
-                                        <center>
-                                        <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
-                                        </center>
+                            //             <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
+                            //             <center>
+                            //             <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                            //             </center>
                                         
-                                        <br><br><br>
+                            //             <br><br><br>
                                         
-                                        <b>Department of Agriculture</b> <br>
-                                        <b style="font-size:15px;">National Meat Inspection Service</b><br>
-                                        Plant Operation Standards and Monitoring Section ( POSMS )
-                                    </div>
-                                </div>';
-                            $mail->AddAddress($me_email);
-                            $mail->send();
+                            //             <b>Department of Agriculture</b> <br>
+                            //             <b style="font-size:15px;">National Meat Inspection Service</b><br>
+                            //             Plant Operation Standards and Monitoring Section ( POSMS )
+                            //         </div>
+                            //     </div>';
+                            // $mail->AddAddress($me_email);
+                            // $mail->send();
                             
                     }
                         
@@ -383,57 +383,57 @@ else if($_POST['btn_add_mio'] == 1){
                             $sql = mysqli_query($con, "INSERT INTO employee_tbl (employee_code,firstname,lastname,email,username,password,region, role,account_status,contact,assign,region_code)
                                         VALUES('$employee_code','$firstname','$lastname','$email','$username','$password','$region','2','Pending','$contact','0','$region_code')");
 
-                                        $last_id = $con->insert_id;
+                                //         $last_id = $con->insert_id;
 
 
-                                            $mail = new PHPMailer();
-                                            $mail->isSMTP();  
-                                            $mail->SMTPOptions = array(
-                                                'ssl' => array(
-                                                    'verify_peer' => false,
-                                                    'verify_peer_name' => false,
-                                                    'allow_self_signed' => true
-                                                )
-                                            );                                          // Set mailer to use SMTP
-                                            $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                                            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                            $mail->Username   = 'jufreyninsbayog@gmail.com';                     // SMTP username
-                                            $mail->Password   = 'crryguqkfqzlstnz';                              //SMTP password
-                                            $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-                                            $mail->Port       = 587;  
-                                            $mail->isHTML(true);
-                                            $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
-                                            $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
-                                            $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
-                                            $mail->Subject = 'Successfully Registered';
-                                            $mail->Body ='
+                                //             $mail = new PHPMailer();
+                                //             $mail->isSMTP();  
+                                //             $mail->SMTPOptions = array(
+                                //                 'ssl' => array(
+                                //                     'verify_peer' => false,
+                                //                     'verify_peer_name' => false,
+                                //                     'allow_self_signed' => true
+                                //                 )
+                                //             );                                          // Set mailer to use SMTP
+                                //             $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                //             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                                //             $mail->Username   = 'jufreyninsbayog@gmail.com';                     // SMTP username
+                                //             $mail->Password   = 'crryguqkfqzlstnz';                              //SMTP password
+                                //             $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                                //             $mail->Port       = 587;  
+                                //             $mail->isHTML(true);
+                                //             $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
+                                //             $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
+                                //             $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
+                                //             $mail->Subject = 'Successfully Registered';
+                                //             $mail->Body ='
                                             
 
-                                            <div style=" margin:auto; width:600px;">
-                                            <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
+                                //             <div style=" margin:auto; width:600px;">
+                                //             <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
 
-                                            <center>
+                                //             <center>
 
-                                            <img src="cid:Kartka">
+                                //             <img src="cid:Kartka">
 
-                                            <h1>Good day!</h1>
-                                            <b>'.$firstname.'</b>
-                                            </center>
+                                //             <h1>Good day!</h1>
+                                //             <b>'.$firstname.'</b>
+                                //             </center>
 
-                                                <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
-                                                <center>
-                                                <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
-                                                </center>
+                                //                 <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
+                                //                 <center>
+                                //                 <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                //                 </center>
                                                 
-                                                <br><br><br>
-                                                <h4>Department of Agriculture</h4>
-                                                <h3 style="margin-top:-10px;">National Meat Inspection Service</h3>
-                                                <p style="margin-top:-10px;">Plant Operation Standards and Monitoring Division ( POSMD )</p>
-                                            </div>
-                                </div>';
-                                            $mail->AddAddress($email);
+                                //                 <br><br><br>
+                                //                 <h4>Department of Agriculture</h4>
+                                //                 <h3 style="margin-top:-10px;">National Meat Inspection Service</h3>
+                                //                 <p style="margin-top:-10px;">Plant Operation Standards and Monitoring Division ( POSMD )</p>
+                                //             </div>
+                                // </div>';
+                                //             $mail->AddAddress($email);
 
-                                            $mail->send();
+                                //             $mail->send();
 
                                     $response = 'success';
                 
@@ -590,58 +590,58 @@ else if($_POST['btn_add_mio'] == 1){
                      $sql = mysqli_query($con, "INSERT INTO employee_tbl (employee_code,firstname,lastname,email,username,password,region,role,account_status,contact,assign,region_code)
                                 VALUES('$employee_code','$firstname','$lastname','$email','$username','$password','$region','1','Pending','$contact','0','$region_code')");
 
-                                 $last_id = $con->insert_id;
+                        //          $last_id = $con->insert_id;
 
 
-                                       $mail = new PHPMailer();
-                                       $mail->isSMTP();  
-                                       $mail->SMTPOptions = array(
-                                           'ssl' => array(
-                                               'verify_peer' => false,
-                                               'verify_peer_name' => false,
-                                               'allow_self_signed' => true
-                                           )
-                                       );                                          // Set mailer to use SMTP
-                                       $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                                       $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                       $mail->Username   = 'jufreyninsbayog@gmail.com';                     // SMTP username
-                                       $mail->Password   = 'crryguqkfqzlstnz';                              //SMTP password
-                                       $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-                                       $mail->Port       = 587;  
-                                       $mail->isHTML(true);
-                                       $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
-                                       $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
+                        //                $mail = new PHPMailer();
+                        //                $mail->isSMTP();  
+                        //                $mail->SMTPOptions = array(
+                        //                    'ssl' => array(
+                        //                        'verify_peer' => false,
+                        //                        'verify_peer_name' => false,
+                        //                        'allow_self_signed' => true
+                        //                    )
+                        //                );                                          // Set mailer to use SMTP
+                        //                $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                        //                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                        //                $mail->Username   = 'jufreyninsbayog@gmail.com';                     // SMTP username
+                        //                $mail->Password   = 'crryguqkfqzlstnz';                              //SMTP password
+                        //                $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                        //                $mail->Port       = 587;  
+                        //                $mail->isHTML(true);
+                        //                $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
+                        //                $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
 
-                                       $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
+                        //                $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
 
-                                       $mail->Subject = 'Successfully Registered';
-                                       $mail->Body ='
+                        //                $mail->Subject = 'Successfully Registered';
+                        //                $mail->Body ='
                                     
 
-                                       <div style=" margin:auto; width:600px;">
-                                       <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
+                        //                <div style=" margin:auto; width:600px;">
+                        //                <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
 
-                                       <center>
+                        //                <center>
 
-                                       <img src="cid:Kartka">
+                        //                <img src="cid:Kartka">
 
-                                       <h1>Good day!</h1>
-                                       </center>
+                        //                <h1>Good day!</h1>
+                        //                </center>
 
-                                        <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
-                                        <center>
-                                         <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
-                                        </center>
+                        //                 <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
+                        //                 <center>
+                        //                  <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                        //                 </center>
                                         
-                                        <br><br><br>
-                                        <h4>Department of Agriculture</h4>
-                                        <h3 style="margin-top:-10px;">National Meat Inspection Service</h3>
-                                        <p style="margin-top:-10px;">Plant Operation Standards and Monitoring Division ( POSMD )</p>
-                                    </div>
-                           </div>';
-                                       $mail->AddAddress($email);
+                        //                 <br><br><br>
+                        //                 <h4>Department of Agriculture</h4>
+                        //                 <h3 style="margin-top:-10px;">National Meat Inspection Service</h3>
+                        //                 <p style="margin-top:-10px;">Plant Operation Standards and Monitoring Division ( POSMD )</p>
+                        //             </div>
+                        //    </div>';
+                        //                $mail->AddAddress($email);
 
-                                       $mail->send();
+                        //                $mail->send();
 
                             $response = 'success';
         
