@@ -1,6 +1,5 @@
 <?php
 error_reporting(0);
-header("Access-Control-Allow-Origin: *");
 // use PHPMailer\PHPMailer\PHPMailer;
 
 // require_once '../../assets/phpmailer/src/Exception.php';
@@ -39818,17 +39817,10 @@ function udpate_fit_daily()
         $sql = "SELECT * FROM am_table  WHERE drr_id='$id' AND am_suspected_status='0' AND  me_id='$me_id' AND am_date='$date' ";
 
         $result = $con->query($sql);
-        if($result->num_rows > 0){
-            
-        
-        
-        
+            // if($result->num_rows > 0){
         
             $row = mysqli_fetch_assoc($result);
-        
-        
                 $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
-        
                 $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
         
             ?>
@@ -39839,9 +39831,9 @@ function udpate_fit_daily()
                         <?php
           
         
-        }
-        else
-        {
+        // }
+        // else
+        // {
 
             ?>
                 <script>
@@ -39852,7 +39844,7 @@ function udpate_fit_daily()
             <?php
         
         
-            }
+            // }
           
         
 
@@ -40310,7 +40302,6 @@ function login()
                             $_SESSION['email'] = $row['email'];
                             $_SESSION['contact'] = $row['contact'];
                              $_SESSION['region_code']  = $row['region_code'];
-
                             if($row['role'] == 3)
                             {
                                 header("location: ../../pages/me/dashboard.php");

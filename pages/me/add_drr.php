@@ -1,4 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin *');
+
+
+
 session_start();
 include '../../function/function.php';
 if(isset($_SESSION['me_id']))
