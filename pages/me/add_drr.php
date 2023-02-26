@@ -796,7 +796,6 @@ $today = strtotime($todays_date);
                     <div class="col-md-1"></div>
 
                         <button type="button" data-toggle="modal" data-target="#modal_theme_success" class="fab" >Submit</button>
-					</form>
 					</div>
 			</div>
 			<div class="navbar navbar-expand-lg navbar-light">
@@ -812,6 +811,7 @@ $today = strtotime($todays_date);
 						&copy; Department of Agriculture - National Meat Inspection Service (DA - NMIS) All rights reserved.
 					</span>
 
+					</form>
 				
 				</div>
 			</div>

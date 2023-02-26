@@ -39228,8 +39228,8 @@ function add_antemortem_rejected()
         $species     = $_GET['species'];
 
 
-        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,s_cause,r_heads,r_weight,r_cause,c_cause,am_date,me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id,am_suspected)
-        VALUES('$id','','$heads','$weight','$cause','','$date', '$med','$species','$region','$province','$city','$barangay','$emp_id','1')");
+        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,s_cause,r_heads,r_weight,r_cause,c_cause,am_date,me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id,am_suspected, am_suspected_status)
+        VALUES('$id','','$heads','$weight','$cause','','$date', '$med','$species','$region','$province','$city','$barangay','$emp_id','1','0')");
         $last_id = $con->insert_id;
 
         $sqls = mysqli_query($con, "INSERT INTO disease_report_tbl (d_id,dr_date,drr_id)
@@ -39287,8 +39287,8 @@ function add_antemortem_rejected_suspect()
 
 
 
-        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,s_cause,r_heads,r_weight,r_cause,c_cause,am_date,me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id)
-        VALUES('$id','','$heads','$weight','$cause','','$date', '$med','$species','$region','$province','$city','$barangay','$emp_id')");
+        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,s_cause,r_heads,r_weight,r_cause,c_cause,am_date,me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id, am_suspected_status)
+        VALUES('$id','','$heads','$weight','$cause','','$date', '$med','$species','$region','$province','$city','$barangay','$emp_id','0')");
         $last_id = $con->insert_id;
 
         $sqls = mysqli_query($con, "INSERT INTO disease_report_tbl (d_id,dr_date,drr_id)
@@ -39355,8 +39355,8 @@ function add_antemortem_rejected_suspect_me()
 
 
 
-        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,am_validate_id,s_cause,r_heads,r_weight,r_cause,c_cause,am_date,me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id, am_suspected)
-        VALUES('$id','".$_GET['am']."','','$heads','$weight','$cause','','$date', '$med','$species','$region','$province','$city','$barangay','$emp_id','0')");
+        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,am_validate_id,s_cause,r_heads,r_weight,r_cause,c_cause,am_date,me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id, am_suspected, am_suspected_status)
+        VALUES('$id','".$_GET['am']."','','$heads','$weight','$cause','','$date', '$med','$species','$region','$province','$city','$barangay','$emp_id','0','0')");
         $last_id = $con->insert_id;
 
         $sqls = mysqli_query($con, "INSERT INTO disease_report_tbl (d_id,dr_date,drr_id)
@@ -39415,7 +39415,7 @@ function add_antemortem_condemned()
     //    $sqls = mysqli_query($con, "UPDATE am_table SET s_heads_validate='$total', s_weight_validate='$totals' WHERE am_table='$am' ");
 
         $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,s_cause,r_cause,c_heads,c_weight,c_cause,am_date, me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id,am_suspected,am_suspected_status)
-        VALUES('$id','','','$heads','$weight','$cause','$date','$med','$species','$region','$province','$city','$barangay','$emp_id','1','1')");
+        VALUES('$id','','','$heads','$weight','$cause','$date','$med','$species','$region','$province','$city','$barangay','$emp_id','1','0')");
         $last_id = $con->insert_id;
 
         $sql = mysqli_query($con, "INSERT INTO disease_report_tbl (d_id,dr_date,drr_id)
@@ -39471,8 +39471,8 @@ function add_antemortem_condemned_me()
        $sqls = mysqli_query($con, "UPDATE am_table SET s_heads_validate='$total', s_weight_validate='$totals' WHERE am_table='$am' ");
 
 
-        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,am_validate_id,s_cause,r_cause,c_heads,c_weight,c_cause,am_date, me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id,am_suspected)
-        VALUES('$id','$am','','','$heads','$weight','$cause','$date','$med','$species','$region','$province','$city','$barangay','$emp_id','0')");
+        $sql = mysqli_query($con, "INSERT INTO am_table (drr_id,am_validate_id,s_cause,r_cause,c_heads,c_weight,c_cause,am_date, me_id, am_species,am_region,am_province,am_city,am_barangay,employee_id,am_suspected, am_suspected_status)
+        VALUES('$id','$am','','','$heads','$weight','$cause','$date','$med','$species','$region','$province','$city','$barangay','$emp_id','0','0')");
         $last_id = $con->insert_id;
 
         $sql = mysqli_query($con, "INSERT INTO disease_report_tbl (d_id,dr_date,drr_id)
@@ -39814,37 +39814,41 @@ function udpate_fit_daily()
 
 
 
-        $sql = "SELECT * FROM am_table  WHERE drr_id='$id' AND am_suspected_status='0' AND  me_id='$me_id' AND am_date='$date' ";
+        $sql = "SELECT * FROM am_table  WHERE drr_id='$id'  AND  me_id='$me_id' AND am_date='$date' ";
 
         $result = $con->query($sql);
-            // if($result->num_rows > 0){
+        $row = mysqli_fetch_assoc($result);
+            if($row['am_suspected_status'] == '1'){
         
-            $row = mysqli_fetch_assoc($result);
-                $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
-                $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
-        
-            ?>
-                        <script type="text/javascript">
-                            window.location = "assigned_me.php"; 
-        
-                        </script>
-                        <?php
-          
-        
-        // }
-        // else
-        // {
-
-            ?>
+                ?>
                 <script>
                     alert('You Have a pending Suspect / On hold received animals');
                     window.location = "antemortem.php?med=<?php echo $_GET['med'] ?>&mid=<?php echo $id  ?>&mdate=<?php echo $date ?>&species=<?php echo $_GET['species']?>&category=<?php echo $_GET['category']?>&region=<?php echo $_GET['region']?>&province=<?php echo $_GET['province']?>&city=<?php echo $_GET['city']?>&barangay=<?php echo $_GET['barangay']?>";
                 </script>
         
-            <?php
+                <?php
+            
+           
+        }
+        else
+        {
+
+         
+            $row = mysqli_fetch_assoc($result);
+            $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
+            $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
+    
+        ?>
+                    <script type="text/javascript">
+                        window.location = "assigned_me.php"; 
+    
+                    </script>
+                    <?php
+      
+    
         
         
-            // }
+            }
           
         
 
