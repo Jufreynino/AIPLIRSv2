@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2022 at 12:24 PM
+-- Generation Time: Mar 02, 2023 at 10:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -55,15 +55,6 @@ CREATE TABLE `am_table` (
   `am_suspected_status` varchar(255) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `am_table`
---
-
-INSERT INTO `am_table` (`am_table`, `drr_id`, `s_heads`, `s_weight`, `s_heads_validate`, `s_weight_validate`, `am_validate_id`, `s_cause`, `r_heads`, `r_weight`, `r_cause`, `c_heads`, `c_weight`, `c_cause`, `am_date`, `am_time`, `me_id`, `am_species`, `am_region`, `am_province`, `am_city`, `am_barangay`, `employee_id`, `am_suspected`, `am_suspected_status`) VALUES
-(578, '194', '3', '7.5', '3', '7.5', '0', '205', '0', '0', '', '0', '0', '', '11/24/2022', '04:30:03am', 78, 'Chicken', 'CALABARZON', 'Cavite', 'Mendez', '', '77', '1', '0'),
-(579, '201', '20', '1400', '15', '1050', '0', '89', '0', '0', '', '0', '0', '', '11/24/2022', '11:44:57am', 79, 'Hog', 'CALABARZON', 'Cavite', 'Naic', '', '80', '1', '0'),
-(580, '201', '0', '0', '0', '0', '579', '', '0', '0', '', '5', '350', '145', '11/24/2022', '0', 79, 'Hog', 'CALABARZON', 'Cavite', 'Naic', '', '80', '0', '1');
-
 -- --------------------------------------------------------
 
 --
@@ -80,16 +71,6 @@ CREATE TABLE `assigment_tbl` (
   `end_date` varchar(255) NOT NULL DEFAULT 'Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `assigment_tbl`
---
-
-INSERT INTO `assigment_tbl` (`assign_id`, `me_id`, `assign_date`, `employee_id`, `assign_region`, `assign_status`, `end_date`) VALUES
-(26, '78', '11/23/2022', '77', 'CALABARZON', 'Reassigned', '12/02/2022'),
-(27, '79', '11/24/2022', '80', 'CALABARZON', 'Active', ''),
-(28, '78', '12/02/2022', '80', 'CALABARZON', 'Reassigned', '12/02/2022'),
-(29, '79', '12/02/2022', '77', 'CALABARZON', 'Active', 'Null');
-
 -- --------------------------------------------------------
 
 --
@@ -104,24 +85,6 @@ CREATE TABLE `attachment_tbl` (
   `ownership` varchar(255) NOT NULL DEFAULT '0',
   `transfer` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `attachment_tbl`
---
-
-INSERT INTO `attachment_tbl` (`a_id`, `s_permit`, `drr_id`, `veterenary_certificate`, `ownership`, `transfer`) VALUES
-(197, '7359-shipping_permit.jpg', '194', '7139-5130-35151551_10155395001706128_6922948168267071488_n-576x1024.jpg', '0', '0'),
-(198, '5613-shipping_permit.jpg', '195', '6012-5130-35151551_10155395001706128_6922948168267071488_n-576x1024.jpg', '0', '0'),
-(199, '5044-1193-CS Form 100_Revised September  2016-1.jpg', '196', '5674-1120-NMIS Wallpaper V02.png', '0', '0'),
-(200, '2882-1193-CS Form 100_Revised September  2016-1.jpg', '197', '9304-1120-NMIS Wallpaper V02.png', '0', '0'),
-(201, '7331-1048-download.jpg', '198', '6461-1193-CS Form 100_Revised September  2016-1.jpg', '0', '0'),
-(202, '6967-1048-download.jpg', '199', '5636-1193-CS Form 100_Revised September  2016-1.jpg', '0', '0'),
-(203, '0', '200', '9329-1006-288652375_325356553129414_5647759260851286114_n.jpg', '0', '0'),
-(204, '3110-shipping_permit.jpg', '201', '3906-veterinary.jpg', '0', '0'),
-(205, '0', '202', '1345-', '0', '0'),
-(206, '0', '203', '9258-', '0', '0'),
-(207, '0', '204', '7293-DSC01556 (1).jpg', '0', '0'),
-(208, '0', '205', '5759-117.jpg', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -166,18 +129,6 @@ CREATE TABLE `ddr_table` (
   `drr_suspected` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ddr_table`
---
-
-INSERT INTO `ddr_table` (`drr_id`, `employee_id`, `drr_date_time`, `drr_species`, `drr_category`, `drr_meat_dealer`, `drr_meat_dealer_lastname`, `drr_batch_number`, `drr_holding_pen`, `drr_region_code`, `drr_province_code`, `drr_city_code`, `drr_barangay_code`, `drr_boiler_head`, `drr_broiler_weight`, `drr_culled_head`, `drr_culled_weight`, `drr_native_head`, `drr_native_weight`, `culled_boar_head`, `culled_boar_weight`, `drr_total_head`, `drr_total_weight`, `drr_status`, `drr_report_status`, `drr_date`, `drr_time`, `drr_inspection_status`, `me_id`, `drr_farm_source`, `drr_farm_souce_type`, `drr_status_for_edit`, `drr_remarks`, `drr_suspected`) VALUES
-(194, 'dsads', '11/24/2022 04:29:00am', 'Chicken', 'PDP', 'Josephina', 'Alcroz', '22-11-24-1', '543', 'CALABARZON', 'Cavite', 'Mendez', '', '100', '250', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '250.00', '0', '1', '11/23/2022', '04:29:00am', '2', '78', 'XYZ Farm', 'Backyard', '0', '0', '1'),
-(201, 'dsads', '11/24/2022 11:39:06am', 'Hog', 'SLH', 'Josephina', 'Kate', '22-11-24-1', '42343', 'CALABARZON', 'Cavite', 'Naic', '', '100', '7000', '0', '0', '0', '0', '0', '0', '100', '7000.00', '0', '1', '11/24/2022', '11:39:06am', '2', '79', 'XYZ Farm', 'Commercial', '0', '0', '1'),
-(202, 'dsads', '11/25/2022 03:38:10pm', 'Chicken', 'PDP', 'Sfsd', 'Fsdf', '22-11-25-1', '42', 'CALABARZON', 'Quezon', 'Gumaca', '', '20', '20', '0', '0', '0', '0', 'wddsa', 'sdd', '20', '20.00', '0', '0', '11/25/2022', '03:38:10pm', '0', '78', 'sdfd', 'Backyard', '0', '0', '0'),
-(203, 'dsads', '11/25/2022 03:38:31pm', 'Chicken', 'PDP', 'Sfsd', 'Fsdf', '22-11-25-1', '42', 'CALABARZON', 'Quezon', 'Gumaca', '', '20', '20', '0', '0', '0', '0', 'wddsa', 'sdd', '20', '20.00', '0', '0', '11/25/2022', '03:38:31pm', '0', '78', 'sdfd', 'Backyard', '0', '0', '0'),
-(204, 'dsads', '11/25/2022 03:44:00pm', 'Chicken', 'PDP', 'Sa', 'Dasd', '22-11-25-3', '42', 'CALABARZON', 'Laguna', 'Mabitac', '', '2', '2', '2', '2', '2', '2', 'wddsa', 'sdd', '6', '6.00', '0', '0', '11/25/2022', '03:44:00pm', '0', '78', 'das', 'Backyard', '0', '0', '0'),
-(205, 'dsads', '12/02/2022 09:51:36am', 'Chicken', 'PDP', 'Dfgf', 'Gdfg', '22-12-02-1', '42', 'CALABARZON', '', '', '', '514', '50', '50', '50', '0', '0', 'wddsa', 'sdd', '564', '100.00', '0', '3', '12/02/2022', '09:51:36am', '0', '78', 'Mr. Max Cabahug', 'Backyard', '0', 'Please', '0');
-
 -- --------------------------------------------------------
 
 --
@@ -190,18 +141,6 @@ CREATE TABLE `disease_report_tbl` (
   `dr_date` varchar(255) NOT NULL,
   `drr_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `disease_report_tbl`
---
-
-INSERT INTO `disease_report_tbl` (`dr_id`, `d_id`, `dr_date`, `drr_id`) VALUES
-(748, '205', '11/24/2022', '578'),
-(749, '208', '11/24/2022', '281'),
-(750, '89', '11/24/2022', '579'),
-(751, '145', '11/24/2022', '580'),
-(752, '196', '11/24/2022', '282'),
-(753, '196', '11/24/2022', '283');
 
 -- --------------------------------------------------------
 
@@ -406,14 +345,8 @@ CREATE TABLE `employee_tbl` (
 
 INSERT INTO `employee_tbl` (`employee_id`, `employee_code`, `firstname`, `lastname`, `email`, `username`, `password`, `region`, `province`, `city`, `barangay`, `address`, `role`, `account_status`, `contact`, `assign`, `account_activation`, `region_code`, `remarks`) VALUES
 (1, '54335', 'Ma. Elaine Joy ', 'Villareal', 'Juan@gmail.com', 'posmd', '1234', 'NCR', '', '', '', '', 0, 'Active', '', '0', 1, '13', 'null'),
-(76, '53243', 'Cardo', 'Dela Pena', 'jufreyninsbayog@gmail.com', 'posms_rtoc4a', '12345', 'CALABARZON', 'null', 'null', 'null', 'null', 1, 'Active', '9111111111', '0', 1, '040000000', 'null'),
-(77, '432434', 'Alvin', 'Supan', 'jufreyninsbayog@gmail.com', 'mio_rtoc4a', '12345', 'CALABARZON', 'null', 'null', 'null', 'null', 2, 'Active', '9111111111', '0', 1, '040000000', 'null'),
-(78, '23133', 'Steph', 'Lazon', 'jufreyninsbayog@gmail.com', 'posms_rtoc4a1', '123', 'CALABARZON', 'null', 'null', 'null', 'null', 1, 'Active', '9123456789', '0', 1, '040000000', 'null'),
-(79, '32432', 'Juan ', 'Dela Pen', 'jufreyninsbayog@gmail.com', 'test_posms', '123', 'CALABARZON', 'null', 'null', 'null', 'null', 1, 'Active', '9123456789', '0', 1, '030000000', 'rest'),
-(80, '134123', 'loki', 'barbon', 'jufreyninsbayog@gmail.com', 'test_mio', '123', 'CALABARZON', 'null', 'null', 'null', 'null', 2, 'Disapproved', '91111111112', '0', 1, '020000000', 'sdfdsdfdfsdf'),
-(81, 't3423', 'test', 'asdf', 'jufreyninsbayog@gmail.com', 'posms_1', '123', 'CALABARZON', 'null', 'null', 'null', 'null', 1, 'Pending', '9345345353', '0', 0, '040000000', 'null'),
-(83, '1234', 'Juan', 'Dela Cruz', 'jufreyninsbayog@gmail.com', 'posms', '12345', 'CALABARZON', 'null', 'null', 'null', 'null', 1, 'Active', '9652100539', '0', 1, '040000000', 'null'),
-(84, '1235', 'Sophia ', 'Dela Pena', 'jufreyninsbayog@gmail.com', 'mio', '12345', 'CALABARZON', 'null', 'null', 'null', 'null', 2, 'Active', '9652100539', '0', 1, '040000000', 'null');
+(96, 'test', 'tes', 'tset', 'nmis.devopss@gmail.com', 'test', '1234', 'CALABARZON', 'null', 'null', 'null', 'null', 2, 'Pending', '9123165448', '0', 1, '040000000', 'null'),
+(97, '4234', 'jufrey', 'DASD', 'nmis.devopsss@gmail.com', 'test_posms', '1234', 'CALABARZON', 'null', 'null', 'null', 'null', 1, 'Pending', '9111111111', '0', 0, '040000000', 'null');
 
 -- --------------------------------------------------------
 
@@ -435,18 +368,6 @@ CREATE TABLE `fhc_table` (
   `fhc_city` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `fhc_table`
---
-
-INSERT INTO `fhc_table` (`fhc_id`, `drr_id`, `fhc_number_of_heads`, `fhc_weight`, `fhc_species`, `fhc_date`, `fhc_time`, `me_id`, `fhc_region`, `fhc_province`, `fhc_city`) VALUES
-(205, 194, '97', '242.5', 'Chicken', '11/24/2022', '04:29:00am', 78, 'CALABARZON', 'Cavite', 'Mendez'),
-(212, 201, '95', '6650', 'Hog', '11/24/2022', '11:39:06am', 79, 'CALABARZON', 'Cavite', 'Naic'),
-(213, 202, '0', '0', 'Chicken', '11/25/2022', '03:38:10pm', 78, 'CALABARZON', 'Quezon', 'Gumaca'),
-(214, 203, '0', '0', 'Chicken', '11/25/2022', '03:38:31pm', 78, 'CALABARZON', 'Quezon', 'Gumaca'),
-(215, 204, '0', '0', 'Chicken', '11/25/2022', '03:44:00pm', 78, 'CALABARZON', 'Laguna', 'Mabitac'),
-(216, 205, '0', '0', 'Chicken', '12/02/2022', '09:51:36am', 78, 'CALABARZON', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -467,24 +388,6 @@ CREATE TABLE `fit_human_consumption` (
   `fit_city` varchar(255) NOT NULL,
   `me_id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `fit_human_consumption`
---
-
-INSERT INTO `fit_human_consumption` (`fit_id`, `drr_id`, `fit_number_of_head`, `fit_weight`, `fit_date`, `fit_time`, `fit_species`, `fit_country`, `fit_region`, `fit_province`, `fit_city`, `me_id`) VALUES
-(209, 194, '96', '239.5', '11/24/2022', '04:29:00am', 'Chicken', 'Philippines', 'CALABARZON', '042100000', 'Mendez', 78),
-(210, 195, '0', '0', '11/24/2022', '04:40:50am', 'Chicken', 'Philippines', 'CALABARZON', '042100000', 'Mendez', 78),
-(211, 196, '0', '0', '11/24/2022', '04:42:14am', 'Chicken', 'Philippines', 'CALABARZON', '043400000', 'Alaminos', 78),
-(212, 197, '0', '0', '11/24/2022', '04:45:54am', 'Chicken', 'Philippines', 'CALABARZON', '043400000', 'Alaminos', 78),
-(213, 198, '0', '0', '11/24/2022', '04:46:27am', 'Chicken', 'Philippines', 'CALABARZON', '035400000', 'Guagua', 78),
-(214, 199, '0', '0', '11/24/2022', '04:49:20am', 'Chicken', 'Philippines', 'CALABARZON', '035400000', 'Guagua', 78),
-(215, 200, '0', '0', '11/24/2022', '04:56:13am', 'Chicken', 'Philippines', 'CALABARZON', 'Quezon', 'Jomalig', 78),
-(216, 201, '85', '5300', '11/24/2022', '11:39:06am', 'Hog', 'Philippines', 'CALABARZON', 'Cavite', 'Naic', 79),
-(217, 202, '0', '0', '11/25/2022', '03:38:10pm', 'Chicken', 'Philippines', 'CALABARZON', 'Quezon', 'Gumaca', 78),
-(218, 203, '0', '0', '11/25/2022', '03:38:31pm', 'Chicken', 'Philippines', 'CALABARZON', 'Quezon', 'Gumaca', 78),
-(219, 204, '0', '0', '11/25/2022', '03:44:00pm', 'Chicken', 'Philippines', 'CALABARZON', 'Laguna', 'Mabitac', 78),
-(220, 205, '0', '0', '12/02/2022', '09:51:36am', 'Chicken', 'Philippines', 'CALABARZON', '', '', 78);
 
 -- --------------------------------------------------------
 
@@ -538,9 +441,7 @@ CREATE TABLE `meat_establishment_tbl` (
 --
 
 INSERT INTO `meat_establishment_tbl` (`me_id`, `me_code`, `me_plant_name`, `me_type`, `me_classification`, `me_lto_number`, `me_region_code`, `me_province_code`, `me_city_code`, `me_barangay_code`, `me_address`, `me_status`, `me_date_created`, `me_expiry`, `me_remarks`, `me_username`, `me_password`, `me_setup_account`, `me_contact`, `me_email`, `employee_id`, `me_account_activation`, `me_owner`, `region_code`) VALUES
-(78, 'sadsas', 'Mock Dressing Plant', 'PDP', 'AAA', 'PDP-56731-AAA', 'CALABARZON', 'Cavite', 'Noveleta', 'San Juan II', 'Cavite St.', 'Approved', '11/24/2022', '2023-03-23', 'no', 'me_mdp', '12345', 'test', '9111111111', 'jufreyninsbayog@gmail.com', '0', '1', 'Juan Dela Cruz', '040000000'),
-(79, 'sadsas', 'ABC Slaughterhouse', 'SLH', 'AAA', 'SLH-3442-AAA', 'CALABARZON', 'Cavite', 'Mendez', 'Asis II', 'Cavite St.', 'Approved', '11/24/2022', '2023-11-24', 'no', 'me_abc', '123', 'test', '9123456789', 'jufreyninsbayog@gmail.com', '0', '1', 'Juan Dela Cruz', '040000000'),
-(80, 'sadsas', 'ABC Slaughterhouse 1', 'PDP', 'AAA', 'PDP-58812-AAA', 'CALABARZON', 'Cavite', 'Indang', 'Alulod', 'Cavite st.', 'Approved', '12/12/2022', '2023-12-13', 'no', 'abc_slaughterhouse', '12345', 'test', '9652100539', 'jufreyninsbayog@gmail.com', '0', '1', 'Ronald Torcio', '040000000');
+(95, 'sadsas', 'QWERTY DRESSING PLANT', 'PDP', 'AAA', 'PDP-4234-AAA', 'CALABARZON', 'Laguna', 'City of Cabuyao', 'Mamatid', 'SOUTHVILLE', 'Pending', '03/02/2023', '2023-07-14', 'no', 'qwerty', '1234', 'test', '9652100539', 'nmis.devops@gmail.com', '0', '1', 'Juan dela cruz', '040000000');
 
 -- --------------------------------------------------------
 
@@ -601,15 +502,6 @@ CREATE TABLE `pm_table` (
   `employee_id` varchar(255) NOT NULL,
   `pm_suspected` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pm_table`
---
-
-INSERT INTO `pm_table` (`pm_id`, `drr_id`, `pm_species`, `carcass_number_of_heads`, `carcass_weight`, `carcass_cause`, `lung_weight`, `lung_number_of_affected`, `lung_cause`, `liver_weight`, `liver_number_of_affected`, `liver_cause`, `heart_weight`, `heart_number_of_affected`, `heart_cause`, `intestine_weight`, `intestine_number_of_affected`, `intestine_cause`, `trimmings_head`, `trimming_weight`, `trimming_cause`, `feet_weight`, `feet_number_of_affected`, `feet_cause`, `kidney_weight`, `kidney_number_of_affected`, `kidney_cause`, `spleen_weight`, `spleen_number_of_affected`, `spleen_cause`, `pm_date`, `pm_time`, `me_id`, `pm_region`, `pm_province`, `pm_city`, `pm_barangay`, `employee_id`, `pm_suspected`) VALUES
-(281, 194, 'Chicken', 1, 3, '208', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', '11/24/2022', '0', 78, 'CALABARZON', 'Cavite', 'Mendez', '', '77', '1'),
-(282, 201, 'Hog', 5, 350, '196', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', '11/24/2022', '0', 79, 'CALABARZON', 'Cavite', 'Naic', 'Naic', '80', '1'),
-(283, 201, 'Hog', 5, 350, '196', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', 0, 0, '', '11/24/2022', '0', 79, 'CALABARZON', 'Cavite', 'Naic', '', '80', '0');
 
 -- --------------------------------------------------------
 
@@ -714,55 +606,55 @@ ALTER TABLE `suspected_tbl`
 -- AUTO_INCREMENT for table `am_table`
 --
 ALTER TABLE `am_table`
-  MODIFY `am_table` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=581;
+  MODIFY `am_table` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=582;
 
 --
 -- AUTO_INCREMENT for table `assigment_tbl`
 --
 ALTER TABLE `assigment_tbl`
-  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `attachment_tbl`
 --
 ALTER TABLE `attachment_tbl`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `ddr_table`
 --
 ALTER TABLE `ddr_table`
-  MODIFY `drr_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
+  MODIFY `drr_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `disease_report_tbl`
 --
 ALTER TABLE `disease_report_tbl`
-  MODIFY `dr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=754;
+  MODIFY `dr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=755;
 
 --
 -- AUTO_INCREMENT for table `disease_tbl`
 --
 ALTER TABLE `disease_tbl`
-  MODIFY `d_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=490;
+  MODIFY `d_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=941;
 
 --
 -- AUTO_INCREMENT for table `employee_tbl`
 --
 ALTER TABLE `employee_tbl`
-  MODIFY `employee_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `employee_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `fhc_table`
 --
 ALTER TABLE `fhc_table`
-  MODIFY `fhc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `fhc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT for table `fit_human_consumption`
 --
 ALTER TABLE `fit_human_consumption`
-  MODIFY `fit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `fit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT for table `meat_establishment_daily_tbl`
@@ -774,7 +666,7 @@ ALTER TABLE `meat_establishment_daily_tbl`
 -- AUTO_INCREMENT for table `meat_establishment_tbl`
 --
 ALTER TABLE `meat_establishment_tbl`
-  MODIFY `me_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `me_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `pm_table`

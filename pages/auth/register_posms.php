@@ -266,7 +266,8 @@ include '../../function/function.php';
 										
 									</div>
                                     <div class="text-right">
-								    	<button type="button" name="btn_add_posms"  id="btn_add_posms" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-plus3"></i></b> Create account</button>
+								    	<a href="index.php" class="btn bg-success-400 btn-labeled btn-labeled-right"> Login</a>
+								    	<button type="button" name="btn_add_posms"  id="btn_add_posms" class="btn bg-primary btn-labeled btn-labeled-right">Submit</button>
                                     </div>
                                 </div>
 							</div>

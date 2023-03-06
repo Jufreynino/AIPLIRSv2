@@ -31,7 +31,6 @@ include '../../function/function.php';
 	<script src="../../global_assets/js/demo_pages/login.js"></script>
 	<script src="../../global_assets/js/plugins/notifications/jgrowl.min.js"></script>
 	<script src="../../global_assets/js/plugins/notifications/noty.min.js"></script>
-
 	<script src="../../global_assets/js/demo_pages/extra_jgrowl_noty.js"></script>
 
 
@@ -41,19 +40,12 @@ include '../../function/function.php';
 </head>
 
 <body class="bg-slate-800" style="background-image: url('../../global_assets/images/loginback.jpg'); 
-
-  
   min-height: 500px;
-
   background-attachment: fixed;
-
   background-position: center;
-
   background-repeat: no-repeat;
-
   background-size: cover;
 ">
-
 	<div class="page-content">
 		<div class="content-wrapper">
 
@@ -349,8 +341,9 @@ include '../../function/function.php';
 															<br>
 															<br>
 
-															<div class="text-center">
-																<button type="button" class="btn bg-primary text-white btn-labeled btn-labeled-right" style="font-size:15px; padding:10px 150px 10px 150px;" data-toggle="modal" data-target="#modal_default">Submit</button>
+															<div class="text-right">
+								    							<a href="index.php" class="btn bg-success-400 btn-labeled btn-labeled-right"> Login</a>
+																<button type="button" class="btn bg-primary text-white btn-labeled btn-labeled-right" data-toggle="modal" data-target="#modal_default">Submit</button>
 															</div>
 
 
@@ -560,6 +553,8 @@ $(document).ready(function(){
   });
  }
 
+
+ 
  $(document).on('change', '#country', function(){
   var html_code = '';
   var region = $(this).val();
@@ -570,6 +565,7 @@ $(document).ready(function(){
   			var html_code = '';
 			var region = $('#country').val();
 			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/districts/', function(data){
+					html_code += '<option value="">Select Province</option>';
 				$.each(data, function(key, value){
 				html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 			});
@@ -580,6 +576,7 @@ $(document).ready(function(){
 					var province = $('#province').val();
 					
 					$.getJSON('https://psgc.gitlab.io/api/districts/'+province+'/cities-municipalities/', function(data){
+					html_code += '<option value="">Select City</option>';
 					$.each(data, function(key, value){
 							html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 					});
@@ -594,6 +591,7 @@ $(document).ready(function(){
 								var city = $('#city').val();
 
 								$.getJSON('https://psgc.gitlab.io/api/cities-municipalities/'+province+'/barangays/', function(data){
+								html_code += '<option value="">Select Barangay</option>';
 								$.each(data, function(key, value){
 										html_code += '<option value="'+value.name+'">'+value.name+'</option>';
 								});
@@ -606,6 +604,7 @@ $(document).ready(function(){
 								var city = $('#city').val();
 
 								$.getJSON('https://psgc.gitlab.io/api/cities-municipalities/'+province+'/barangays/', function(data){
+								html_code += '<option value="">Select Barangay</option>';
 								$.each(data, function(key, value){
 										html_code += '<option value="'+value.name+'">'+value.name+'</option>';
 								});
@@ -629,6 +628,7 @@ $(document).ready(function(){
 			var html_code = '';
 			var region = $('#country').val();
 			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/provinces/', function(data){
+					html_code += '<option value="">Select Province</option>';
 				$.each(data, function(key, value){
 					html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 				});
@@ -639,6 +639,7 @@ $(document).ready(function(){
 					var province = $('#province').val();
 					
 					$.getJSON('https://psgc.gitlab.io/api/provinces/'+province+'/cities-municipalities/', function(data){
+					html_code += '<option value="">Select City</option>';
 					$.each(data, function(key, value){
 							html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 					});
@@ -653,6 +654,7 @@ $(document).ready(function(){
 								var city = $('#city').val();
 								
 								$.getJSON('https://psgc.gitlab.io/api/cities-municipalities/'+city+'/barangays/', function(data){
+								html_code += '<option value="">Select Barangay</option>';
 								$.each(data, function(key, value){
 										html_code += '<option value="'+value.name+'">'+value.name+'</option>';
 								});
@@ -664,6 +666,7 @@ $(document).ready(function(){
 								var html_code = '';
 								var city = $('#city').val();
 								$.getJSON('https://psgc.gitlab.io/api/cities-municipalities/'+city+'/barangays/', function(data){
+								html_code += '<option value="">Select Barangay</option>';
 								$.each(data, function(key, value){
 										html_code += '<option value="'+value.name+'">'+value.name+'</option>';
 								});
@@ -716,8 +719,7 @@ $(document).ready(function(){
 			{
 				if(monthDiff >= 1)
 				{
-					alert(monthDiff+' months remaining before your License to operate is expired');
-					
+					// alert(monthDiff+' months remaining before your License to operate is expired');
 				}
 				else
 				{
