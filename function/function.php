@@ -1,14 +1,8 @@
 <?php
-error_reporting(0);
-// use PHPMailer\PHPMailer\PHPMailer;
 
-// require_once '../../assets/phpmailer/src/Exception.php';
-// require_once '../../assets/phpmailer/src/PHPMailer.php';
-// require_once '../../assets/phpmailer/src/SMTP.php';
 
 include '../../config/config.php';
 include '../../vendor/mailer/PHPMailerAutoload.php';
-// error_reporting(0);
 
 
 
@@ -22237,8 +22231,8 @@ $mail->SMTPOptions = array(
 );                                          // Set mailer to use SMTP
 $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-$mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-$mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+$mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+$mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
 $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
 $mail->Port       = 587;  
 $mail->isHTML(true);
@@ -22266,7 +22260,7 @@ $mail->Subject = 'AIPLIRS Notification';
 
                 <p style="text-indent: 100px;">To activate your email, please click the button below  <br><br>
                 <center>
-                 <a href="https://iplirs.nmis.gov.ph/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                 <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                 </center>
                 
                 <br><br><br>
@@ -23763,8 +23757,8 @@ function me_per_reg_posms()
                      );                                          // Set mailer to use SMTP
                      $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                     $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-                     $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                     $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                     $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
                      $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                      $mail->Port       = 587;  
                      $mail->isHTML(true);
@@ -23788,7 +23782,7 @@ function me_per_reg_posms()
 
              Your application for an account in Automated In-Plant Line Inspection Reporting System (AIPLIRS) has been approved. You may sign in now.<br><br>
              <center>
-             <a href="https://iplirs.nmis.gov.ph/AIPLIRSv2/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
+             <a href="http://localhost/AIPLIRSv2/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
              </center>
              
              <br><br><br>
@@ -24768,8 +24762,8 @@ if(isset($_POST['btn_add_mio'])){
                                        );                                          // Set mailer to use SMTP
                                        $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                       $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-                                       $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                                       $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                                       $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
                                        $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                        $mail->Port       = 587;  
                                        $mail->isHTML(true);
@@ -25007,8 +25001,8 @@ if(isset($_POST['btn_add_mio'])){
                                        );                                          // Set mailer to use SMTP
                                        $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                       $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-                                       $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                                       $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                                       $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
                                        $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                        $mail->Port       = 587;  
                                        $mail->isHTML(true);
@@ -25221,8 +25215,8 @@ function reject_meat_establishment_application()
                     );                                          // Set mailer to use SMTP
                     $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-                    $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
                     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                     $mail->Port       = 587;  
                     $mail->isHTML(true);
@@ -25987,6 +25981,7 @@ function mio_accounts()
                             <form method="POST">
                             <div class="modal-body">
                                 <input type="hidden" name="e_id" value="<?php echo $row['employee_id'] ?>">
+                                <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
                                     <p> <h5 class="text-center">Are you sure you want to disapprove this application?</h5> </p> 
                                     <textarea name="remarks" class="form-control" placeholder="Remarks"></textarea>                               
                             </div>
@@ -26106,8 +26101,60 @@ function mio_accounts()
                 {
                     $e_id = $_POST['e_id'];
                     $remarks = $_POST['remarks'];
+                    $email = $_POST['email'];
                     $sql = mysqli_query($con, "UPDATE employee_tbl SET remarks='$remarks', account_status='Disapproved' WHERE employee_id='$e_id' ");
+                    $mail = new PHPMailer();
+                                    $mail->isSMTP();  
+                                    $mail->SMTPOptions = array(
+                                        'ssl' => array(
+                                            'verify_peer' => false,
+                                            'verify_peer_name' => false,
+                                            'allow_self_signed' => true
+                                        )
+                                    );                                          // Set mailer to use SMTP
+                                    $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                    $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                                    $mail->Port       = 587;  
+                                    
+                                    $mail->isHTML(true);
+                                    $mail->From = 'admin@noreply.com';  // This HAVE TO be your gmail adress
+                                    $mail->AddEmbeddedImage('../../global_assets/images/download.png', 'Kartka');
+
+                                    $mail->FromName = 'AIPLIRS Notification'; // This is the from name in the email, you can put anything you like here
+
+                                    $mail->Subject = 'Account Registration Disapproved';
+
+                                    
+                                    $mail->Body = ' <div style=" margin:auto; width:600px;">
+                                    <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
+
+                                        <center>
+
+                                        <img src="cid:Kartka">
+
+                                        <h1>Good day! </h1>
+                                        </center>
+
+                                        <p style="text-indent: 100px; font-size:15px;">Your account has been disapproved<br><br>
+                                        <center>
+                                        <b>Remarks: </b>
+                                        <h2> '.$remarks.' </h2>
+                                        </center>
+                                        
+                                        <br><br><br>
+                                        
+                                        <b>Department of Agriculture</b> <br>
+                                        <b style="font-size:15px;">National Meat Inspection Service</b><br>
+                                        Plant Operation Standards and Monitoring Section ( POSMS )
+                                    </div>
+                                </div>';
+                                    $mail->AddAddress($email);
+                                    $mail->send();
                     ?>
+
 
 
                         <script type="text/javascript">
@@ -28826,8 +28873,8 @@ function posms_accounts()
                     );                                          // Set mailer to use SMTP
                     $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-                    $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
                     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                     $mail->Port       = 587;  
                     $mail->isHTML(true);
@@ -29485,8 +29532,8 @@ function add_meat_establishment_account()
                           );                                          // Set mailer to use SMTP
                           $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                           $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                          $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
-                          $mail->Password   = 'gjmphakskavpzdwz';                              //SMTP password
+                          $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
+                          $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
                           $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                           $mail->Port       = 587;  
                           $mail->isHTML(true);
