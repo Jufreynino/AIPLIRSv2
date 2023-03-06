@@ -114,10 +114,7 @@ include '../../function/function.php';
 										<span class="d-block text-muted">All fields are required!</span>
 										<br>
 									</div>
-
 						<?php echo add_mio_account_posms() ?>
-									
-
 									<h4 style="margin-bottom:-20px; margin-top: 20px;">Personal Information</h4>
 									<hr>
 
@@ -201,7 +198,6 @@ include '../../function/function.php';
 										<div class="col-md-4">
 											<div class="form-group form-group-feedback form-group-feedback-right">
 												<input type="text" class="form-control" name="username"  id="username" placeholder="Username">
-												<small style="color:red;">Username must be the same on your fullname</small>
 												<div class="form-control-feedback">
 													<i class="icon-user text-muted"></i>
 												</div>
@@ -225,12 +221,12 @@ include '../../function/function.php';
 												</div>
 											</div>
 										</div>
-										
 									</div>
 									<br>
 
-                                    <div class="text-center">
-								    	<button type="button" name="btn_add_mio"  id="btn_add_mio" class="btn bg-primary btn-labeled btn-labeled-right" style="font-size:15px; padding:10px 150px 10px 150px;"> Submit</button>
+                                    <div class="text-right">
+								    	<a href="index.php" class="btn bg-success-400 btn-labeled btn-labeled-right"> Login</a>
+								    	<button type="button" name="btn_add_mio"  id="btn_add_mio" class="btn bg-primary btn-labeled btn-labeled-right"> Submit</button>
                                     </div>
                                 </div>
 							</div>

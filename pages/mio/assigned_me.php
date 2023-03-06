@@ -368,6 +368,7 @@ else{
 
 
 					</div>
+				</div>
 			</div>
 			<div class="navbar navbar-expand-lg navbar-light">
 				<div class="text-center d-lg-none w-100">
@@ -384,11 +385,12 @@ else{
 
 				
 				</div>
+				
 			</div>
+			
 		</div>
 	</div>
 	
-
 		  <script type="text/javascript">
 				$(document).ready(function() {
 					calculateSum();
