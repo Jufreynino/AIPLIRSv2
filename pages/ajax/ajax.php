@@ -268,7 +268,7 @@ if($_POST['btn_add_meat_establishment'] == 1){
 
                                                 <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
                                                 <center>
-                                                <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                                <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                                 </center>
                                                 
                                                 <br><br><br>
@@ -455,7 +455,7 @@ else if($_POST['btn_add_mio'] == 1){
 
                                                     <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                                     <center>
-                                                    <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                                    <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                                     </center>
                                                     
                                                     <br><br><br>
@@ -673,7 +673,7 @@ else if($_POST['btn_add_mio'] == 1){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                            <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                            <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>

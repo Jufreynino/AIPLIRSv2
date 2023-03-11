@@ -1,10 +1,6 @@
 <?php
-
-
 include '../../config/config.php';
 include '../../vendor/mailer/PHPMailerAutoload.php';
-
-
 
 function charts_data(){
     global $con;
@@ -13,7 +9,6 @@ function charts_data(){
       
     while($row = $result->fetch_assoc())
         {
-
             print_r($row);
         // $date = date('Y',strtotime(str_replace('-','/',$row['drr_date'])));
 
@@ -23,8 +18,7 @@ function charts_data(){
             // ['2015',1170,460,250],
             // ['2016', 660, 1120, 300],
             // ['2017', 1030, 540, 350]
-        }
-                 
+        }        
 }
 
 function update_mio_region()
@@ -91,7 +85,7 @@ function update_mio_region()
                                 title: 'Currently in this region <?php echo $row['region'] ?> ',
                                 icon: 'error',
                                 }), window.setTimeout(function() {
-                        window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
+                        window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
                     }, 2000);
                 });
                 </script>
@@ -108,7 +102,7 @@ function update_mio_region()
                                     title: 'Region updated!<br><?php echo $region_content ?>',
                                     icon: 'success',
                                     }), window.setTimeout(function() {
-                            window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
+                            window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
                         }, 2000);
                     });
                     </script>
@@ -202,7 +196,7 @@ function update_mio_password()
                             title: 'Success',
                             text: 'Password successfully updated',
                             }), window.setTimeout(function() {
-                    window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
+                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
                 }, 2000);
                     </script>
                 <?php
@@ -266,7 +260,7 @@ function update_mio_account()
                             title: 'Successfully update!',
                             icon: 'success',
                             }), window.setTimeout(function() {
-                    window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
+                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
                 }, 2000);
             });
             </script>
@@ -1325,7 +1319,7 @@ if(isset($_POST['update_drr']))
                                 confirmButtonText: 'Okay',
                                 confirmButtonColor: '#a0d781'
                                 }), window.setTimeout(function() {
-                            window.location.href='https://iplirs.nmis.gov.ph/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
+                            window.location.href='http://localhost/AIPLIRSv2/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
                         }, 1000);
             
                     });
@@ -22122,7 +22116,7 @@ function email(){
 
 //                                     <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
 //                                     <center>
-//                                      <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id=$last_id" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+//                                      <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id=$last_id" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
 //                                     </center>
                                     
 //                                     <br><br><br>
@@ -22260,7 +22254,7 @@ $mail->Subject = 'AIPLIRS Notification';
 
                 <p style="text-indent: 100px;">To activate your email, please click the button below  <br><br>
                 <center>
-                 <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                 <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                 </center>
                 
                 <br><br><br>
@@ -22626,8 +22620,8 @@ function add_daily_receiving()
         $batch_number = mysqli_real_escape_string($con, $_POST['batch_number']);
         $holding_pen = mysqli_real_escape_string($con, $_POST['holding_pen']);
         $province = mysqli_real_escape_string($con, $_POST['provincial']);
-        $city = mysqli_real_escape_string($con, $_POST['city']);
-        $barangay = mysqli_real_escape_string($con, $_POST['barangay']);
+        $city = mysqli_real_escape_string($con, $_POST['city_content']);
+        $barangay = mysqli_real_escape_string($con, $_POST['barangay_content']);
         $broiler_heads = mysqli_real_escape_string($con, $_POST['broiler_heads']);
         $broiler_weight = mysqli_real_escape_string($con, $_POST['broiler_weight']);
         $culled_layer_heads = mysqli_real_escape_string($con, $_POST['culled_layer_heads']);
@@ -23782,7 +23776,7 @@ function me_per_reg_posms()
 
              Your application for an account in Automated In-Plant Line Inspection Reporting System (AIPLIRS) has been approved. You may sign in now.<br><br>
              <center>
-             <a href="https://iplirs.nmis.gov.ph/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
+             <a href="http://localhost/AIPLIRSv2/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
              </center>
              
              <br><br><br>
@@ -24126,7 +24120,7 @@ function posms_update_application()
                 icon: 'success',
                 text: 'Successfully updated, please wait for the approval of your account',
                     }), window.setTimeout(function() {
-                window.location.href='https://iplirs.nmis.gov.ph/pages/auth/posms_update.php';
+                window.location.href='http://localhost/AIPLIRSv2/pages/auth/posms_update.php';
             }, 2000);
             </script>
         <?php
@@ -24789,7 +24783,7 @@ if(isset($_POST['btn_add_mio'])){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                         <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                         <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
@@ -25027,7 +25021,7 @@ if(isset($_POST['btn_add_mio'])){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                         <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                         <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
@@ -26089,7 +26083,7 @@ function mio_accounts()
                                 title: 'Successfully approved',
                                 text: 'MIO account successfully approved',
                                 }), window.setTimeout(function() {
-                                window.location.href='https://iplirs.nmis.gov.ph/pages/posms/meat_inspector_account.php';
+                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
                             }, 2000);
 
 
@@ -26163,7 +26157,7 @@ function mio_accounts()
                                 title: 'Account disapproved',
                                 text: 'MIO account successfully disapproved',
                                 }), window.setTimeout(function() {
-                                window.location.href='https://iplirs.nmis.gov.ph/pages/posms/meat_inspector_account.php';
+                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
                             }, 2000);
 
 
@@ -29556,7 +29550,7 @@ function add_meat_establishment_account()
   
                                       <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
                                       <center>
-                                       <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                       <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                       </center>
                                       
                                       <br><br><br>
@@ -29571,7 +29565,7 @@ function add_meat_establishment_account()
                               return $error_classification = '
                                   <div class="alert bg-success text-white alert-styled-left alert-dismissible">
                                       <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                                      <span class="font-weight-semibold">Successfully Register</span><a href="https://iplirs.nmis.gov.ph/pages/auth/login.php" class="alert-link" style="color:white; font-size:20px;"> Click here</a> to login.
+                                      <span class="font-weight-semibold">Successfully Register</span><a href="http://localhost/AIPLIRSv2/pages/auth/login.php" class="alert-link" style="color:white; font-size:20px;"> Click here</a> to login.
                                   </div>
                               ';
           
@@ -32533,7 +32527,7 @@ if(isset($_POST['send_remarks']))
                 text: 'Remarks successfully sent',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location.href='https://iplirs.nmis.gov.ph/pages/mio/assigned_me.php';
+        window.location.href='http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
     }, 1000);
 });
     </script>
@@ -32559,7 +32553,7 @@ if(isset($_POST['update_proceedstatus']))
                 text: 'Transaction successfully approved you can inspect now',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location=' https://iplirs.nmis.gov.ph/pages/mio/assigned_me.php';
+        window.location=' http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
     }, 2000);
 });
     </script>
@@ -34647,8 +34641,8 @@ function show_md_drr_mio()
             <td><b> <?php echo $row['drr_species']  ?></b></td>
             <td> <?php echo $row['drr_province_code'].', '.$row['drr_city_code'].', '.$row['drr_barangay_code']  ?></td>
             <td> 
-                 <a href="https://iplirs.nmis.gov.ph/global_assets/images/<?php echo $row['s_permit'] ?>" class="btn btn-link" target="_blank">Shipping Permit </a><br>
-                        <a href="https://iplirs.nmis.gov.ph/global_assets/images/<?php echo $row['veterenary_certificate'] ?>" class="btn btn-link" target="_blank">Veterinary Health Certificate</a>
+                 <a href="http://localhost/AIPLIRSv2/global_assets/images/<?php echo $row['s_permit'] ?>" class="btn btn-link" target="_blank">Shipping Permit </a><br>
+                        <a href="http://localhost/AIPLIRSv2/global_assets/images/<?php echo $row['veterenary_certificate'] ?>" class="btn btn-link" target="_blank">Veterinary Health Certificate</a>
             </td>
             <td>
                 <?php if($row['drr_status'] == 0) {?>
@@ -39585,16 +39579,9 @@ function modify_antemortem_suspect_sum_total_heads_view()
     $sum = 0;
     $sql = "SELECT am_table.c_heads as c_heads, am_table.r_heads as r_heads, am_table.s_heads_validate as s_heads_validate, am_table.s_heads as s_heads, ddr_table.drr_total_head as drr_total_head FROM am_table LEFT JOIN ddr_table on am_table.drr_id= ddr_table.drr_id WHERE am_table.am_table='$id' ";
     $result = $con->query($sql);
-
         while($row = $result->fetch_assoc()) {
-            
             $sum +=  floatval($row['c_heads']) +  floatval($row['r_heads']) ;
-
-           
             $total =  $row['s_heads'] ;
-
-         
-
 
 
         }
@@ -39608,7 +39595,6 @@ function modify_antemortem_sum_total_heads()
 {
     global $con;
     date_default_timezone_set('Asia/Manila');
-   
     $id     =   $_GET['mid'];
     $date     =   $_GET['mdate'];
     $sum = 0;
@@ -39616,48 +39602,22 @@ function modify_antemortem_sum_total_heads()
     $sum3= 0;
     $s_heads= 0;
     $s_heads_validate= 0;
-    
-    $sql = "SELECT *,am_table.c_heads as c_heads, am_table.r_heads as r_heads,  am_table.s_heads as s_heads, am_table.s_heads_validate as s_heads_validate, am_table.s_weight_validate as s_weight_validate, ddr_table.drr_total_head as drr_total_head FROM am_table LEFT JOIN ddr_table on am_table.drr_id= ddr_table.drr_id WHERE am_table.drr_id='$id' AND ddr_table.drr_date='$date' AND am_suspected='1' ";
+    $sql = "SELECT *,am_table.c_heads as c_heads, am_table.r_heads as r_heads,  am_table.s_heads as s_heads, am_table.s_heads_validate as s_heads_validate, am_table.s_weight_validate as s_weight_validate, ddr_table.drr_total_head as drr_total_head FROM am_table LEFT JOIN ddr_table on am_table.drr_id= ddr_table.drr_id WHERE am_table.drr_id='$id' AND ddr_table.drr_date='$date' ";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
+
         while($row = $result->fetch_assoc()) {
-            
-            $sum += floatval($row['c_heads']) + floatval($row['r_heads']) + floatval($row['s_heads'])  ;
-
-
-
-            $s_heads += $row['s_heads'];
-            $s_heads_validate += $row['s_heads_validate'];
-            
-
-
-            if($s_heads !=  $s_heads_validate)
+                    
+            if($row['am_suspected_status'] == 0)
             {
-                $sum3 += floatval($row['s_heads_validate']) ;
+                    echo 'test';
             }
             else
             {
-                $sum3 += floatval($row['s_heads']) ;
-
+                echo 'sdfd';
             }
-
-            if($s_heads != $s_heads_validate)
-            {
-                $total =  $row['drr_total_head'] -$sum + $sum3;
-            }
-            else
-            {
-                $total =  $row['drr_total_head'] - $sum;
-            }
-
-            
-
-    }
-            echo number_format($total);
-            ?>
-             <input type="hidden" class="head" name="total_of_heads" id="total_number_of_heads_received" value="<?php echo $total?>">
-            <?php
+        }
     }
     else{
             $sql = "SELECT * FROM ddr_table  WHERE drr_id='$id' AND drr_date='$date'";
@@ -39674,18 +39634,14 @@ function modify_antemortem_sum_total_heads()
 
 function modify_postmortem_sum_total_weight()
 {
-    
     global $con;
-
     $id = $_GET['mid'];
     $date = $_GET['mdate'];
     $sql = "SELECT pm_table.carcass_weight as carcass_weight , fhc_table.fhc_weight as fhc_weight, fhc_table.fhc_number_of_heads as fhc_number_of_heads, fhc_table.fhc_date as fhc_date FROM pm_table LEFT JOIN fhc_table on pm_table.drr_id= fhc_table.drr_id WHERE pm_table.drr_id='$id' AND pm_table.pm_date='$date'";
     $result = $con->query($sql);
     $sum = 0;
-
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-
             $sum += $row['carcass_weight'];
             $total =  $row['fhc_weight'];
             $dates = $row['fhc_date'];
@@ -39859,37 +39815,31 @@ function udpate_fit_daily()
         // $count2 = $row2['count'];
 
 
-
-
         $sql = "SELECT * FROM am_table  WHERE drr_id='$id'  AND  me_id='$me_id' AND am_date='$date' ";
 
         $result = $con->query($sql);
         $row = mysqli_fetch_assoc($result);
-            if($row['am_suspected_status'] == '1'){
-        
+            if($row['am_suspected_status'] == '0'){
+                $row = mysqli_fetch_assoc($result);
+                $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
+                $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
+    
                 ?>
-                <script>
-                    alert('You Have a pending Suspect / On hold received animals');
-                    window.location = "antemortem.php?med=<?php echo $_GET['med'] ?>&mid=<?php echo $id  ?>&mdate=<?php echo $date ?>&species=<?php echo $_GET['species']?>&category=<?php echo $_GET['category']?>&region=<?php echo $_GET['region']?>&province=<?php echo $_GET['province']?>&city=<?php echo $_GET['city']?>&barangay=<?php echo $_GET['barangay']?>";
-                </script>
-        
+                    <script type="text/javascript">
+                        window.location = "assigned_me.php"; 
+                    </script>
                 <?php
-            
-           
         }
         else
         {
-
-         
-            $row = mysqli_fetch_assoc($result);
-            $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
-            $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
-    
+          
         ?>
-                    <script type="text/javascript">
-                        window.location = "assigned_me.php"; 
-    
+                   
+                    <script>
+                        alert('You Have a pending Suspect / On hold received animals');
+                        window.location = "antemortem.php?med=<?php echo $_GET['med'] ?>&mid=<?php echo $id  ?>&mdate=<?php echo $date ?>&species=<?php echo $_GET['species']?>&category=<?php echo $_GET['category']?>&region=<?php echo $_GET['region']?>&province=<?php echo $_GET['province']?>&city=<?php echo $_GET['city']?>&barangay=<?php echo $_GET['barangay']?>";
                     </script>
+
                     <?php
       
     

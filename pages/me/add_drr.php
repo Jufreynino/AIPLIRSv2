@@ -379,9 +379,18 @@ $today = strtotime($todays_date);
 
 																		<div class="form-group">
                                                                             <label>Municipality / City</label>
-																				<select name="city" id="city" class="form-control input-lg">
+																				<select name="city" id="city" class="form-control input-lg" onchange="document.getElementById('city_content').value=this.options[this.selectedIndex].text">
 																					<option value="">Select City</option>
 																				</select>
+																		</div>
+																		<input type="hidden" name="city_content" id="city_content" value="" />
+
+																		<div class="form-group">
+                                                                            <label>Barangay</label>
+																				<select name="barangay" id="barangay" class="form-control input-lg"  onchange="document.getElementById('barangay_content').value=this.options[this.selectedIndex].text">
+																					<option value="">Select Barangay</option>
+																				</select>
+																		<input type="hidden" name="barangay_content" id="barangay_content" value="" />
 																		</div>
 
 
@@ -1000,6 +1009,7 @@ $(document).ready(function(){
 		{
   			var html_code = '';
 			var region = $('#country').val();
+		html_code += '<option value="">Select Province</option>';
 			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/districts/', function(data){
 				$.each(data, function(key, value){
 				html_code += '<option value="'+value.code+'">'+value.name+'</option>';
@@ -1011,12 +1021,49 @@ $(document).ready(function(){
 					var province = $(this).val();
 					
 
-					alert(province);
 					$.getJSON('https://psgc.gitlab.io/api/districts/'+province+'/cities-municipalities/', function(data){
+						html_code += '<option value="">Select City</option>';
+
 					$.each(data, function(key, value){
-							html_code += '<option value="'+value.name+'">'+value.name+'</option>';
+							html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 					});
 					$('#city').html(html_code);
+					if(data =='')
+					{
+
+							$(document).on('change', '#city', function(){
+								var html_code = '';
+								var city = $(this).val();
+								
+
+								$.getJSON('https://psgc.gitlab.io/api/sub-municipalities/'+city+'/barangays.json', function(data){
+						html_code += '<option value="">Select Barangay</option>';
+								$.each(data, function(key, value){
+										html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+								});
+								$('#barangay').html(html_code);
+								
+							});
+						});
+					}
+					else
+					{
+						
+						$(document).on('change', '#city', function(){
+								var html_code = '';
+								var city = $(this).val();
+								
+
+								$.getJSON('https://psgc.gitlab.io/api/cities-municipalities/'+city+'/barangays.json', function(data){
+						html_code += '<option value="">Select Barangay</option>';
+								$.each(data, function(key, value){
+										html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+								});
+								$('#barangay').html(html_code);
+								
+							});
+						});
+					}
 					
 				});
 
@@ -1029,6 +1076,7 @@ $(document).ready(function(){
 			var html_code = '';
 			var region = $('#country').val();
 			$.getJSON('https://psgc.gitlab.io/api/regions/'+region+'/provinces/', function(data){
+		html_code += '<option value="">Select Province</option>';
 				$.each(data, function(key, value){
 					html_code += '<option  value="'+value.code+'">'+value.name+'</option>';
 				});
@@ -1037,13 +1085,55 @@ $(document).ready(function(){
 			   $(document).on('change', '#province', function(){
 					var html_code = '';
 					var province = $(this).val();
-					alert(province);
 					
 					$.getJSON('https://psgc.gitlab.io/api/provinces/'+province+'/cities-municipalities/', function(data){
+						html_code += '<option value="">Select City</option>';
 					$.each(data, function(key, value){
-							html_code += '<option value="'+value.name+'">'+value.name+'</option>';
+							html_code += '<option value="'+value.code+'">'+value.name+'</option>';
 					});
 					$('#city').html(html_code);
+
+
+					if(data =='')
+					{
+
+							$(document).on('change', '#city', function(){
+								var html_code = '';
+								var city = $(this).val();
+								
+
+								$.getJSON('https://psgc.gitlab.io/api/sub-municipalities/'+city+'/barangays.json', function(data){
+						html_code += '<option value="">Select Barangay</option>';
+								$.each(data, function(key, value){
+										html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+								});
+								$('#barangay').html(html_code);
+								
+							});
+						});
+					}
+					else
+					{
+						
+						$(document).on('change', '#city', function(){
+								var html_code = '';
+								var city = $(this).val();
+								
+
+								$.getJSON('https://psgc.gitlab.io/api/cities-municipalities/'+city+'/barangays.json', function(data){
+						html_code += '<option value="">Select Barangay</option>';
+								$.each(data, function(key, value){
+										html_code += '<option value="'+value.code+'">'+value.name+'</option>';
+								});
+								$('#barangay').html(html_code);
+								
+							});
+						});
+					}
+
+
+
+
 					
 				});
 			});
