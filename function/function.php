@@ -39602,22 +39602,32 @@ function modify_antemortem_sum_total_heads()
     $sum3= 0;
     $s_heads= 0;
     $s_heads_validate= 0;
-    $sql = "SELECT *,am_table.c_heads as c_heads, am_table.r_heads as r_heads,  am_table.s_heads as s_heads, am_table.s_heads_validate as s_heads_validate, am_table.s_weight_validate as s_weight_validate, ddr_table.drr_total_head as drr_total_head FROM am_table LEFT JOIN ddr_table on am_table.drr_id= ddr_table.drr_id WHERE am_table.drr_id='$id' AND ddr_table.drr_date='$date' ";
+    $sql = "SELECT *,am_table.c_heads as c_heads, am_table.r_heads as r_heads,  am_table.s_heads as s_heads, am_table.s_heads_validate as s_heads_validate, am_table.s_weight_validate as s_weight_validate, ddr_table.drr_total_head as drr_total_head FROM am_table LEFT JOIN ddr_table on am_table.drr_id= ddr_table.drr_id WHERE am_table.drr_id='$id' AND ddr_table.drr_date='$date' AND am_suspected_status='0'";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
-                    
-            if($row['am_suspected_status'] == 0)
-            {
-                    echo 'test';
-            }
-            else
-            {
-                echo 'sdfd';
-            }
+
+            $sum += floatval($row['c_heads']) + floatval($row['r_heads']);
+            $total_heads = $row['drr_total_head'];
+
+            // if($row['s_heads_validate'] == 'null'){
+                $s_heads_validate += $row['s_heads_validate'];
+            // }
+            // else
+            // {
+            //     $s_heads_validate = 0;
+                
+            // }
+                $total = $total_heads  - $sum;
         }
+
+         
+        echo number_format($total);
+        ?>
+            <input type="hidden" class="head" name="total_of_heads" id="total_number_of_heads_received" value="<?php echo $total?>">
+           <?php
     }
     else{
             $sql = "SELECT * FROM ddr_table  WHERE drr_id='$id' AND drr_date='$date'";
