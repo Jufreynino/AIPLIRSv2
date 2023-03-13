@@ -22892,11 +22892,10 @@ function view_drr_me()
                                                         <?php if($row['drr_report_status'] == '0') { ?> 
                                                             <span class="badge bg-orange-300">Pending</span>
                                                         
-                                                        <?php } else if($row['drr_report_status'] == '2') { ?> 
-                                                            <span class="badge bg-orange-300">Pending</span>
+                                                        <?php } else if($row['drr_inspection_status'] == '2') { ?> 
+                                                            <span class="badge bg-success-300">Completed</span>
 
                                                         <?php } else if($row['drr_report_status'] == '3') { ?> 
-                                                            <span class="badge bg-orange-300">Pending</span>
 
                                                             
                                                         <?php } else if($row['drr_report_status'] == '1') { ?> 
