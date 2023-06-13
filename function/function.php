@@ -1,7 +1,7 @@
 <?php
 include '../../config/config.php';
 include '../../vendor/mailer/PHPMailerAutoload.php';
-
+error_reporting(0);
 function charts_data(){
     global $con;
     $sql = "SELECT * FROM ddr_table ORDER BY drr_date";
@@ -20,6 +20,7 @@ function charts_data(){
             // ['2017', 1030, 540, 350]
         }        
 }
+
 
 function update_mio_region()
 {
@@ -85,7 +86,7 @@ function update_mio_region()
                                 title: 'Currently in this region <?php echo $row['region'] ?> ',
                                 icon: 'error',
                                 }), window.setTimeout(function() {
-                        window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                        window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                     }, 2000);
                 });
                 </script>
@@ -102,7 +103,7 @@ function update_mio_region()
                                     title: 'Region updated!<br><?php echo $region_content ?>',
                                     icon: 'success',
                                     }), window.setTimeout(function() {
-                            window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                            window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                         }, 2000);
                     });
                     </script>
@@ -196,7 +197,7 @@ function update_mio_password()
                             title: 'Success',
                             text: 'Password successfully updated',
                             }), window.setTimeout(function() {
-                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                    window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                 }, 2000);
                     </script>
                 <?php
@@ -260,7 +261,7 @@ function update_mio_account()
                             title: 'Successfully update!',
                             icon: 'success',
                             }), window.setTimeout(function() {
-                    window.location.href='http://localhost/AIPLIRSv2/pages/mio/mio_profile.php';
+                    window.location.href='https://iplirs.nmis.gov.ph/pages/mio/mio_profile.php';
                 }, 2000);
             });
             </script>
@@ -1319,7 +1320,7 @@ if(isset($_POST['update_drr']))
                                 confirmButtonText: 'Okay',
                                 confirmButtonColor: '#a0d781'
                                 }), window.setTimeout(function() {
-                            window.location.href='http://localhost/AIPLIRSv2/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
+                            window.location.href='https://iplirs.nmis.gov.ph/pages/me/edit_drr.php?details=<?php echo $drr_id?>';
                         }, 1000);
             
                     });
@@ -22116,7 +22117,7 @@ function email(){
 
 //                                     <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
 //                                     <center>
-//                                      <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id=$last_id" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+//                                      <a href="http://172.16.10.160/AIPLIRSv2/pages/auth/login_activated.php?me_id=$last_id" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
 //                                     </center>
                                     
 //                                     <br><br><br>
@@ -22216,7 +22217,7 @@ function resend_activation()
     {
         $mail = new PHPMailer(true);
         $mail->isSMTP();  
-$mail->SMTPOptions = array(
+    $mail->SMTPOptions = array(
     'ssl' => array(
         'verify_peer' => false,
         'verify_peer_name' => false,
@@ -22225,8 +22226,8 @@ $mail->SMTPOptions = array(
 );                                          // Set mailer to use SMTP
 $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-$mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-$mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+$mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+$mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
 $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
 $mail->Port       = 587;  
 $mail->isHTML(true);
@@ -22254,7 +22255,7 @@ $mail->Subject = 'AIPLIRS Notification';
 
                 <p style="text-indent: 100px;">To activate your email, please click the button below  <br><br>
                 <center>
-                 <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                 <a href="http://172.16.10.160/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                 </center>
                 
                 <br><br><br>
@@ -22802,23 +22803,19 @@ function add_daily_receiving()
            }
             
             ?>
-
                     <div class="alert bg-success text-white alert-styled-left alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                             <span class="font-weight-semibold">Successfully Submitted</span>                                  
                     </div>
-<?php
+        <?php
      
         
-}
-
+    }
 } 
 
 function view_drr_me()
 {
-
         global $con;
-
         $me_id = $_SESSION['me_id'];
         $mdate = $_GET['mdate'];
         $sql = "SELECT * FROM ddr_table INNER JOIN attachment_tbl ON ddr_table.drr_id = attachment_tbl.drr_id WHERE ddr_table.me_id='$me_id' AND ddr_table.drr_date='$mdate' ORDER BY drr_time DESC";
@@ -23513,23 +23510,53 @@ function me_per_reg_posms()
             <td style="width:100px;"><?php echo $row['me_contact'] ?></td>
             <td style="width:100px;"><?php echo $row['me_email'] ?></td>
             <td style="width:200px;"><?php echo $row['me_province_code'] ?> <?php echo $row['me_city_code'] ?> , <?php echo $row['me_barangay_code'] ?>, <?php echo $row['me_address'] ?></td>
-           
+
+
+
+
+
+
+
+
+
+
             <?php if($row['status'] == 1){ ?>
                 <td class="text-center"><p class="text-warning btn-block"> Pending</p></td>   
-               
-
-
             <?php }elseif($row['status'] == 2) { ?>
-                <td class="text-center"><p class="text-success btn-block"> Approve</p></td>   
-            
+                <td class="text-center"><p class="text-success btn-block"> Approved</p></td>   
             <?php }else{ ?>
                 <td class="text-center"><p class="text-danger btn-block"> Rejected</p></td>   
-
             <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             
                 <td>
-                <button type="button" class="btn bg-purple" data-toggle="modal" data-target="#mio_assigned_list<?php echo $row['me_id'] ?>">View </button>
+                    <button type="button" class="btn bg-purple" data-toggle="modal" data-target="#mio_assigned_list<?php echo $row['me_id'] ?>">View </button>
                 </td>
 
                 <td>
@@ -23750,8 +23777,8 @@ function me_per_reg_posms()
                      );                                          // Set mailer to use SMTP
                      $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                     $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                     $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                     $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                     $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                      $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                      $mail->Port       = 587;  
                      $mail->isHTML(true);
@@ -23775,7 +23802,7 @@ function me_per_reg_posms()
 
              Your application for an account in Automated In-Plant Line Inspection Reporting System (AIPLIRS) has been approved. You may sign in now.<br><br>
              <center>
-             <a href="http://localhost/AIPLIRSv2/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
+             <a href="http://172.16.10.160/AIPLIRSv2/pages/auth/login.php" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a></p>
              </center>
              
              <br><br><br>
@@ -24119,7 +24146,7 @@ function posms_update_application()
                 icon: 'success',
                 text: 'Successfully updated, please wait for the approval of your account',
                     }), window.setTimeout(function() {
-                window.location.href='http://localhost/AIPLIRSv2/pages/auth/posms_update.php';
+                window.location.href='https://iplirs.nmis.gov.ph/pages/auth/posms_update.php';
             }, 2000);
             </script>
         <?php
@@ -24755,8 +24782,8 @@ if(isset($_POST['btn_add_mio'])){
                                        );                                          // Set mailer to use SMTP
                                        $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                       $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                                       $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                       $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                                       $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                                        $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                        $mail->Port       = 587;  
                                        $mail->isHTML(true);
@@ -24782,7 +24809,7 @@ if(isset($_POST['btn_add_mio'])){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                         <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                         <a href="http://172.16.10.160/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
@@ -24994,8 +25021,8 @@ if(isset($_POST['btn_add_mio'])){
                                        );                                          // Set mailer to use SMTP
                                        $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                       $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                                       $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                       $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                                       $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                                        $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                        $mail->Port       = 587;  
                                        $mail->isHTML(true);
@@ -25020,7 +25047,7 @@ if(isset($_POST['btn_add_mio'])){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                         <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                         <a href="http://172.16.10.160/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
@@ -25208,8 +25235,8 @@ function reject_meat_establishment_application()
                     );                                          // Set mailer to use SMTP
                     $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                    $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                     $mail->Port       = 587;  
                     $mail->isHTML(true);
@@ -26082,7 +26109,7 @@ function mio_accounts()
                                 title: 'Successfully approved',
                                 text: 'MIO account successfully approved',
                                 }), window.setTimeout(function() {
-                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
+                                window.location.href='https://iplirs.nmis.gov.ph/pages/posms/meat_inspector_account.php';
                             }, 2000);
 
 
@@ -26107,8 +26134,8 @@ function mio_accounts()
                                     );                                          // Set mailer to use SMTP
                                     $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                                    $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                                     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                     $mail->Port       = 587;  
                                     
@@ -26156,7 +26183,7 @@ function mio_accounts()
                                 title: 'Account disapproved',
                                 text: 'MIO account successfully disapproved',
                                 }), window.setTimeout(function() {
-                                window.location.href='http://localhost/AIPLIRSv2/pages/posms/meat_inspector_account.php';
+                                window.location.href='https://iplirs.nmis.gov.ph/pages/posms/meat_inspector_account.php';
                             }, 2000);
 
 
@@ -28866,8 +28893,8 @@ function posms_accounts()
                     );                                          // Set mailer to use SMTP
                     $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                    $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                     $mail->Port       = 587;  
                     $mail->isHTML(true);
@@ -29525,8 +29552,8 @@ function add_meat_establishment_account()
                           );                                          // Set mailer to use SMTP
                           $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                           $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                          $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                          $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                          $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                          $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                           $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                           $mail->Port       = 587;  
                           $mail->isHTML(true);
@@ -29549,7 +29576,7 @@ function add_meat_establishment_account()
   
                                       <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
                                       <center>
-                                       <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                       <a href="http://172.16.10.160/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                       </center>
                                       
                                       <br><br><br>
@@ -29564,7 +29591,7 @@ function add_meat_establishment_account()
                               return $error_classification = '
                                   <div class="alert bg-success text-white alert-styled-left alert-dismissible">
                                       <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                                      <span class="font-weight-semibold">Successfully Register</span><a href="http://localhost/AIPLIRSv2/pages/auth/login.php" class="alert-link" style="color:white; font-size:20px;"> Click here</a> to login.
+                                      <span class="font-weight-semibold">Successfully Register</span><a href="https://iplirs.nmis.gov.ph/pages/auth/login.php" class="alert-link" style="color:white; font-size:20px;"> Click here</a> to login.
                                   </div>
                               ';
           
@@ -32526,7 +32553,7 @@ if(isset($_POST['send_remarks']))
                 text: 'Remarks successfully sent',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location.href='http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
+        window.location.href='https://iplirs.nmis.gov.ph/pages/mio/assigned_me.php';
     }, 1000);
 });
     </script>
@@ -32552,7 +32579,7 @@ if(isset($_POST['update_proceedstatus']))
                 text: 'Transaction successfully approved you can inspect now',
                 icon: 'success',
                 }), window.setTimeout(function() {
-        window.location=' http://localhost/AIPLIRSv2/pages/mio/assigned_me.php';
+        window.location=' https://iplirs.nmis.gov.ph/pages/mio/assigned_me.php';
     }, 2000);
 });
     </script>
@@ -34640,8 +34667,8 @@ function show_md_drr_mio()
             <td><b> <?php echo $row['drr_species']  ?></b></td>
             <td> <?php echo $row['drr_province_code'].', '.$row['drr_city_code'].', '.$row['drr_barangay_code']  ?></td>
             <td> 
-                 <a href="http://localhost/AIPLIRSv2/global_assets/images/<?php echo $row['s_permit'] ?>" class="btn btn-link" target="_blank">Shipping Permit </a><br>
-                        <a href="http://localhost/AIPLIRSv2/global_assets/images/<?php echo $row['veterenary_certificate'] ?>" class="btn btn-link" target="_blank">Veterinary Health Certificate</a>
+                 <a href="https://iplirs.nmis.gov.ph/global_assets/images/<?php echo $row['s_permit'] ?>" class="btn btn-link" target="_blank">Shipping Permit </a><br>
+                        <a href="https://iplirs.nmis.gov.ph/global_assets/images/<?php echo $row['veterenary_certificate'] ?>" class="btn btn-link" target="_blank">Veterinary Health Certificate</a>
             </td>
             <td>
                 <?php if($row['drr_status'] == 0) {?>

@@ -243,8 +243,8 @@ if($_POST['btn_add_meat_establishment'] == 1){
                                     );                                          // Set mailer to use SMTP
                                     $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                    $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                                    $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                    $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                                    $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                                     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                     $mail->Port       = 587;  
                                     
@@ -268,7 +268,7 @@ if($_POST['btn_add_meat_establishment'] == 1){
 
                                                 <p style="text-indent: 100px; font-size:15px;">To activate your email,  Please click the button below.<br><br>
                                                 <center>
-                                                <a href="http://localhost/AIPLIRSv2/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                                <a href="https://iplirs.nmis.gov.ph/pages/auth/login_activated.php?me_id='.$last_id.'" target="_blank" style="font-size:15px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                                 </center>
                                                 
                                                 <br><br><br>
@@ -430,8 +430,8 @@ else if($_POST['btn_add_mio'] == 1){
                                                 );                                          // Set mailer to use SMTP
                                                 $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                                $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                                                $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                                $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                                                $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                                                 $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                                 $mail->Port       = 587;  
                                                 $mail->isHTML(true);
@@ -444,9 +444,7 @@ else if($_POST['btn_add_mio'] == 1){
 
                                                 <div style=" margin:auto; width:600px;">
                                                 <div style="border:2px solid #c1c1c1; padding:50px; border-radius:15px;">
-
                                                 <center>
-
                                                 <img src="cid:Kartka">
 
                                                 <h1>Good day!</h1>
@@ -455,7 +453,7 @@ else if($_POST['btn_add_mio'] == 1){
 
                                                     <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                                     <center>
-                                                    <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                                    <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                                     </center>
                                                     
                                                     <br><br><br>
@@ -647,8 +645,8 @@ else if($_POST['btn_add_mio'] == 1){
                                         );                                          // Set mailer to use SMTP
                                         $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                                        $mail->Username   = 'jufreyninstechs@gmail.com';                     // SMTP username
-                                        $mail->Password   = 'xjsxwzitclmykyeg';                              //SMTP password
+                                        $mail->Username   = 'nmis.devops@gmail.com';                     // SMTP username
+                                        $mail->Password   = 'uazzwjbblxnbnkfr';                              //SMTP password
                                         $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                                         $mail->Port       = 587;  
                                         $mail->isHTML(true);
@@ -673,7 +671,7 @@ else if($_POST['btn_add_mio'] == 1){
 
                                         <p style="text-indent: 100px;">To activate your, email click the button below  <br><br>
                                         <center>
-                                            <a href="http://localhost/AIPLIRSv2/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
+                                            <a href="https://iplirs.nmis.gov.ph/pages/auth/email_activated_mio.php?usrid='.$last_id.'" target="_blank" style="font-size:25px; background-color:#0c69f5; color:white; text-decoration:none; padding:10px; border-radius:5px;">Click Here</a>
                                         </center>
                                         
                                         <br><br><br>
