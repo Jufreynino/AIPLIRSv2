@@ -39866,7 +39866,18 @@ function udpate_fit_daily()
                     </script>
                 <?php
         }
-        else
+        else if($row['am_suspected_status'] == ''){
+            $row = mysqli_fetch_assoc($result);
+            $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
+            $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
+
+            ?>
+                <script type="text/javascript">
+                    window.location = "assigned_me.php"; 
+                </script>
+            <?php
+        }
+    else
         {
           
         ?>
