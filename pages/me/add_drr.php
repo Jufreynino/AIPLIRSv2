@@ -334,12 +334,16 @@ $today = strtotime($todays_date);
 																				
 																			</div>
 
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label>Holding Pen</label>
-																					<input type="text" class="form-control" name="holding_pen"  placeholder="0" required>
+																			<?php if($_SESSION['me_type'] == "PDP") {?>
+
+																			<?php } else { ?>
+																				<div class="col-md-6">
+																					<div class="form-group">
+																						<label>Holding Pen</label>
+																						<input type="text" class="form-control" name="holding_pen"  placeholder="0" required>
+																					</div>
 																				</div>
-																			</div>
+																			<?php } ?>
 																		</div>
                                                                         <h4>Farm Source</h4>
 
@@ -898,11 +902,15 @@ $today = strtotime($todays_date);
 		$(document).ready(function() {
 		    $('.js-example-basic-single').select2();
 
-			$('#country').change(function() {	
+			$('#province').change(function() {	
 				var current_region = '<?php echo $_SESSION['me_region_code'] ?>';
-				var region = $('#country  option:selected ').text();
+				var me_province_code = '<?php echo $_SESSION['me_province_code'] ?>';
+
 				
-				if(current_region == region)
+				var region = $('#country  option:selected ').text();
+				var province = $('#province  option:selected ').text();
+				
+				if(current_region == region && me_province_code == province)
 				{
 						$("#shipping_permit").prop('required',false);
 						$("#to_hide").hide();

@@ -22619,7 +22619,17 @@ function add_daily_receiving()
         $meat_dealer_firstname = ucwords($_POST['meat_dealer_firstname']);
         $meat_dealer_lastname = ucwords($_POST['meat_dealer_lastname']);
         $batch_number = mysqli_real_escape_string($con, $_POST['batch_number']);
-        $holding_pen = mysqli_real_escape_string($con, $_POST['holding_pen']);
+
+        if($_SESSION['me_type'] == "PDP")
+        {
+            $holding_pen = '0';
+
+        }
+        else
+        {
+            $holding_pen = mysqli_real_escape_string($con, $_POST['holding_pen']);
+
+        }
         $province = mysqli_real_escape_string($con, $_POST['provincial']);
         $city = mysqli_real_escape_string($con, $_POST['city_content']);
         $barangay = mysqli_real_escape_string($con, $_POST['barangay_content']);
@@ -23067,10 +23077,15 @@ function view_drr_me()
                                                                                     <p style="font-weight:bold; margin-bottom:-20px;">Batch Number</p> <br>
                                                                                     <?php echo $row['drr_batch_number']  ?>
                                                                                </div>
-                                                                               <div class="col-md-6">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;"> Holding Pen</p> <br>
-                                                                                    <?php echo $row['drr_holding_pen']  ?>
-                                                                               </div>
+                                                                                <?php if($_SESSION['me_type']== "PDP") {?>
+
+                                                                                    
+                                                                                <?php } else { ?>
+                                                                                    <div class="col-md-6">
+                                                                                        <p style="font-weight:bold; margin-bottom:-20px;"> Holding Pen</p> <br>
+                                                                                        <?php echo $row['drr_holding_pen']  ?>
+                                                                                    </div>
+                                                                                <?php } ?>
                                                                             </div>
 
                                                                       
@@ -39851,11 +39866,32 @@ function udpate_fit_daily()
         // $count2 = $row2['count'];
 
 
-        $sql = "SELECT * FROM am_table  WHERE drr_id='$id'  AND  me_id='$me_id' AND am_date='$date' ";
+        $sql = "SELECT * FROM am_table  WHERE drr_id='$id'  AND  me_id='$me_id' AND am_date='$date' and am_suspected_status='1' ";
 
         $result = $con->query($sql);
         $row = mysqli_fetch_assoc($result);
-            if($row['am_suspected_status'] == '0'){
+            if($row){
+                // else if($row['am_suspected_status'] =''){
+                //     $row = mysqli_fetch_assoc($result);
+                //     $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
+                //     $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
+        
+                //         <script type="text/javascript">
+                //             window.location = "assigned_me.php"; 
+                //         </script>
+                //     <?php
+                // }
+                
+                    ?>
+                    <script>
+                        alert('You Have a pending Suspect / On hold received animals');
+                        window.location = "antemortem.php?med=<?php echo $_GET['med'] ?>&mid=<?php echo $id  ?>&mdate=<?php echo $date ?>&species=<?php echo $_GET['species']?>&category=<?php echo $_GET['category']?>&region=<?php echo $_GET['region']?>&province=<?php echo $_GET['province']?>&city=<?php echo $_GET['city']?>&barangay=<?php echo $_GET['barangay']?>";
+                    </script>
+                    <?php
+                }
+        
+            else
+                {
                 $row = mysqli_fetch_assoc($result);
                 $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
                 $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
@@ -39865,34 +39901,9 @@ function udpate_fit_daily()
                         window.location = "assigned_me.php"; 
                     </script>
                 <?php
-        }
-        else if($row['am_suspected_status'] == ''){
-            $row = mysqli_fetch_assoc($result);
-            $sql = mysqli_query($con, "UPDATE fit_human_consumption SET fit_number_of_head='$sub_total_of_heads', fit_weight='$sub_total_of_weight', me_id='$me_id' WHERE drr_id='$id' AND fit_date='$date'");
-            $sql = mysqli_query($con, "UPDATE ddr_table SET drr_inspection_status='2' WHERE drr_id='$id' AND drr_date='$date'");
-
-            ?>
-                <script type="text/javascript">
-                    window.location = "assigned_me.php"; 
-                </script>
-            <?php
-        }
-    else
-        {
-          
-        ?>
-                   
-                    <script>
-                        alert('You Have a pending Suspect / On hold received animals');
-                        window.location = "antemortem.php?med=<?php echo $_GET['med'] ?>&mid=<?php echo $id  ?>&mdate=<?php echo $date ?>&species=<?php echo $_GET['species']?>&category=<?php echo $_GET['category']?>&region=<?php echo $_GET['region']?>&province=<?php echo $_GET['province']?>&city=<?php echo $_GET['city']?>&barangay=<?php echo $_GET['barangay']?>";
-                    </script>
-
-                    <?php
+            
+                }
       
-    
-        
-        
-            }
           
         
 
@@ -40402,6 +40413,9 @@ function login()
                         $_SESSION['me_status'] = $row['me_status'];
                         $_SESSION['me_remarks'] = $row['me_remarks'];
                         $_SESSION['me_account_activation'] = $row['me_account_activation'];
+
+                        
+                        $_SESSION['me_province_code'] = $row['me_province_code'];
                         $_SESSION['region_code'] = $row['region_code'];
                         if($row['me_account_activation'] == 0 || $row['me_status'] == 'Pending' || $row['me_status'] =='Rejected')
                         {
