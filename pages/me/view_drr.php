@@ -32,7 +32,7 @@ $today = strtotime($todays_date);
 	<link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
 
 	
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js"></script>
 	<script src="../../global_assets/js/main/jquery.min.js"></script>
 	<script src="../../global_assets/js/main/bootstrap.bundle.min.js"></script>
 	<script src="../../assets/js/app.js"></script>
@@ -354,6 +354,7 @@ $today = strtotime($todays_date);
 		$('.datatable-responsive').dataTable( {
 			"order": [],
 		} );
+		
 	</script>
 
 

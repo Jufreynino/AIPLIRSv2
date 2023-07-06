@@ -22934,7 +22934,8 @@ function view_drr_me()
                                                                                 
                                                                 <h1>Certificate of Ownership</h1>
                                                                                 <div class="text-center">
-                                                                                    <img src="../../global_assets/images/<?php echo $row['ownership'] ?>" alt="" style="width:100% !important;">
+                                                                            <div id="certificate_of_ownership" style="height:600px; width:100%; !important"></div>
+                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['ownership'] ?>", "#certificate_of_ownership");</script>
                                                                                 </div>
                                                                     </div>
 
@@ -22954,7 +22955,8 @@ function view_drr_me()
                                                                                 
                                                                 <h1>Certificate of Transfer</h1>
                                                                                 <div class="text-center">
-                                                                                    <img src="../../global_assets/images/<?php echo $row['transfer'] ?>" alt="" style="width:100% !important;">
+                                                                    <div id="certificate_of_transfer" style="height:600px; width:100%; !important"></div>
+                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['transfer'] ?>", "#certificate_of_transfer");</script>
                                                                                 </div>
                                                                     </div>
 
@@ -22973,7 +22975,9 @@ function view_drr_me()
                                                                 <div class="modal-body">
                                                                                 
                                                                 <h1>Shipping Permit</h1>
-                                                                                    <img src="../../global_assets/images/<?php echo $row['s_permit'] ?>" alt="" style="width:100% !important;">
+                                                                <div id="shipping_permit" style="height:600px; width:100%; !important"></div>
+                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['s_permit'] ?>", "#shipping_permit");</script>
+
                                                                     </div>
 
                                                                 <div class="modal-footer">
@@ -22994,8 +22998,8 @@ function view_drr_me()
 
                                                                 <h1>Veterinary Health Certificate</h1>
                                                                                 <div class="text-center">
-                                                                                    <img src="../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>" alt="" style="width:100% !important;">
-                                                                                    
+                                                                <div id="veterinary_health" style="height:600px; width:100%; !important"></div>
+                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>", "#veterinary_health");</script>
                                                                                 </div>
                                                                     </div>
 
@@ -23376,7 +23380,10 @@ function view_drr_me()
                                                                                     <br>
                                                                                         <?php if($row['s_permit'] =='0') { ?>
                                                                                            
-                                                                                        <?php } else {?> <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_shipping<?php echo $row['drr_id']?>">Shipping permit</button> <?php } ?>
+                                                                                        <?php } else {?> 
+                                                                                            
+                                                                                            
+                                                                                            <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_shipping<?php echo $row['drr_id']?>">Shipping permit</button> <?php } ?>
 
                                                                                         <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_veterinary<?php echo $row['drr_id']?>">Veterinary Health Certificate</button><br>
                                                 
@@ -31946,7 +31953,7 @@ function show_mio_drr()
     global $con;
     
 
-    $sql = "SELECT * FROM assigment_tbl INNER JOIN meat_establishment_tbl ON assigment_tbl.me_id =meat_establishment_tbl.me_id INNER JOIN ddr_table ON assigment_tbl.me_id = ddr_table.me_id INNER JOIN attachment_tbl ON ddr_table.drr_id= attachment_tbl.drr_id  WHERE assigment_tbl.employee_id='$id' ORDER BY drr_date_time DESC";
+    $sql = "SELECT * FROM assigment_tbl INNER JOIN meat_establishment_tbl ON assigment_tbl.me_id =meat_establishment_tbl.me_id INNER JOIN ddr_table ON assigment_tbl.me_id = ddr_table.me_id INNER JOIN attachment_tbl ON ddr_table.drr_id= attachment_tbl.drr_id  WHERE assigment_tbl.employee_id='$id' ORDER BY ddr_table.drr_date_time DESC";
 
     $result = $con->query($sql);
         while($row = $result->fetch_assoc()) {
@@ -32031,35 +32038,35 @@ function show_mio_drr()
                                 <?php } ?>
                             
 
-<div id="remarks<?php echo $row['drr_id']?>" class="modal fade" tabindex="-1" style="z-index: 10000;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h6 class="modal-title">Remarks</h6>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <form method="POST">
+                                <div id="remarks<?php echo $row['drr_id']?>" class="modal fade" tabindex="-1" style="z-index: 10000;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-primary">
+                                                <h6 class="modal-title">Remarks</h6>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <form method="POST">
 
-            <div class="modal-body">
+                                            <div class="modal-body">
 
-                    <input type="hidden" name="id" value="<?php echo $row['drr_id'] ?>">
-                    <textarea rows="3" cols="3" name="remarks" class="form-control" required placeholder="Please state your reason "></textarea>
-            </div>
+                                                    <input type="hidden" name="id" value="<?php echo $row['drr_id'] ?>">
+                                                    <textarea rows="3" cols="3" name="remarks" class="form-control" required placeholder="Please state your reason "></textarea>
+                                            </div>
 
 
-            <div class="text-center">
-                <button type="submit" name="send_remarks" class="btn bg-success">Submit Remarks</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-            </form>
-            <br>    
+                                            <div class="text-center">
+                                                <button type="submit" name="send_remarks" class="btn bg-success">Submit Remarks</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </form>
+                                            <br>    
 
-            
-            </div>
-                
-        </div>
-    </div>
-</div>
+                                            
+                                            </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
 
                             </td>
 
@@ -32149,231 +32156,231 @@ function show_mio_drr()
 
                                                                                 <?php if($row['drr_species'] == 'Chicken') { ?>
 
-<?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) { } else { ?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Broiler Head Count</b></label>
-            <p><?php echo $row['drr_boiler_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Broiler Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_broiler_weight'], 2)  ?></p>
-        </div>
-    </div>
-<?php }     ?>
+                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) { } else { ?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Broiler Head Count</b></label>
+                                                                <p><?php echo $row['drr_boiler_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Broiler Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_broiler_weight'], 2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php }     ?>
 
 
 
-<?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else { ?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Culled Layer Head Count</b></label>
-            <p><?php echo $row['drr_culled_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Culled Layer Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-        </div>
-    </div>
+                                                    <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else { ?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Culled Layer Head Count</b></label>
+                                                                <p><?php echo $row['drr_culled_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Culled Layer Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
 
-<?php }?>
-
-
-<?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) { } else { ?>
-
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Native Head Count</b></label>
-            <p><?php echo $row['drr_native_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Native Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php }?>
+                                                    <?php }?>
 
 
-<?php }else if($row['drr_species'] == 'Hog'){ ?>
+                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) { } else { ?>
 
-<?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Fattener Head Count</b></label>
-            <p> <?php echo $row['drr_boiler_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Fattener Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Native Head Count</b></label>
+                                                                <p><?php echo $row['drr_native_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Native Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php }?>
 
 
+                                                    <?php }else if($row['drr_species'] == 'Hog'){ ?>
+
+                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Fattener Head Count</b></label>
+                                                                <p> <?php echo $row['drr_boiler_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Fattener Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
 
 
 
 
-<?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Culled Sow Head Count</b></label>
-            <p><?php echo $row['drr_culled_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Culled Sow Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
 
 
-<?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
-
-<div class="col-md-6">
-     <div class="form-group">
-        <label style="margin-bottom:-25px;"><b>Grower Head Count</b></label>
-        <p><?php echo $row['drr_native_head']  ?></p>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label style="margin-bottom:-25px;"><b>Grower Live Weight (kg)</b></label>
-        <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-    </div>
-</div>
-<?php  }?>
-
-<?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
-
-<div class="col-md-6">
-     <div class="form-group">
-        <label style="margin-bottom:-25px;"><b>Culled boar Head Count</b></label>
-        <p><?php echo $row['culled_boar_head']  ?></p>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label style="margin-bottom:-25px;"><b>Culled boar Live Weight (kg)</b></label>
-        <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
-    </div>
-</div>
-<?php  }?>
+                                                    <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Culled Sow Head Count</b></label>
+                                                                <p><?php echo $row['drr_culled_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Culled Sow Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
 
 
-<?php }else if($row['drr_species'] == 'Cattle'){ ?>
+                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
 
-<?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Cow Head Count</b></label>
-            <p><?php echo $row['drr_boiler_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Cow Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label style="margin-bottom:-25px;"><b>Grower Head Count</b></label>
+                                                            <p><?php echo $row['drr_native_head']  ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label style="margin-bottom:-25px;"><b>Grower Live Weight (kg)</b></label>
+                                                            <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <?php  }?>
 
+                                                    <?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
 
-<?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
-
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Bull Head Count</b></label>
-            <p><?php echo $row['drr_culled_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Bull Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label style="margin-bottom:-25px;"><b>Culled boar Head Count</b></label>
+                                                            <p><?php echo $row['culled_boar_head']  ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label style="margin-bottom:-25px;"><b>Culled boar Live Weight (kg)</b></label>
+                                                            <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <?php  }?>
 
 
+                                                    <?php }else if($row['drr_species'] == 'Cattle'){ ?>
 
-<?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Heifir Head Count</b></label>
-            <p><?php echo $row['drr_native_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Heifir Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
-
-<?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Steer Head Count</b></label>
-            <p><?php echo $row['culled_boar_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Steer Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
-    
-<?php } else {?>
-<?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b> Total Head Count</b></label>
-            <p><?php echo $row['drr_boiler_head']  ?></p>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label style="margin-bottom:-25px;"><b>Total Live Weight (kg)</b></label>
-            <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-        </div>
-    </div>
-<?php  }?>
-
-<?php } ?>
+                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Cow Head Count</b></label>
+                                                                <p><?php echo $row['drr_boiler_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Cow Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
 
 
-<div class="col-md-6">
-    <div class="form-group">
-        <b>
-        <label style="margin-bottom:-25px;">Total Head Count </b></label>
-        <p><?php echo $row['drr_total_head'] ?></p>
-        
-    </div>
-</div>
+                                                    <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
 
-<div class="col-md-6">
-    <div class="form-group">
-        <b>
-        <label style="margin-bottom:-25px;">Total Live Weight (kg)</b></label>
-        <p><?php echo number_format($row['drr_total_weight'],2) ?></p>
-    
-    </div>
-</div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Bull Head Count</b></label>
+                                                                <p><?php echo $row['drr_culled_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Bull Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
+
+
+
+                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Heifir Head Count</b></label>
+                                                                <p><?php echo $row['drr_native_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Heifir Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
+
+                                                    <?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Steer Head Count</b></label>
+                                                                <p><?php echo $row['culled_boar_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Steer Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
+                                                        
+                                                    <?php } else {?>
+                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b> Total Head Count</b></label>
+                                                                <p><?php echo $row['drr_boiler_head']  ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label style="margin-bottom:-25px;"><b>Total Live Weight (kg)</b></label>
+                                                                <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php  }?>
+
+                                                    <?php } ?>
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <b>
+                                                            <label style="margin-bottom:-25px;">Total Head Count </b></label>
+                                                            <p><?php echo $row['drr_total_head'] ?></p>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <b>
+                                                            <label style="margin-bottom:-25px;">Total Live Weight (kg)</b></label>
+                                                            <p><?php echo number_format($row['drr_total_weight'],2) ?></p>
+                                                        
+                                                        </div>
+                                                </div>
                                                                                 </div>
 
                                                                                 </div>
@@ -32441,10 +32448,12 @@ function show_mio_drr()
                                                                                         
                                                                                     <div class="row">
                                                                                         <h3 for=""> Shipping Permit</h3>
+                                                                                        
+                                                                                        <div id="shippint" style="height:600px; width:100%; !important"></div>
+                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['s_permit'] ?>", "#shippint");</script>
 
-                                                                                        <a href="../../global_assets/images/<?php echo $row['s_permit'] ?>" target="_blank">
-                                                                                        <img src="../../global_assets/images/<?php echo $row['s_permit'] ?>" alt="" style="width:100% !important;"> 
-                                                                                        </a>
+                                                                                       
+                                                                                     
                                                                                         </div>
                                                                                         <br>
                                                                                         <br>
@@ -32452,10 +32461,10 @@ function show_mio_drr()
 
                                                                                     <div class="row">
                                                                                         <h3 for=""> Veterinary Health Certificate</h3>
+                                                                                        <div id="vhc" style="height:600px; width:100%; !important"></div>
+                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>", "#vhc");</script>
 
-                                                                                        <a href="../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>" target="_blank">
-                                                                                        <img src="../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>" alt="" style="width:100% !important;"> 
-                                                                                        </a>
+                                                                                      
                                                                                     </div>
 
                                                                                     <br>
@@ -32478,9 +32487,10 @@ function show_mio_drr()
                                                                                 <div class="row">
                                                                                     
                                                                                 <h3 for=""> Certificate of Ownership</h3>
-                                                                                    <a href="../../global_assets/images/<?php echo $row['ownership'] ?>" target="_blank">
-                                                                                        <img src="../../global_assets/images/<?php echo $row['ownership'] ?>" alt="" style="width:100% !important;"> 
-                                                                                    </a>
+                                
+
+                                                                                    <div id="owner" style="height:600px; width:100%; !important"></div>
+                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['ownership'] ?>", "#owner");</script>
 
                                                                                     </div>
 
@@ -32491,9 +32501,10 @@ function show_mio_drr()
 
                                                                                     <h3 for=""> Certificate of Transfer</h3>
 
-                                                                                    <a href="../../global_assets/images/<?php echo $row['transfer'] ?>" target="_blank">
-                                                                                        <img src="../../global_assets/images/<?php echo $row['transfer'] ?>" alt="" style="width:100% !important;"> 
-                                                                                    </a>
+
+                                                                                    <div id="owner" style="height:600px; width:100%; !important"></div>
+                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['transfer'] ?>", "#owner");</script>
+
                                                                                     </div>
 
 

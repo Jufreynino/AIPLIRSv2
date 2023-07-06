@@ -51,6 +51,9 @@ else{
 	<link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
 
 	<script src="../../global_assets/js/main/jquery.min.js"></script>
+	
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 	<script src="../../global_assets/js/main/bootstrap.bundle.min.js"></script>
@@ -67,6 +70,7 @@ else{
 
 	<script src="../../global_assets/js/demo_pages/extra_jgrowl_noty.js"></script>
 	<script src="../../global_assets/js/demo_pages/datatables_responsive.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js"></script>
 
 
     </head>
