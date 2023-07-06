@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2023 at 12:28 PM
+-- Generation Time: Jul 06, 2023 at 03:05 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -106,10 +106,11 @@ CREATE TABLE `attachment_tbl` (
 --
 
 INSERT INTO `attachment_tbl` (`a_id`, `s_permit`, `drr_id`, `veterenary_certificate`, `ownership`, `transfer`) VALUES
-(226, '0', '223', '8154-Screenshot_2023-07-03-14-21-18-60_be80aec1db9a2b53c9d399db0c602181.jpg', '0', '0'),
-(227, '0', '224', '1862-Screenshot_2023-07-03-14-21-18-60_be80aec1db9a2b53c9d399db0c602181.jpg', '0', '0'),
-(228, '0', '225', '2835-Screenshot_2023-07-03-14-21-18-60_be80aec1db9a2b53c9d399db0c602181.jpg', '0', '0'),
-(229, '3680-week 22.pdf', '226', '5773-week 23.pdf', '0', '0');
+(1, '3680-week 22.pdf', '223', '5773-week 23.pdf', '0', '0'),
+(2, '3680-week 22.pdf', '224', '5773-week 23.pdf', '0', '0'),
+(3, '3680-week 22.pdf', '225', '5773-week 23.pdf', '0', '0'),
+(4, '3680-week 22.pdf', '226', '5773-week 23.pdf', '0', '0'),
+(5, '7821-nmis wallpaper blue.png', '227', '8956-NMIS Wallpaper V02.png', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -162,8 +163,9 @@ INSERT INTO `ddr_table` (`drr_id`, `employee_id`, `drr_date_time`, `drr_species`
 (222, 'dsads', '06/13/2023 01:32:56pm', 'Chicken', 'PDP', 'Fsdf', 'Sdfsd', '23-06-13-1', '3432', 'Central Luzon', 'Nueva Ecija', 'Llanera', 'San Francisco', '432', '324', '3432', '432', '342', '4234', 'wddsa', 'sdd', '4206', '1179.00', '0', '1', '06/13/2023', '01:32:56pm', '2', '104', '434', 'Backyard', '0', '0', '0'),
 (223, 'dsads', '07/03/2023 03:38:37pm', 'Chicken', 'PDP', 'Juan', ' Dealer 1', '23-07-03-1', '6', 'Central Luzon', 'Nueva Ecija', 'Science City of Muñoz', 'Mangandingay', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '1', '07/03/2023', '03:38:37pm', '2', '105', 'Mr. Max Cabahug', 'Backyard', '0', '0', '1'),
 (224, 'dsads', '07/03/2023 04:12:08pm', 'Chicken', 'PDP', 'Sdfa', 'Sdf', '23-07-03-2', 'sdf', 'Central Luzon', 'Bulacan', 'Pandi', 'Manatal', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '1', '07/03/2023', '04:12:08pm', '2', '105', 'Mr. Max Cabahug', 'Commercial', '0', '0', '0'),
-(225, 'dsads', '07/03/2023 05:18:12pm', 'Chicken', 'PDP', 'D', 'Sda', '23-07-03-3', '0', 'Central Luzon', 'Bulacan', 'Pandi', 'Poblacion', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '0', '07/03/2023', '05:18:12pm', '0', '105', 'Mr. Max Cabahug', 'Backyard', '0', '0', '0'),
-(226, 'dsads', '07/04/2023 03:20:49pm', 'Chicken', 'PDP', 'Tewt', 'Yet', '23-07-04-1', '0', 'Central Luzon', 'Ilocos Sur', 'Nagbukel', 'Mapisi', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '0', '07/04/2023', '03:20:49pm', '0', '105', 'test', 'Commercial', '0', '0', '0');
+(225, 'dsads', '07/03/2023 05:18:12pm', 'Chicken', 'PDP', 'D', 'Sda', '23-07-03-3', '0', 'Central Luzon', 'Bulacan', 'Pandi', 'Poblacion', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '1', '07/03/2023', '05:18:12pm', '2', '105', 'Mr. Max Cabahug', 'Backyard', '0', '0', '0'),
+(226, 'dsads', '07/04/2023 03:20:49pm', 'Chicken', 'PDP', 'Tewt', 'Yet', '23-07-04-1', '0', 'Central Luzon', 'Ilocos Sur', 'Nagbukel', 'Mapisi', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '1', '07/04/2023', '03:20:49pm', '2', '105', 'test', 'Commercial', '0', '0', '1'),
+(227, 'dsads', '07/05/2023 07:54:20am', 'Chicken', 'PDP', 'Test', 'Tse', '23-07-05-1', '0', 'Central Luzon', 'Bataan', 'Morong', 'Mabayo', '100', '1000', '0', '0', '0', '0', 'wddsa', 'sdd', '100', '1000.00', '0', '0', '07/05/2023', '07:54:20am', '0', '105', 'test', 'Backyard', '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -427,8 +429,9 @@ CREATE TABLE `fhc_table` (
 INSERT INTO `fhc_table` (`fhc_id`, `drr_id`, `fhc_number_of_heads`, `fhc_weight`, `fhc_species`, `fhc_date`, `fhc_time`, `me_id`, `fhc_region`, `fhc_province`, `fhc_city`) VALUES
 (234, 223, '99', '998', 'Chicken', '07/03/2023', '03:38:37pm', 105, 'Central Luzon', 'Nueva Ecija', 'Science City of Muñoz'),
 (235, 224, '100', '1000', 'Chicken', '07/03/2023', '04:12:08pm', 105, 'Central Luzon', 'Bulacan', 'Pandi'),
-(236, 225, '0', '0', 'Chicken', '07/03/2023', '05:18:12pm', 105, 'Central Luzon', 'Bulacan', 'Pandi'),
-(237, 226, '0', '0', 'Chicken', '07/04/2023', '03:20:49pm', 105, 'Central Luzon', 'Ilocos Sur', 'Nagbukel');
+(236, 225, '100', '1000', 'Chicken', '07/03/2023', '05:18:12pm', 105, 'Central Luzon', 'Bulacan', 'Pandi'),
+(237, 226, '100', '1000', 'Chicken', '07/04/2023', '03:20:49pm', 105, 'Central Luzon', 'Ilocos Sur', 'Nagbukel'),
+(238, 227, '0', '0', 'Chicken', '07/05/2023', '07:54:20am', 105, 'Central Luzon', 'Bataan', 'Morong');
 
 -- --------------------------------------------------------
 
@@ -458,8 +461,9 @@ CREATE TABLE `fit_human_consumption` (
 INSERT INTO `fit_human_consumption` (`fit_id`, `drr_id`, `fit_number_of_head`, `fit_weight`, `fit_date`, `fit_time`, `fit_species`, `fit_country`, `fit_region`, `fit_province`, `fit_city`, `me_id`) VALUES
 (238, 223, '99', '11', '07/03/2023', '03:38:37pm', 'Chicken', 'Philippines', 'Central Luzon', 'Nueva Ecija', 'Science City of Muñoz', 105),
 (239, 224, '100', '2', '07/03/2023', '04:12:08pm', 'Chicken', 'Philippines', 'Central Luzon', 'Bulacan', 'Pandi', 105),
-(240, 225, '0', '0', '07/03/2023', '05:18:12pm', 'Chicken', 'Philippines', 'Central Luzon', 'Bulacan', 'Pandi', 105),
-(241, 226, '0', '0', '07/04/2023', '03:20:49pm', 'Chicken', 'Philippines', 'Central Luzon', 'Ilocos Sur', 'Nagbukel', 105);
+(240, 225, '100', '900', '07/03/2023', '05:18:12pm', 'Chicken', 'Philippines', 'Central Luzon', 'Bulacan', 'Pandi', 105),
+(241, 226, '100', '900', '07/04/2023', '03:20:49pm', 'Chicken', 'Philippines', 'Central Luzon', 'Ilocos Sur', 'Nagbukel', 105),
+(242, 227, '0', '0', '07/05/2023', '07:54:20am', 'Chicken', 'Philippines', 'Central Luzon', 'Bataan', 'Morong', 105);
 
 -- --------------------------------------------------------
 
@@ -679,7 +683,7 @@ ALTER TABLE `suspected_tbl`
 -- AUTO_INCREMENT for table `am_table`
 --
 ALTER TABLE `am_table`
-  MODIFY `am_table` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=607;
+  MODIFY `am_table` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=608;
 
 --
 -- AUTO_INCREMENT for table `assigment_tbl`
@@ -691,19 +695,19 @@ ALTER TABLE `assigment_tbl`
 -- AUTO_INCREMENT for table `attachment_tbl`
 --
 ALTER TABLE `attachment_tbl`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT for table `ddr_table`
 --
 ALTER TABLE `ddr_table`
-  MODIFY `drr_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `drr_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
 -- AUTO_INCREMENT for table `disease_report_tbl`
 --
 ALTER TABLE `disease_report_tbl`
-  MODIFY `dr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=786;
+  MODIFY `dr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=787;
 
 --
 -- AUTO_INCREMENT for table `disease_tbl`
@@ -721,13 +725,13 @@ ALTER TABLE `employee_tbl`
 -- AUTO_INCREMENT for table `fhc_table`
 --
 ALTER TABLE `fhc_table`
-  MODIFY `fhc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
+  MODIFY `fhc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT for table `fit_human_consumption`
 --
 ALTER TABLE `fit_human_consumption`
-  MODIFY `fit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+  MODIFY `fit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
 -- AUTO_INCREMENT for table `meat_establishment_daily_tbl`
