@@ -549,7 +549,7 @@ $('#save_ante_pdp').click(function(){
 	var disease_kind_of_species = $('#disease_kind_of_species').val();
 	var disease_kind_of_meat = $('#disease_kind_of_meat').val();
 	var disease_category = $('#disease_category').val();
-	var notifiable = $('#notifiable').val();
+	var notifiable = $('#notifiable:checked').val();
 
 
 	
