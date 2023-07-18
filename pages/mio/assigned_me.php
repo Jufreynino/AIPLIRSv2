@@ -50,6 +50,7 @@ else{
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js"></script>
 	<script src="../../global_assets/js/main/jquery.min.js"></script>
 	
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -70,9 +71,31 @@ else{
 
 	<script src="../../global_assets/js/demo_pages/extra_jgrowl_noty.js"></script>
 	<script src="../../global_assets/js/demo_pages/datatables_responsive.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js"></script>
 
+	<style>
+		.tables {
+			display:table;
+			width:100% !important;
+			height:100%;
+		}
+		.cell {
+			display:table-cell;
+			width:50%;
+			padding:10px;
+		}
+		.row {
+			display:table-row;
+		}
+		.cell {
+			background:red;
+			color:white;
+		}
+		.merged{
+			display:table-cell;
+			width:100%;
 
+		}
+	</style>
     </head>
 
 <body>
@@ -210,7 +233,6 @@ else{
                                         ?>POSMD <?php 
                                     }
 
-
                                     ?>
 								</div>
 							</div>
@@ -322,78 +344,130 @@ else{
 
 				
 			</div>
-			<div class="content">
-				<div class="row">
+				<div class="content">
+					<div class="row">
 
-                        <div class="col-md-12">
+					<div class="col-md-12">
 
-                            <div class="card">
-               
-                    		<div class="card-header header-elements-inline" style="background-color:#26a69a; color:white;">
-								<h4 class="card-title"  style="font-weight:bold;">DRR & Meat Inspection Status</h4>
+						<div class="card">
+
+							<div class="card-header header-elements-inline" style="background-color:#26a69a; color:white;">
+								<h4 class="card-title" style="font-weight:bold;">
+							DRR & Meat Inspection Status 
+							</h4>
 
 							</div>
 							
 
-<br>
-<br>
-
-
-								
-							<div class="card-body py-0">
-									<div class="wrapper">		
-								
-													<table class="table table-bordered table-striped  datatable-responsive" >
-															<thead>
-														<tr style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
-																<th  style="font-weight:bold;" class="text-center" style="width: 100px;">Date & Time</th>
-					                                            <th  style="font-weight:bold;" class="text-center">Meat Establishment</th>
-					                                            <th  style="font-weight:bold;" class="text-center">Species</th>
-					                                            <th  style="font-weight:bold;" class="text-center">Head Count</th>
-					                                            <th  style="font-weight:bold;" class="text-center" style="width: 100px;">Details of DRR </th>
-					                                            <th  style="font-weight:bold;" class="text-center" style="width: 100px;">DRR Status</th>
-					                                            <th  style="font-weight:bold;" class="text-center" style="width: 100px;">Meat Inspection Report Status</th>
-																
-
-														</tr>
-					                                        </thead>
-					                                        <tbody>
-															<?php echo show_mio_drr() ?>
-															</tbody>
-													</table>
-													</div>
-								</div>
-								
-							<br>
-								<br>
-						</div>
+						<br>
+						<br>
+							<div class="card-body">
+								<div class="row">
+									<div class="wrapper">
+										
+										<table style="margin-top:20px; widht:auto !important;" class="table table-striped table-bordered datatable-responsive">
+											<thead>
+												<tr style="padding:10px !important; height:20px !important; margin:20px !important; background-color:#1d2328; color:white;">
+													<th style="font-weight:bold" class="text-center" style="width: 100px;">Date & Time</th>
+													<th style="font-weight:bold" class="text-center">Meat Establishment</th>
+													<th style="font-weight:bold" class="text-center">Name of Meat Dealer</th>
+													<th style="font-weight:bold" class="text-center">Species</th>
+													<th style="font-weight:bold" class="text-center">Head Count</th>
+													<th style="font-weight:bold" class="text-center" style="width: 100px;"> Details of DRR</th>
+													<th style="font-weight:bold" class="text-center" style="width: 100px;">DRR Status</th>
+													<th style="font-weight:bold"  class="text-center"style="width: 100px;">Meat Inspection Report Status</th>
+												</tr>
+											</thead>
+											<?php echo show_mio_drr() ?>
+										
+											</table>
+ 						
+									</div></div>
+                        </div>
+                        </div>
+                    </div>
 
 
 
 
 					</div>
-				</div>
 			</div>
-			<div class="navbar navbar-expand-lg navbar-light">
-				<div class="text-center d-lg-none w-100">
-					<button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
-						<i class="icon-unfold mr-2"></i>
-						Footer
-					</button>
-				</div>
-
-				<div class="navbar-collapse collapse" id="navbar-footer">
-					<span class="navbar-text">
-						&copy; Department of Agriculture - National Meat Inspection Service (DA - NMIS) All rights reserved.
-					</span>
-
-				
 				</div>
 				
-			</div>
 			
 		</div>
-	</div>
+
+
+
+
+
+		<div id="dataModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Daily Receiving Details</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body" id="employee_details">
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script>
+			$(document).ready(function(){
+			
+				$('.view_data').click(function(){
+					var drr_id = $(this).attr("id");
+					var employee_id = <?php echo $_SESSION['employee_id'] ?>;
+
+					
+					var view_daily_mio = '1';
+					var btn_add_am_disease_slh = '0';
+					var btn_add_am_disease_pdp = '0';
+
+					var btn_add_pm_disease_pdp = '0';
+					var btn_add_pm_disease_slh = '0';
+					var btn_add_mio = '0';
+					var btn_add_meat_establishment  = '0';
+					var btn_add_posms  = '0';
+					$.ajax({
+						url: "../../pages/ajax/ajax.php",
+						method: "POST",
+						data : {employee_id:employee_id,view_daily_mio:view_daily_mio,
+
+							 drr_id :drr_id,
+							 btn_add_am_disease_slh :btn_add_am_disease_slh,
+							btn_add_am_disease_pdp:btn_add_am_disease_pdp,
+
+							btn_add_pm_disease_pdp:btn_add_pm_disease_pdp,
+							btn_add_pm_disease_slh:btn_add_pm_disease_slh,
+							btn_add_mio:btn_add_mio,
+							btn_add_meat_establishment:btn_add_meat_establishment,
+							btn_add_posms:btn_add_posms,
+						
+						
+						
+						
+						},
+						success: function(data){
+							$('#employee_details').html(data);
+						}
+					})
+
+					$('#dataModal').modal("show");
+
+				});
+
+
+			});
+
+		</script>
 	
 		  <script type="text/javascript">
 				$(document).ready(function() {

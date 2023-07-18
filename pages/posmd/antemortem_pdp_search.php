@@ -491,7 +491,7 @@ else{
 																			<form action="antemortem_pdp_search.php" method="get">
 																			<input type="text"  name="code">
 																			<button type="submit" class="btn bg-primary-600 "  >Filter </button>
-																			</form>   
+																			</form>      
                                                                             <table style="width: 100%; margin-top:20px;" class="table  table-bordered table-striped ">
                                                                                 <thead>
                                                                                     <tr style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
@@ -505,8 +505,9 @@ else{
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <?php echo show_pdp_disease_antemortem() ?>
-                                                                              
+                                                                                    <?php echo show_pdp_disease_antemortem_search() ?>
+                                                                                </tbody>
+                                                                            </table>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,7 +1,7 @@
 <?php
 include '../../config/config.php';
 include '../../vendor/mailer/PHPMailerAutoload.php';
-error_reporting(0);
+// error_reporting(0);
 function charts_data(){
     global $con;
     $sql = "SELECT * FROM ddr_table ORDER BY drr_date";
@@ -22844,7 +22844,7 @@ function view_drr_me()
 
                                                         
                                                     <td class="text-right"><?php echo number_format($row['drr_total_head'])?></td>
-                            <td class="text-center"><button type="button" class="btn bg-violet-800" data-toggle="modal" data-target="#view_drr<?php echo $row['drr_id'] ?>">View </button></td>
+                            <td class="text-center "><button type="button" class="btn bg-violet-800 view_data" data-toggle="modal" id="<?php echo $row['drr_id']?>" >View </button> 
                                                     
 
 
@@ -22874,8 +22874,10 @@ function view_drr_me()
 
                                                     <?php  } ?>   
                                                 </td>
+                                           
 
-                                                <div id="remarks_view<?php echo $row['drr_id'] ?>" class="modal fade" tabindex="-1">
+
+                                            <div id="remarks_view<?php echo $row['drr_id'] ?>" class="modal fade" tabindex="-1">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                     
@@ -22918,6 +22920,7 @@ function view_drr_me()
                                                     
                                                     </td>
 
+                                                    </tr>
 
 
 
@@ -22927,519 +22930,22 @@ function view_drr_me()
 
 
 
-                                                    <div id="view_ownership<?php echo $row['drr_id']?>" class="modal fade" tabindex="-1" style="z-index: 10000;">
-                                                        <div class="modal-dialog modal-full">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                                
-                                                                <h1>Certificate of Ownership</h1>
-                                                                                <div class="text-center">
-                                                                            <div id="certificate_of_ownership" style="height:600px; width:100%; !important"></div>
-                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['ownership'] ?>", "#certificate_of_ownership");</script>
-                                                                                </div>
-                                                                    </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div id="view_transfer<?php echo $row['drr_id']?>" class="modal fade" tabindex="-1" style="z-index: 10000;">
-                                                        <div class="modal-dialog modal-full">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                                
-                                                                <h1>Certificate of Transfer</h1>
-                                                                                <div class="text-center">
-                                                                    <div id="certificate_of_transfer" style="height:600px; width:100%; !important"></div>
-                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['transfer'] ?>", "#certificate_of_transfer");</script>
-                                                                                </div>
-                                                                    </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div id="view_shipping<?php echo $row['drr_id']?>" class="modal fade" tabindex="-1" style="z-index: 10000;">
-                                                        <div class="modal-dialog modal-full">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                                
-                                                                <h1>Shipping Permit</h1>
-                                                                <div id="shipping_permit" style="height:600px; width:100%; !important"></div>
-                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['s_permit'] ?>", "#shipping_permit");</script>
 
-                                                                    </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
 
-                                                    <div id="view_veterinary<?php echo $row['drr_id']?>" class="modal fade" tabindex="-1" style="z-index: 10000;">
-                                                        <div class="modal-dialog modal-full">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
 
-                                                                <h1>Veterinary Health Certificate</h1>
-                                                                                <div class="text-center">
-                                                                <div id="veterinary_health" style="height:600px; width:100%; !important"></div>
-                                                                <script>PDFObject.embed("../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>", "#veterinary_health");</script>
-                                                                                </div>
-                                                                    </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            <div id="view_drr<?php echo $row['drr_id'] ?>" class="modal fade" tabindex="-1">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-
-                                        <div class="modal-body">
-                                        <br>
-                                           <h1 class="text-left" style="margin-top:-30px;"> <?php echo $row['drr_species'] ?>   </h1> 
-
-
-                                           <p class="text-right" style="font-weight:bold; margin-top:-40px;  margin-bottom:-10px; font-size:20px">Meat Dealer:
-                                                                    <?php  echo $row['drr_meat_dealer_lastname'] ?>, <?php  echo $row['drr_meat_dealer'] ?></p> 
-                                           
-                                           <div>
-                                           
-                                            </div>
-                
-
-                                            <hr>
-
-
-
-
-
-                                            <div class="row">
-
-										<br>
-										<br>
-										<br>
-										<br>
-										<br>
-
-									
-                                                                                                                                    
-                                            <div class="col-md-5">
-                                                                 <form method="POST" class="form-validate-jquery" enctype="multipart/form-data">
-
-                                                                     
-
-
-
-
-                                                                            <p style="font-weight:bold; margin-bottom:-20px;"> Name of Meat Dealer</p> <br>
-                                                                            <?php  echo $row['drr_meat_dealer'] ?>
-                                                                            <br>
-                                                                            <br>
-                                                                            <div class="row">
-                                                                               <div class="col-md-6">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;">Batch Number</p> <br>
-                                                                                    <?php echo $row['drr_batch_number']  ?>
-                                                                               </div>
-                                                                                <?php if($_SESSION['me_type']== "PDP") {?>
-
-                                                                                    
-                                                                                <?php } else { ?>
-                                                                                    <div class="col-md-6">
-                                                                                        <p style="font-weight:bold; margin-bottom:-20px;"> Holding Pen</p> <br>
-                                                                                        <?php echo $row['drr_holding_pen']  ?>
-                                                                                    </div>
-                                                                                <?php } ?>
-                                                                            </div>
-
-                                                                      
-                                                                        
-
-                                                                        <br>
-                                                                        <h5 style="margin-bottom:10px;">Farm Source</h5>
-
-                                                                            <div class="row">
-                                                                               <div class="col-md-6">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;">Type of Farm Source</p> <br>
-                                                                                    <?php echo $row['drr_farm_souce_type']  ?>
-                                                                               </div>
-                                                                               <div class="col-md-6">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;"> Name of Farm / Name of Farm owner</p> <br>
-                                                                                    <?php echo $row['drr_farm_source']  ?>
-                                                                               </div>
-                                                                            </div>
-                                            <br>
-                                                                            <div class="row">
-                                                                               <div class="col-md-12">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;">Address</p> <br>
-                                                                                    <?php echo $row['drr_barangay_code']  ?>, <?php echo $row['drr_city_code']  ?>, <?php echo $row['drr_province_code']  ?>
-                                                                               </div>
-                                                                               
-                                                                            </div>
-
-
-
-
-
-					                          							
-
-
-
-                                                            </div> 
-
-                                                            <div class="col-md-1"></div>
-
-                                                            <div class="col-md-6">
-                                                                    <div class="row">
-
-																	<?php if($row['drr_species'] == 'Chicken') { ?>
-
-                                                                        <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) { } else { ?>
-                                                                            <div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;">Broiler Head Count</label>
-                                                                                    <p><?php echo $row['drr_boiler_head']  ?></p>
-																				</div>
-																			</div>
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;">Broiler Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_broiler_weight'], 2)  ?></p>
-																				</div>
-																			</div>
-                                                                        <?php }     ?>
-
-
-
-                                                                        <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else { ?>
-                                                                            <div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;">Culled Layer Head Count</label>
-                                                                                    <p><?php echo $row['drr_culled_head']  ?></p>
-																				</div>
-																			</div>
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;">Culled Layer Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-																				</div>
-																			</div>
-
-                                                                        <?php }?>
-
-
-                                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) { } else { ?>
-
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;">Native Head Count</label>
-                                                                                    <p><?php echo $row['drr_native_head']  ?></p>
-																				</div>
-																			</div>
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;">Native Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-																				</div>
-																			</div>
-                                                                    <?php }?>
-
-
-																	<?php }else if($row['drr_species'] == 'Hog'){ ?>
-
-                                                                        <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Fattener Head Count</label>
-                                                                                    <p> <?php echo $row['drr_boiler_head']  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Fattener Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php  }?>
-
-
-
-
-
-
-                                                                        <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Culled Sow Head Count</label>
-                                                                                    <p><?php echo $row['drr_culled_head']  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Culled Sow Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php  }?>
-
-
-                                                                        <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
-																		
-                                                                        <div class="col-md-6">
-                                                                             <div class="form-group">
-                                                                                <label style="margin-bottom:-25px;">Grower Head Count</label>
-                                                                                <p><?php echo $row['drr_native_head']  ?></p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label style="margin-bottom:-25px;">Grower Live Weight (kg)</label>
-                                                                                <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <?php  }?>
-
-                                                                        <?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
-
-																		<div class="col-md-6">
-                                                                             <div class="form-group">
-                                                                                <label style="margin-bottom:-25px;">Culled boar Head Count</label>
-                                                                                <p><?php echo $row['culled_boar_head']  ?></p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label style="margin-bottom:-25px;">Culled boar Live Weight (kg)</label>
-                                                                                <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <?php  }?>
-
-
-																	<?php }else if($row['drr_species'] == 'Cattle'){ ?>
-                                                                        
-                                                                        <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Cow Head Count</label>
-                                                                                    <p><?php echo $row['drr_boiler_head']  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Cow Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php  }?>
-
-
-                                                                        <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
-
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Bull Head Count</label>
-                                                                                    <p><?php echo $row['drr_culled_head']  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Bull Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php  }?>
-
-
-																	
-                                                                        <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Heifir Head Count</label>
-                                                                                    <p><?php echo $row['drr_native_head']  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Heifir Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php  }?>
-
-                                                                        <?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Steer Head Count</label>
-                                                                                    <p><?php echo $row['culled_boar_head']  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label style="margin-bottom:-25px;">Steer Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php  }?>
-                                                                            
-																	<?php } else {?>
-                                                                        <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-                                                                        
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;"> Head Count</label>
-                                                                                    <p><?php echo $row['drr_boiler_head']  ?></p>
-																				</div>
-																			</div>
-																			<div class="col-md-6">
-																				<div class="form-group">
-																					<label style="margin-bottom:-25px;"> Live Weight (kg)</label>
-                                                                                    <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-																				</div>
-																			</div>
-                                                                        <?php  }?>
-
-																	<?php } ?>
-                                                                       
-                                                                       
-																		<div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <b>
-                                                                                <label style="margin-bottom:-25px;">Total Head Count</label>
-                                                                                <p><?php echo $row['drr_total_head'] ?></p>
-                                                                                </b>
-                                                                            </div>
-                                                                        </div>
-
-																		<div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <b>
-                                                                                <label style="margin-bottom:-25px;">Total Live Weight (kg)</label>
-                                                                                <p><?php echo number_format($row['drr_total_weight'],2) ?></p>
-                                                                            </b>
-                                                                            </div>
-                                                                        </div>
-
-																<!-- 		<div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label style="margin-bottom:-25px;">Total of Average</label>
-                                                                                <input type="text" class="form-control" id="quotient"  name="total_average"  placeholder="Native Weight (kg)">
-                                                                            </div>
-                                                                        </div> -->
-
-
-
-
-                                                                        <div class="col-md-12">
-                                                                        <h4>Documentary Requirements</h4>
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-																				<div class="input-group mb-3">
-																					
-                                                                                    <br>
-                                                                                        <?php if($row['s_permit'] =='0') { ?>
-                                                                                           
-                                                                                        <?php } else {?> 
-                                                                                            
-                                                                                            
-                                                                                            <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_shipping<?php echo $row['drr_id']?>">Shipping permit</button> <?php } ?>
-
-                                                                                        <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_veterinary<?php echo $row['drr_id']?>">Veterinary Health Certificate</button><br>
-                                                
-
-																				</div>
-
-																				
-                                                                            </div>
-
-                                                                <?php if($row['drr_species'] == 'Cattle'){?>
-                                                                			
-																			<div class="col-md-12">
-																				<div class="input-group mb-3">
-                                                                                    <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_ownership<?php echo $row['drr_id']?>">Certificate of Ownership</button>
-                                                                                    <button type="button" class="btn btn-link show_modal_remarks" data-toggle="modal" data-target="#view_transfer<?php echo $row['drr_id']?>">Certificate of Transfer</button>
-
-
-                                                                            </div>
-                                                                <?php  } else{?>
-                                                                			
-                                                                <?php } ?>
-
-
-                                                                        </div>
-                                                                     </div>
-                                                                </div>
-                                    </div>
-                                                            </div>
-                                    <div class="row ">
-                                        <div class="col-md-12">
-                                            <div class="text-center">
-                                                <p style="font-weight:bold; font-size:18px;"> Date Received</p>
-                                                   <p style="margin-top:-5px;"> <?php echo date('F d, Y',strtotime(str_replace('-','/',$row['drr_date']))); ?> </p>  
-                                            </div>
-                                        </div>
-                                    </div>
-                                        <hr>
-
-                                        </div>
-                                        <div class="text-center">
-                                            <?php if($row['drr_report_status'] == '1'){ ?>
-                                                <button type="button" class="btn bg-warning text-center ">On-going Inspection</button>
-                                            <?php } else{ ?>
-                                                
-
-                                            <?php } ?>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                
-                                        </div>
-                                            
-                                    </div>
-                                </div>
-                            </div>
-                                                </tr>
+                            
 
     <?php
     }
@@ -31940,6 +31446,11 @@ function show_owner_mio_posmd_drr()
         }
 }
 
+function testsss()
+{
+    echo 'sdfd';
+}
+
 
 function show_mio_drr()
 {
@@ -31963,16 +31474,15 @@ function show_mio_drr()
             $now = date('m/d/Y');
                         ?>
                         <tr style="border: 1px solid black;">
-                            <td> 
-                                
-                            <?php echo date("F d, Y", strtotime($row['drr_date'] ))  ?> <br><?php echo $row['drr_time']  ?></td>
-                            <!-- <a href="edit_daily_receiving.php?drr_id=<?php echo $row['drr_id'] ?>" class="btn btn-info"> Edit</a> -->
+                            <td> <?php echo date("F d, Y", strtotime($row['drr_date'] ))  ?> <br><?php echo $row['drr_time']  ?></td>
                             <td style="width:100px;"> <?php echo $row['me_plant_name']  ?></td>
+                            <td style="width:100px;"> <?php echo $row['drr_meat_dealer']  ?>,  <?php echo $row['drr_meat_dealer_lastname']  ?></td>
                             <td  style="width:40px;"> <?php echo $row['drr_species']  ?></td>
                             <td  style="width:40px;" class="text-right"> <?php echo  number_format($row['drr_total_head'])  ?></td>
+                            <td class="text-center "><button type="button" class="btn bg-violet-800 view_data" data-toggle="modal" id="<?php echo $row['drr_id']?>" >View </button> 
+                        </td>
 
 
-                            <td class="text-center"><button type="button" class="btn bg-violet-800 " data-toggle="modal" data-target="#view_drr<?php echo $row['drr_id'] ?>">View </button></td>
                                     <!-- DRR status: 0 = prending ,  2 = for edit , 3 = updated , 1 =completed ,-->
 
                             <td  style="width:40px;" class="text-center"> 
@@ -32060,496 +31570,13 @@ function show_mio_drr()
                                             </div>
                                             </form>
                                             <br>    
-
-                                            
                                             </div>
-                                                
                                         </div>
                                     </div>
                                 </div>
 
                             </td>
-
-
-
-
-                           
-                
-                            <div id="view_drr<?php echo $row['drr_id'] ?>" class="modal fade" tabindex="-1">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content" id="exampleModalCenteredScrollableTitle">
-
-                                        <div class="modal-body">
-                                                <br>
-                                           <h1 class="text-left" style="margin-top:-30px;"> <?php echo $row['drr_species'] ?> 
-                                           
-                                          </h1> 
-                                          <p class="text-right" style="font-weight:bold; margin-top:-40px;  margin-bottom:-10px; font-size:20px">Meat Dealer:
-                                                                    <?php  echo $row['drr_meat_dealer_lastname'] ?>, <?php  echo $row['drr_meat_dealer'] ?></p> 
-                                           
-                                           <div>
-                                           
-                                            </div>
-                
-
-                                            <hr>
-
-
-
-
-
-                                            <div class="row">
-
-										<br>
-										<br>
-										<br>
-										<br>
-										<br>
-
-									
-                                                                                                                                    
-                                            <div class="col-md-5">
-
-                                                                        <h5 style="margin-bottom:10px;"><b>Farm Source</b></h5>
-
-                                                                            <div class="row">
-                                                                               <div class="col-md-6">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;">Type of Farm Source</p> <br>
-                                                                                    <?php echo $row['drr_farm_souce_type']  ?>
-                                                                               </div>
-                                                                               <div class="col-md-6">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;"> Name of Farm / Name of Farm owner</p> <br>
-                                                                                    <?php echo $row['drr_farm_source']  ?>
-                                                                               <br>
-                                                                               <br>
-                                                                               </div>
-                                                                               <div class="col-md-12">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px; ">Address</p> <br>
-                                                                                    <?php echo $row['drr_city_code']  ?>, <?php echo $row['drr_province_code']  ?>
-                                                                               </div>
-                                                                               
-                                                                            </div>
-                                                                            <hr>
-
-                                                                            <div class="row">
-                                                                               <div class="col-md-4">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;">Batch Number</p> <br>
-                                                                                    <?php echo $row['drr_batch_number']  ?>
-                                                                               </div>
-                                                                               <div class="col-md-4">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;"> Holding Pen</p> <br>
-                                                                                    <?php echo $row['drr_holding_pen']  ?>
-                                                                               </div>
-                                                                                <div class="col-md-4">
-                                                                                    <p style="font-weight:bold; margin-bottom:-20px;"> Date Received</p> <br>
-                                                                                       <?php echo date('F d, Y',strtotime(str_replace('-','/',$row['drr_date']))); ?>  
-                                                                                </div>
-                                                                            </div>
-
-
-
-                                                                            <hr>
-
-
-                                                                            <div class="col-md-12">
-                                                                                <div class="row">
-
-                                                                                <?php if($row['drr_species'] == 'Chicken') { ?>
-
-                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) { } else { ?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Broiler Head Count</b></label>
-                                                                <p><?php echo $row['drr_boiler_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Broiler Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_broiler_weight'], 2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php }     ?>
-
-
-
-                                                    <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else { ?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Culled Layer Head Count</b></label>
-                                                                <p><?php echo $row['drr_culled_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Culled Layer Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-
-                                                    <?php }?>
-
-
-                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) { } else { ?>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Native Head Count</b></label>
-                                                                <p><?php echo $row['drr_native_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Native Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php }?>
-
-
-                                                    <?php }else if($row['drr_species'] == 'Hog'){ ?>
-
-                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Fattener Head Count</b></label>
-                                                                <p> <?php echo $row['drr_boiler_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Fattener Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-
-
-
-
-
-
-                                                    <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Culled Sow Head Count</b></label>
-                                                                <p><?php echo $row['drr_culled_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Culled Sow Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-
-
-                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label style="margin-bottom:-25px;"><b>Grower Head Count</b></label>
-                                                            <p><?php echo $row['drr_native_head']  ?></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label style="margin-bottom:-25px;"><b>Grower Live Weight (kg)</b></label>
-                                                            <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-                                                        </div>
-                                                    </div>
-                                                    <?php  }?>
-
-                                                    <?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label style="margin-bottom:-25px;"><b>Culled boar Head Count</b></label>
-                                                            <p><?php echo $row['culled_boar_head']  ?></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label style="margin-bottom:-25px;"><b>Culled boar Live Weight (kg)</b></label>
-                                                            <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
-                                                        </div>
-                                                    </div>
-                                                    <?php  }?>
-
-
-                                                    <?php }else if($row['drr_species'] == 'Cattle'){ ?>
-
-                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Cow Head Count</b></label>
-                                                                <p><?php echo $row['drr_boiler_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Cow Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-
-
-                                                    <?php if($row['drr_culled_head'] == '0' && $row['drr_culled_weight'] == '0' ) {  } else {?>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Bull Head Count</b></label>
-                                                                <p><?php echo $row['drr_culled_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Bull Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_culled_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-
-
-
-                                                    <?php if($row['drr_native_head'] == '0' && $row['drr_native_weight'] == '0' ) {  } else {?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Heifir Head Count</b></label>
-                                                                <p><?php echo $row['drr_native_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Heifir Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_native_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-
-                                                    <?php if($row['culled_boar_head'] == '0' && $row['culled_boar_weight'] == '0' ) {  } else {?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Steer Head Count</b></label>
-                                                                <p><?php echo $row['culled_boar_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Steer Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['culled_boar_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-                                                        
-                                                    <?php } else {?>
-                                                    <?php if($row['drr_boiler_head'] == '0' && $row['drr_broiler_weight'] == '0' ) {  } else {?>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b> Total Head Count</b></label>
-                                                                <p><?php echo $row['drr_boiler_head']  ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label style="margin-bottom:-25px;"><b>Total Live Weight (kg)</b></label>
-                                                                <p><?php echo number_format($row['drr_broiler_weight'],2)  ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php  }?>
-
-                                                    <?php } ?>
-
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <b>
-                                                            <label style="margin-bottom:-25px;">Total Head Count </b></label>
-                                                            <p><?php echo $row['drr_total_head'] ?></p>
-                                                            
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <b>
-                                                            <label style="margin-bottom:-25px;">Total Live Weight (kg)</b></label>
-                                                            <p><?php echo number_format($row['drr_total_weight'],2) ?></p>
-                                                        
-                                                        </div>
-                                                </div>
-                                                                                </div>
-
-                                                                                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                            
-
-					                          							
-
-
-
-                                                            </div> 
-
-                                                            <div class="col-md-1"></div>
-
-                                                            <div class="col-md-6">
-                                                                    <div class="row">
-
-																	
-
-																<!-- 		<div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label style="margin-bottom:-25px;">Total of Average</label>
-                                                                                <input type="text" class="form-control" id="quotient"  name="total_average"  placeholder="Native Weight (kg)">
-                                                                            </div>
-                                                                        </div> -->
-
-
-
-
-                                                                        <div class="col-md-12">
-                                                                        <h4>Documentary Requirements</h4>
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-																				<div class="input-group mb-3">
-																					
-                                                                                    <br>
-                                                                                        
-                                                                                    <div class="row">
-                                                                                        <h3 for=""> Shipping Permit</h3>
-                                                                                        
-                                                                                        <div id="shippint" style="height:600px; width:100%; !important"></div>
-                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['s_permit'] ?>", "#shippint");</script>
-
-                                                                                       
-                                                                                     
-                                                                                        </div>
-                                                                                        <br>
-                                                                                        <br>
-                                                                                        <br>
-
-                                                                                    <div class="row">
-                                                                                        <h3 for=""> Veterinary Health Certificate</h3>
-                                                                                        <div id="vhc" style="height:600px; width:100%; !important"></div>
-                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['veterenary_certificate'] ?>", "#vhc");</script>
-
-                                                                                      
-                                                                                    </div>
-
-                                                                                    <br>
-                                                                                    <br>
-                                                                                    <br>
-
-                                                                                        
-
-
-                                                
-
-																				</div>
-
-																				
-                                                                            </div>
-
-                                                                <?php if($row['drr_species'] == 'Cattle'){?>
-                                                                			
-																			<div class="col-md-12">
-                                                                                <div class="row">
-                                                                                    
-                                                                                <h3 for=""> Certificate of Ownership</h3>
-                                
-
-                                                                                    <div id="owner" style="height:600px; width:100%; !important"></div>
-                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['ownership'] ?>", "#owner");</script>
-
-                                                                                    </div>
-
-                                                                                    <br>
-                                                                                    <br>
-                                                                                    <br>
-                                                                                    <div class="row">
-
-                                                                                    <h3 for=""> Certificate of Transfer</h3>
-
-
-                                                                                    <div id="owner" style="height:600px; width:100%; !important"></div>
-                                                                                        <script>PDFObject.embed("../../global_assets/images/<?php echo $row['transfer'] ?>", "#owner");</script>
-
-                                                                                    </div>
-
-
-                                                                            </div>
-                                                                <?php  } else{?>
-                                                                			
-                                                                <?php } ?>
-
-
-                                                                        </div>
-                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                    </div>
-
-                                   
-                                        <hr>
-
-                                        </div>
-                                        <div class="text-center">
-                                            <?php if($row['drr_report_status'] == '1'){ ?>
-                                                <button type="button" class="btn bg-warning text-center ">On-going Inspection</button>
-                                            <?php } else{ ?>
-
-                                                <form method="POST">
-                                                    <input type="hidden" name="drr_id" value="<?php echo $row['drr_id'] ?>">
-                                                    <input type="hidden" name="me_id" value="<?php echo $row['me_id'] ?>">
-                                                <button type="submit" name="update_proceedstatus" class="btn bg-success text-center ">Proceed to Inspection</button>
-                                                
-                                                </form>
-                                                <button type="button" class="btn btn-primary show_modal_remarks" data-toggle="modal" data-target="#remarks<?php echo $row['drr_id']?>">Request to edit </button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-
-                                            <?php } ?>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                
-                                        </div>
-                                            
-                                    </div>
-                                </div>
-                            </div>
-                        </tr>
+                                </tr>
                        
                         <?php
 
@@ -35533,12 +34560,37 @@ function show_pdp_disease()
 
 
 
-
 function show_pdp_disease_antemortem()
 {
 
     global $con;
-    $sql = "SELECT * FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Antemortem' AND disease_delete_status='0' ORDER BY d_id DESC";
+    
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+
+    $total_records_per_page = 30;
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Antemortem' AND disease_delete_status='0' ");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+
+    $sql = "SELECT * FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Antemortem' AND disease_delete_status='0' ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
     $result = $con->query($sql);
     while($row = $result->fetch_assoc()) {
         ?>
@@ -35753,6 +34805,349 @@ function show_pdp_disease_antemortem()
         
         
     }
+    ?>
+
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <div class="text-right">
+                        <ul class=" twbs-default pagination">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : '';?>> Previous</a>
+                            </li>
+
+                            <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+                                <?php if($page_no !== $counter) {?>
+                                    <li class="page-item "><a href="?page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                    
+                                <?php }else{ ?>
+                                    <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                <?= ($page_no < $total_no_of_pages) ? 'href=?page_no='.$next_page : '';?>
+                                
+                                >
+                                
+                                Next</a>
+                            </li>
+
+
+                        </ul>
+                    <br>
+                    <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                    </div>
+
+<?php
+}
+
+
+
+function show_pdp_disease_antemortem_search()
+{
+
+    global $con;
+    
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+    $code = $_GET['code'];
+
+    $total_records_per_page =30;
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Antemortem' AND disease_delete_status='0' AND disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code'");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+
+    $sql = "SELECT * FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Antemortem' AND disease_delete_status='0' AND  disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code' ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
+    $result = $con->query($sql);
+    while($row = $result->fetch_assoc()) {
+
+        if($row['disease_species'] =='Hog' || $row['disease_species'] =='Ostrich' || $row['disease_species'] =='Rabbit' || $row['disease_species'] =='Crocodile' || $row['disease_species'] =='Sheep' || $row['disease_species'] =='Goat' || $row['disease_species'] =='Horse' || $row['disease_species'] =='Carabao' || $row['disease_species'] =='Cattle')
+        {
+
+        }
+        else
+        {
+        ?>
+                <tr style="padding:10px !important; margin:px !important; border:1px solid #bdb8b8;">
+                    <td style="font-size:12px !important; width:100px;"><?php echo $row['disease_code']  ?></td>
+                    <td style="font-size:12px !important; padding:2px;"><?php echo $row['disease_description']  ?></td>
+                    <td style="font-size:12px !important; padding:2px; width:120px;" ><?php echo $row['disease_kind_of_meat']  ?></td>
+
+
+                  
+                    <td style="font-size:12px !important; padding:2px;  width:120px;"><?php echo $row['disease_species']  ?></td>
+
+                        <?php if($row['disease_notifiable'] == '0') {?>
+                            <td class="text-center"  style="font-size:12px !important; padding:2px; color:red;  width:120px;">
+                                        Notifiable
+                        <?php }else{ ?>
+                            <td class="text-center"  style="font-size:12px !important; padding:2px; color:green;  width:120px;">
+                                    Not Notifiable
+                        <?php } ?>
+                    </td>
+                   
+                   
+
+                    <td class="text-center" style="font-size:12px !important; padding:2px; width:150px;">
+
+                    <button type="button" class="btn bg-info btn-sm" data-toggle="modal" data-target="#update_slh<?php echo $row['d_id'];?>">Edit</button>
+
+                    <button type="button" class="btn bg-danger btn-sm" data-toggle="modal" data-target="#delete_slh<?php echo $row['d_id'];?>">Delete</button>
+
+                            <div id="delete_slh<?php echo $row['d_id'];  ?>" class="modal fade text-center" tabindex="-1" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                           
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                                    <br>
+                                                    <br>
+                                                    <input type="hidden" name="d_id" value="<?php echo $row['d_id'];  ?>">
+                                                  <p style="font-size:20px;">  Are you sure you want to delete <?php echo $row['disease_code'] ?></b> <?php echo $row['disease_description'] ?>? </p>
+                                                    
+                                                    <br>
+                                                    <button type="submit" class="btn bg-success" name="btn_delete_slh_disease">Yes</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No&nbsp;</button>
+                                                  
+                                             </div>
+                                            <div class="modal-footer">
+                                               
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+
+                                </td>
+
+
+                                <div id="update_slh<?php echo $row['d_id'];  ?>" class="modal fade" tabindex="-1" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-info">
+                                                <h6 class="modal-title"><?php echo $row['disease_description']  ?></h6>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <label>Code</label>
+                                                                <input type="text" value="<?php echo $row['disease_code'] ?>" name="disease_code" class="form-control" required>
+                                                                <input type="hidden" value="<?php echo $row['d_id'] ?>" name="disease_id" class="form-control" required>
+
+                                                            </div>
+
+                                                            <div class="col-sm-5">
+                                                                <label>Disease</label>
+                                                                <input type="text" value="<?php echo $row['disease_description'] ?>" name="disease_description" class="form-control" required>
+                                                            </div>
+
+
+                                                                <div class="col-sm-4">
+                                                                    <label>Judgement</label>
+
+                                                                    <select class="form-control" name="disease_kind_of_meat" required>
+                                                                        <option value="Suspect">Suspect</option>
+                                                                        <option value="Rejected">Rejected</option>
+                                                                        <option value="Condemned">Condemned</option>
+                                                                    </select>
+                                                                </div>
+
+
+                                                               
+                                                        </div>
+                                                    </div>
+                                                    
+                                                        <div class="row">
+
+                                                                
+                                                                <div class="col-sm-4">
+                                                                    <label>Species</label>
+
+                                                                    <select class="form-control" name="disease_kind_of_species" required>
+                                                                        <option value="Chicken">Chicken</option>
+                                                                        <option value="Duck">Duck</option>
+                                                                        <option value="Pigeon">Pigeon</option>
+                                                                    </select>
+                                                                </div>
+
+
+
+
+                                                            <?php if($row['disease_notifiable'] == '0'){ ?>
+
+
+
+                                                                 <div class="col-sm-6">
+                                                                   <div class="form-group mb-3 mb-md-2">
+                                                                        <label class="d-block font-weight-semibold">Disease Status</label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" checked>
+                                                                                Notifiable
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1" >
+                                                                                Not Notifiable
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                          
+                                                            <?php }else{ ?>
+                                                                 <div class="col-sm-6">
+                                                                   <div class="form-group mb-3 mb-md-2">
+                                                                        <label class="d-block font-weight-semibold">Disease Status</label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" >
+                                                                                Notifiable
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1" checked>
+                                                                                Not Notifiable
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+
+                                                    </div>
+                                                  
+                                             </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn bg-primary" name="btn_update_pdp_disease">Save Changes</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                </tr>
+        <?php
+        
+        if(isset($_POST['btn_update_pdp_disease']))
+        {
+            $disease_code = mysqli_real_escape_string($con, $_POST['disease_code']);
+            $disease_description = mysqli_real_escape_string($con, $_POST['disease_description']);
+            $disease_level = mysqli_real_escape_string($con, $_POST['disease_level']);
+            $notifiable = mysqli_real_escape_string($con, $_POST['notifiable']);
+            $disease_id = mysqli_real_escape_string($con, $_POST['disease_id']);
+            $disease_kind_of_species = mysqli_real_escape_string($con, $_POST['disease_kind_of_species']);
+            $disease_kind_of_meat = mysqli_real_escape_string($con, $_POST['disease_kind_of_meat']);
+            
+
+            $sql = mysqli_query($con, "UPDATE disease_tbl SET disease_code='$disease_code',disease_kind_of_meat='$disease_kind_of_meat', disease_description='$disease_description',
+            disease_notifiable='$notifiable',
+            disease_level='Critical', disease_species='$disease_kind_of_species'
+
+
+            WHERE d_id ='$disease_id'");
+
+
+                ?>
+                <script type="text/javascript">
+                    window.location = "antemortem_pdp.php";
+                </script>
+                <?php
+        }
+        if(isset($_POST['btn_delete_slh_disease']))
+        {
+            $d_id = mysqli_real_escape_string($con, $_POST['d_id']);
+            
+            
+            $sql = mysqli_query($con, "DELETE FROM disease_tbl WHERE d_id ='$d_id'");
+
+                ?>
+                <script type="text/javascript">
+                    window.location = "antemortem_pdp.php";
+                </script>
+                <?php
+        }
+
+
+    }
+        
+    }
+    ?>
+
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <div class="text-right">
+                        <ul class=" twbs-default pagination">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                <?= ($page_no > 1) ? 'href=?code='.$_GET['code'].'&&page_no=' .$previous_page : '';?>> Previous</a>
+                            </li>
+
+                            <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+                                <?php if($page_no !== $counter) {?>
+                                    <li class="page-item "><a href="?code=<?php echo $_GET['code'] ?>&&page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                    
+                                <?php }else{ ?>
+                                    <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                <?= ($page_no < $total_no_of_pages) ? 'href=?code='.$_GET['code'].'&&page_no='.$next_page : '';?>
+                                
+                                >
+                                
+                                Next</a>
+                            </li>
+
+
+                        </ul>
+                    <br>
+
+                    
+
+
+
+
+                    <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                    </div>
+
+<?php
 }
 
 
@@ -35760,8 +35155,34 @@ function show_slh_disease_antemortem()
 {
 
     global $con;
+
+
+
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+
+    $total_records_per_page = 30;
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Antemortem' AND disease_delete_status='0' ");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
    
-        $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Antemortem' AND disease_delete_status='0' ORDER BY d_id DESC";
+        $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Antemortem' AND disease_delete_status='0'  ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
         $result = $con->query($sql);
         while($row = $result->fetch_assoc()) {
             ?>
@@ -35988,7 +35409,357 @@ function show_slh_disease_antemortem()
     
     
         }
+        ?>
+    	</tbody>
+														
+													</table>
+													<br>
+													<div class="text-right">
+														<ul class=" twbs-default pagination">
+															<li class="page-item">
+                                                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                                                <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : '';?>> Previous</a>
+                                                            </li>
+                                                            <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+                                                                <?php if($page_no !== $counter) {?>
+															        <li class="page-item "><a href="?page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                                                    
+                                                                <?php }else{ ?>
+															        <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                                                <?php } ?>
+															<?php } ?>
+                                                            <li class="page-item">
+                                                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                                                <?= ($page_no < $total_no_of_pages) ? 'href=?page_no='.$next_page : '';?>
+                                                                
+                                                                >Next</a>
+                                                            </li>
+														</ul>
+													<br>
+													<strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+													</div>
+
+<?php																
+}
+
+
+
+
+
+function show_slh_disease_antemortem_search()
+{
+
+    global $con;
+
+   
+
+            if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+            {
+                $page_no = $_GET['page_no'];
+            }
+            else
+            {
+
+                $page_no =1;
+            }
+            $code = $_GET['code'];
+
+            $total_records_per_page =30;
+
+            $offset = ($page_no - 1) * $total_records_per_page;
+
+            $previous_page = $page_no - 1;
+            $next_page = $page_no + 1;
+
+            $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Antemortem' AND disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code' AND disease_delete_status='0' ");
+            $records = mysqli_fetch_array($result_count);
+            $total_records = $records['total_records'];
+
+
+            $total_no_of_pages = ceil($total_records / $total_records_per_page);
+        
+                $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Antemortem' AND disease_delete_status='0'  AND disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code' LIMIT $offset , $total_records_per_page ";
+                // $sql = "SELECT * FROM disease_tbl WHERE  disease_type LIKE 'SLH' OR disease_delete_status LIKE '0' OR disease_category LIKE 'Antemortem'  OR disease_code LIKE '%$code%' OR disease_description LIKE '%$code%' OR disease_kind_of_meat LIKE '%$code%' OR disease_species LIKE '%$code%' LIMIT $offset , $total_records_per_page ";
+                // $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Antemortem' AND disease_delete_status='0' LIMIT $offset , $total_records_per_page ";
+                
+                
+               
+                $result = $con->query($sql);
+              
+                    while($row = $result->fetch_assoc()) {
+                        if($row['disease_species'] =='Chicken' || $row['disease_species'] =='Pigeon' || $row['disease_species'] =='Duck')
+                        {
+
+                        }
+                        else
+                        {
+                            ?>
+                                <tr style="padding:10px !important; border:1px solid #bdb8b8;">
+                                    <td class="forcheckox" style="font-size:12px !important;  width:100px;"><?php echo $row['disease_code']?></td>
+                                    <td class="forcheckox" style="font-size:12px !important; padding:2px;"><?php echo $row['disease_description']  ?></td>
+                                    <td class="forcheckox" style="font-size:12px !important; padding:2px;  width:120px;"><?php echo $row['disease_kind_of_meat']  ?></td>
     
+    
+    
+    
+    
+                                    <td class="forcheckox" style="font-size:12px !important; padding:2px;  width:120px;"><?php echo $row['disease_species']  ?></td>
+    
+    
+                                    
+                                    <?php if($row['disease_notifiable'] == '0') {?>
+    
+                                    <td class="forcheckox" class="text-center"  style="font-size:12px !important; padding:2px; color:red; width:120px;">
+                                        Notifiable 
+                                        <?php }else{ ?>
+                                    <td class="forcheckox" class="text-center"  style="font-size:12px !important; padding:2px; color:green; width:120px;">
+                                        Not Notifiable
+                                        <?php } ?>
+                                    </td>
+    
+    
+                                    <td  class="text-center forcheckox" style="font-size:12px !important; padding:2px; width:150px;">
+                                        <button type="button" class="btn bg-info btn-sm" data-toggle="modal" data-target="#update_slh<?php echo $row['d_id'];?>">Edit</button>
+                                        <button type="button" class="btn bg-danger btn-sm" data-toggle="modal" data-target="#delete_slh<?php echo $row['d_id'];?>">Delete</button>
+                                    </td>
+                
+                
+                
+                
+                
+                                                <div id="delete_slh<?php echo $row['d_id'];  ?>" class="modal fade  text-center" tabindex="-1" data-backdrop="static">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        
+                                                            <div class="modal-body">
+                                                                <form method="POST">
+                
+                                                                    <input type="hidden" name="d_id" value="<?php echo $row['d_id'];  ?>">
+                                                                    <br>
+                                                                    <p style="font-size:20px;"> Are you sure you want to delete <?php echo $row['disease_code'] ?></b> <?php echo $row['disease_description'] ?>? </p>
+                                                                    
+                                                                    <br>
+                                                                    <br>
+                                                                <button type="submit" class="btn bg-success" name="btn_delete_slh_disease">Yes</button>
+                                                                <button type="button" class="btn bg-danger" data-dismiss="modal">No&nbsp;</button>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                
+                
+                
+                                                <div id="update_slh<?php echo $row['d_id'];  ?>" class="modal fade" tabindex="-1" data-backdrop="static">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header bg-info">
+                                                                <h6 class="modal-title"><?php echo $row['disease_description']  ?></h6>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="POST">
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-3">
+                                                                                <label>Code</label>
+                                                                                <input type="text" value="<?php echo $row['disease_code'] ?>" name="disease_code" class="form-control" required>
+                                                                                <input type="hidden" value="<?php echo $row['d_id'] ?>" name="disease_id" class="form-control" required>
+                
+                                                                            </div>
+                
+                                                                            <div class="col-sm-5">
+                                                                                <label>Disease </label>
+                                                                                <input type="text" value="<?php echo $row['disease_description'] ?>" name="disease_description" class="form-control" required>
+                                                                            </div>
+                
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <label>Judgement</label>
+                
+                                                                                <select class="form-control" name="disease_kind_of_meat" required>
+                                                                                    <option value="Suspect">Suspect</option>
+                                                                                    <option value="Rejected">Rejected</option>
+                                                                                    <option value="Condemned">Condemned</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        
+                                                                        </div>
+                                                                    </div>
+                
+                                                                    
+                                                                        <div class="row">
+                
+                                                                        <div class="col-sm-4">
+                                                                                <label>Species</label>
+                
+                                                                                <select class="form-control" name="disease_kind_of_species" required>
+                                                                                    <option value="Cattle">Cattle</option>
+                                                                                    <option value="Carabao">Carabao</option>
+                                                                                    <option value="Hog">Hog</option>
+                                                                                    <option value="Goat">Goat</option>
+                                                                                    <option value="Horse">Horse</option>
+                                                                                    <option value="Sheep">Sheep</option>
+                                                                                    <option value="Ostrich">Ostrich</option>
+                                                                                    <option value="Crocodile">Crocodile</option>
+                                                                                    <option value="Rabbit">Rabbit</option>
+                                                                                </select>
+                                                                            </div>
+                
+                                                                            
+                
+                                                                            <?php if($row['disease_notifiable'] == 0){ ?>
+                
+                
+                
+                                                                                <div class="col-sm-6">
+                                                                                <div class="form-group mb-3 mb-md-2">
+                                                                                        <label class="d-block font-weight-semibold">Disease Status </label>
+                
+                
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <label class="form-check-label">
+                                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" checked>
+                                                                                                Notifiable
+                                                                                            </label>
+                                                                                        </div>
+                
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <label class="form-check-label">
+                                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1">
+                                                                                                Not Notifiable
+                                                                                            </label>
+                                                                                        </div>
+                
+                                                                                        
+                
+                                                                                        
+                                                                                    
+                                                                                    </div>
+                                                                                </div>
+                
+                
+                                                                        
+                                                                            <?php }else{ ?>
+                                                                                <div class="col-sm-6">
+                                                                                <div class="form-group mb-3 mb-md-2">
+                                                                                        <label class="d-block font-weight-semibold">Disease Status </label>
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <label class="form-check-label">
+                                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" >
+                                                                                                Notifiable
+                                                                                            </label>
+                                                                                        </div>
+                
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <label class="form-check-label">
+                                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1" checked>
+                                                                                                Not Notifiable
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            <?php } ?>
+                
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                            <br>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="btn bg-primary" name="btn_update_slh_disease">Save Changes</button>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                </tr>
+                        <?php
+                        
+                        if(isset($_POST['btn_update_slh_disease']))
+                        {
+                            $disease_code = mysqli_real_escape_string($con, $_POST['disease_code']);
+                            $disease_description = mysqli_real_escape_string($con, $_POST['disease_description']);
+                            $disease_kind_of_species = mysqli_real_escape_string($con, $_POST['disease_kind_of_species']);
+                            $disease_kind_of_meat = mysqli_real_escape_string($con, $_POST['disease_kind_of_meat']);
+                            $notifiable = mysqli_real_escape_string($con, $_POST['notifiable']);
+                            $disease_id = mysqli_real_escape_string($con, $_POST['disease_id']);
+                            
+                            
+                            $sql = mysqli_query($con, "UPDATE disease_tbl SET disease_code='$disease_code',  disease_species= '$disease_kind_of_species',disease_kind_of_meat='$disease_kind_of_meat', disease_description='$disease_description',
+                            disease_notifiable='$notifiable',
+                            disease_level='Critical' WHERE d_id ='$disease_id'");
+                
+                
+                                ?>
+                                <script type="text/javascript">
+                                    window.location = "antemortem_slh.php";
+                                </script>
+                                <?php
+                        }
+                
+                        if(isset($_POST['btn_delete_slh_disease']))
+                        {
+                            $d_id = mysqli_real_escape_string($con, $_POST['d_id']);
+                            
+                            
+                            $sql = mysqli_query($con, "DELETE FROM disease_tbl WHERE d_id ='$d_id'");
+                
+                                ?>
+                                <script type="text/javascript">
+                                    window.location = "antemortem_slh.php";
+                                </script>
+                                <?php
+                        }
+                
+                
+                        }
+                    }
+               
+                ?>
+                </tbody>
+                                                                
+                                                            </table>
+                                                            <br>
+                                                            <div class="text-right">
+                                                                <ul class=" twbs-default pagination">
+                                                                    <li class="page-item">
+                                                                        <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                                                        <?= ($page_no > 1) ? 'href=?code='.$_GET['code'].'&&page_no=' .$previous_page : '';?>> Previous</a>
+                                                                    </li>
+
+                                                                    <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+                                                                        <?php if($page_no !== $counter) {?>
+                                                                            <li class="page-item "><a href="?code=<?= $_GET['code'] ?>&&page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                                                            
+                                                                        <?php }else{ ?>
+                                                                            <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                                                        <?php } ?>
+                                                                    <?php } ?>
+                                                                    
+                                                                    <li class="page-item">
+                                                                        <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                                                        <?= ($page_no < $total_no_of_pages) ? 'href=?code='.$_GET['code'].'&&page_no='.$next_page : '';?>
+                                                                        
+                                                                        >
+                                                                        
+                                                                        Next</a>
+                                                                    </li>
+
+
+                                                                </ul>
+                                                            <br>
+                                                            <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                                                            </div>
+
+        <?php											
 }
 
 
@@ -35996,7 +35767,34 @@ function show_postmortem_slh_disease()
 {
 
     global $con;
-    $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Postmortem' AND disease_delete_status='0' ORDER BY d_id DESC";
+
+    
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+
+    $total_records_per_page = 30;
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Postmortem' AND disease_delete_status='0' ");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+
+    $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Postmortem' AND disease_delete_status='0' ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
     $result = $con->query($sql);
     while($row = $result->fetch_assoc()) {
         ?>
@@ -36242,7 +36040,391 @@ function show_postmortem_slh_disease()
         }
         
     }
+    ?>
+
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <div class="text-right">
+                        <ul class=" twbs-default pagination">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : '';?>> Previous</a>
+                            </li>
+                            
+
+                                <?php for($counter = max(1, $total_no_of_pages - 5); $counter <= min($total_no_of_pages + 5, $total_no_of_pages); $counter++ ) {?>
+
+                                <?php if($page_no !== $counter) {?>
+                                    <li class="page-item "><a href="?page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                    
+                                <?php }else{ ?>
+                                    <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                <?= ($page_no < $total_no_of_pages) ? 'href=?page_no='.$next_page : '';?>
+                                
+                                >
+                                
+                                Next</a>
+                            </li>
+
+
+                        </ul>
+                    <br>
+                    <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                    </div>
+    <?php
 }
+
+
+
+
+
+function show_postmortem_slh_disease_search()
+{
+
+    global $con;
+
+    
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+
+    $total_records_per_page = 30;
+    $code = $_GET['code'];
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Postmortem' AND disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code'  AND disease_delete_status='0' ");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+
+    $sql = "SELECT * FROM disease_tbl WHERE disease_type='SLH' AND disease_category='Postmortem' AND disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code' AND disease_delete_status='0' ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
+    $result = $con->query($sql);
+    while($row = $result->fetch_assoc()) {
+
+        if($row['disease_species'] =='Chicken' || $row['disease_species'] =='Duck' || $row['disease_species'] =='Pigeon' )
+        {
+
+        }
+        else
+        {
+        ?>
+                <tr style="padding:10px !important; margin:px !important; border:1px solid #bdb8b8;">
+                    <td style="font-size:12px !important;   width:100px;"><?php echo $row['disease_code']  ?></td>
+                    <td style="font-size:12px !important; padding:2px; "><?php echo $row['disease_description']  ?></td>
+                   
+                    <td style="font-size:12px !important; padding:2px;   width:120px;">
+                    <?php  echo $row['disease_judgement'];  ?>
+                    </td>
+                    <td style="font-size:12px !important; padding:2px;  width:150px;"><?php echo $row['disease_kind_of_meat']  ?></td>
+                    <td style="font-size:12px !important; padding:2px;  width:150px;"><?php echo $row['disease_species']  ?></td>
+                  
+                        <?php if($row['disease_notifiable'] == '0') {?>
+                                <td class="text-center"  style="font-size:12px !important; padding:2px; width:100px; color:red; width:150px;">
+                                Notifiable
+                        <?php }else{ ?>
+                                <td class="text-center"  style="font-size:12px !important; padding:2px; width:100px; color:green; width:150px;">
+                                Not Notifiable
+                        <?php } ?>
+                    </td>
+
+                    <td style="font-size:12px !important; padding:2px; width:150px;">
+
+                    <button type="button" class="btn bg-info btn-sm" data-toggle="modal" data-target="#update_slh<?php echo $row['d_id'];?>">Edit</button>
+                    <button type="button" class="btn bg-danger btn-sm" data-toggle="modal" data-target="#delete_slh<?php echo $row['d_id'];?>">Delete</button>
+
+                                <div id="delete_slh<?php echo $row['d_id'];  ?>" class="modal fade text-center" tabindex="-1" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                    <br>
+                                    <br>
+                                                    <input type="hidden" name="d_id" value="<?php echo $row['d_id'];  ?>">
+                                                  <p style="font-size:20px;">  Are you sure you want to delete <?php echo $row['disease_code'] ?></b> <?php echo $row['disease_description'] ?>?</p>
+                                                    <br>
+                                                <button type="submit" class="btn bg-success" name="btn_delete_slh_disease">Yes</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">No &nbsp;</button>
+                                                  
+                                             </div>
+                                            <div class="modal-footer">
+                                               
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                                </td>
+
+                                <div id="update_slh<?php echo $row['d_id'];  ?>" class="modal fade" tabindex="-1" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-info">
+                                                <h6 class="modal-title"><?php echo $row['disease_description']  ?></h6>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                                    <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label>Code</label>
+                                                            <input type="text" value="<?php echo $row['disease_code'] ?>" name="disease_code" class="form-control" required>
+                                                            <input type="hidden" value="<?php echo $row['d_id'] ?>" name="disease_id" class="form-control" required>
+                                                        </div>
+
+                                                        <div class="col-sm-5">
+                                                            <label>Disease / Condition</label>
+                                                            <input type="text" value="<?php echo $row['disease_description'] ?>" name="disease_description" class="form-control" required>
+                                                        </div>
+
+                                                       
+                                                        <div class="col-sm-4">
+                                                            <label>Organs / Parts</label>
+
+                                                            <select class="form-control" name="disease_kind_of_meat" required>
+                                                                <option value="<?php echo $row['disease_kind_of_meat'] ?>"><?php echo $row['disease_kind_of_meat'] ?></option>
+                                                                <option value="Carcass">Carcass</option>
+                                                                <option value="Lungs">Lungs</option>
+                                                                <option value="Liver">Liver</option>
+                                                                <option value="Heart">Heart</option>
+                                                                <option value="Intestines">Intestines</option>
+                                                                <option value="Feet">Feet</option>
+                                                                <option value="Kidneys">Kidneys</option>
+                                                                <option value="Spleen">Spleen</option>
+                                                                <option value="Others">Others</option>
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="row">
+
+                                                        <div class="col-sm-4">
+                                                            <label>Judgement</label>
+
+                                                            <select class="form-control" name="judgement" required>
+                                                                <option value="<?php echo $row['disease_judgement'] ?>"><?php echo $row['disease_judgement'] ?></option>
+                                                                <option value="Suspect">Suspect</option>
+                                                                <option value="Rejected">Rejected</option>
+                                                                <option value="Condemned">Condemned</option>
+                                                                <option value="Passed for Sterilization">Passed for Sterilization</option>
+                                                                <option value="Passed for Refrigeration">Passed for Refrigeration</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <label>Species</label>
+
+                                                            <select class="form-control" name="disease_kind_of_species" required>
+                                                                <option value="<?php echo $row['disease_species'] ?>"><?php echo $row['disease_species'] ?></option>
+                                                                <option value="Cattle">Cattle</option>
+                                                                <option value="Carabao">Carabao</option>
+                                                                <option value="Hog">Hog</option>
+                                                                <option value="Goat">Goat</option>
+                                                                <option value="Horse">Horse</option>
+                                                                <option value="Sheep">Sheep</option>
+                                                                <option value="Ostrich">Ostrich</option>
+                                                                <option value="Crocodile">Crocodile</option>
+                                                                <option value="Rabbit">Rabbit</option>
+                                                            </select>
+                                                        </div>
+
+
+
+                                                        
+
+                                                         
+
+                                                    </div>
+                                                </div>
+
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="row">
+
+
+
+
+
+                                                            <?php if($row['disease_notifiable'] == '0'){ ?>
+
+
+
+                                                                 <div class="col-sm-6">
+                                                                   <div class="form-group mb-3 mb-md-2">
+                                                                        <label class="d-block font-weight-semibold">Disease Status</label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" checked>
+                                                                                Notifiable
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1">
+                                                                                Not Notifiable
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                          
+                                                            <?php }else{ ?>
+                                                                 <div class="col-sm-6">
+                                                                   <div class="form-group mb-3 mb-md-2">
+                                                                        <label class="d-block font-weight-semibold">Disease Status</label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" >
+                                                                                Notifiable
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1" checked>
+                                                                                Not Notifiable
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+                                                                </div>
+                                                                </div>
+
+                                                  
+                                             </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn bg-primary" name="btn_update_slh_disease_postmortem">Save Changes</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                </tr>
+        <?php
+        
+        if(isset($_POST['btn_update_slh_disease_postmortem']))
+        {
+            $disease_code = mysqli_real_escape_string($con, $_POST['disease_code']);
+            $disease_description = mysqli_real_escape_string($con, $_POST['disease_description']);
+            $disease_level = mysqli_real_escape_string($con, $_POST['disease_level']);
+            $disease_kind_of_meat = mysqli_real_escape_string($con, $_POST['disease_kind_of_meat']);
+            $disease_kind_of_species = mysqli_real_escape_string($con, $_POST['disease_kind_of_species']);
+            $notifiable = mysqli_real_escape_string($con, $_POST['notifiable']);
+            $disease_id = mysqli_real_escape_string($con, $_POST['disease_id']);
+            $judgement = mysqli_real_escape_string($con, $_POST['judgement']);
+            
+
+            $sql = mysqli_query($con, "UPDATE disease_tbl SET disease_code='$disease_code', disease_description='$disease_description',
+            disease_notifiable='$notifiable',
+            disease_kind_of_meat='$disease_kind_of_meat',
+            disease_species='$disease_kind_of_species',
+            disease_level='Critical', disease_judgement='$judgement' WHERE d_id ='$disease_id'");
+
+
+                ?>
+                <script type="text/javascript">
+                    window.location = "postmortem_slh.php";
+                </script>
+                <?php
+        }
+
+        if(isset($_POST['btn_delete_slh_disease']))
+        {
+            $d_id = mysqli_real_escape_string($con, $_POST['d_id']);
+            $sqls = mysqli_query($con, "UPDATE disease_tbl SET disease_delete_status='1' WHERE d_id ='$d_id'");
+
+                ?>
+                <script type="text/javascript">
+                    window.location = "postmortem_slh.php";
+                </script>
+                <?php
+                
+        }
+    }
+        
+    }
+    ?>
+
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <div class="text-right">
+                        <ul class=" twbs-default pagination">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                <?= ($page_no > 1) ? 'href=?code='.$_GET['code'].'&&page_no=' .$previous_page : '';?>> Previous</a>
+                            </li>
+
+                            <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+
+                                
+                                <?php if($page_no !== $counter) {?>
+                                    <li class="page-item "><a href="?code=<?= $_GET['code'] ?>&&page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                    
+                                <?php }else{ ?>
+                                    <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                <?= ($page_no < $total_no_of_pages) ? 'href=?code='. $_GET['code'].'&&page_no='.$next_page : '';?>
+                                
+                                >
+                                
+                                Next</a>
+                            </li>
+
+
+                        </ul>
+
+                        <script>
+                            $('.pagination').twbsPagination({
+                                    totalPages: 35,
+                                    visiblePages: 7,
+                                    onPageClick: function (event, page) {
+                                        $('#page-content').text('Page ' + page);
+                                    }
+                                });
+                        </script>
+                    <br>
+                    <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                    </div>
+    <?php
+}
+
 
 
 
@@ -36250,9 +36432,46 @@ function show_postmortem_pdp_disease()
 {
 
     global $con;
-    $sql = "SELECT * FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Postmortem' AND disease_delete_status='0' ORDER BY d_id DESC";
+
+    
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+
+    $total_records_per_page = 30;
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Postmortem' AND disease_delete_status='0' ");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+
+
+    $sql = "SELECT * FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Postmortem' AND disease_delete_status='0' ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
     $result = $con->query($sql);
     while($row = $result->fetch_assoc()) {
+
+        
+
+        if($row['disease_species'] =='Hog' || $row['disease_species'] =='Ostrich' || $row['disease_species'] =='Rabbit' || $row['disease_species'] =='Crocodile' || $row['disease_species'] =='Sheep' || $row['disease_species'] =='Goat'  || $row['disease_species'] =='Horse'  || $row['disease_species'] =='Carabao'  || $row['disease_species'] =='Cattle' )
+        {
+
+        }
+        else
+        {
         ?>
                 <tr style="padding:10px !important; margin:px !important; border:1px solid #bdb8b8;">
                     <td style="font-size:12px !important; width:100px;"><?php echo $row['disease_code']  ?></td>
@@ -36480,6 +36699,363 @@ function show_postmortem_pdp_disease()
         }
         
     }
+}
+?>
+
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <div class="text-right">
+                        <ul class=" twbs-default pagination">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : '';?>> Previous</a>
+                            </li>
+
+                            <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+                                <?php if($page_no !== $counter) {?>
+                                    <li class="page-item "><a href="?page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                    
+                                <?php }else{ ?>
+                                    <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                <?= ($page_no < $total_no_of_pages) ? 'href=?page_no='.$next_page : '';?>
+                                
+                                >
+                                
+                                Next</a>
+                            </li>
+
+
+                        </ul>
+                    <br>
+                    <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                    </div>
+    <?php
+}
+
+
+
+
+
+function show_postmortem_pdp_disease_search()
+{
+
+    global $con;
+
+    
+    if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+    {
+        $page_no = $_GET['page_no'];
+    }
+    else
+    {
+
+        $page_no =1;
+    }
+    $code = $_GET['code'];
+    $total_records_per_page = 30;
+
+    $offset = ($page_no - 1) * $total_records_per_page;
+
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+
+    $result_count = mysqli_query($con, "SELECT COUNT(*) as total_records FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Postmortem' AND disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code'  AND disease_delete_status='0' ");
+    $records = mysqli_fetch_array($result_count);
+    $total_records = $records['total_records'];
+
+
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+
+
+    $sql = "SELECT * FROM disease_tbl WHERE disease_type='PDP' AND disease_category='Postmortem' AND  disease_code='$code' OR disease_description='$code' OR disease_kind_of_meat='$code' OR disease_species='$code' OR disease_notifiable='$code'  AND disease_delete_status='0' ORDER BY d_id DESC LIMIT $offset , $total_records_per_page";
+    $result = $con->query($sql);
+    while($row = $result->fetch_assoc()) {
+
+        
+
+        if($row['disease_species'] =='Hog' || $row['disease_species'] =='Ostrich' || $row['disease_species'] =='Rabbit' || $row['disease_species'] =='Crocodile' || $row['disease_species'] =='Sheep' || $row['disease_species'] =='Goat'  || $row['disease_species'] =='Horse'  || $row['disease_species'] =='Carabao'  || $row['disease_species'] =='Cattle' )
+        {
+
+        }
+        else
+        {
+        ?>
+                <tr style="padding:10px !important; margin:px !important; border:1px solid #bdb8b8;">
+                    <td style="font-size:12px !important; width:100px;"><?php echo $row['disease_code']  ?></td>
+                    <td style="font-size:12px !important; padding:2px;"><?php echo $row['disease_description']  ?></td>
+                   
+                    <td style="font-size:12px !important; padding:2px; width:120px;"><?php echo $row['disease_judgement']  ?></td>
+                    <td style="font-size:12px !important; padding:2px; width:120px;"><?php echo $row['disease_kind_of_meat']  ?></td>
+                    <td style="font-size:12px !important; padding:2px; width:120px;"><?php echo $row['disease_species']  ?></td>
+                    
+                        <?php if($row['disease_notifiable'] == '0') {?>
+                            <td class="text-center"  style="font-size:12px !important; padding:2px; width:120px; color:red;">
+                                                            Notifiable
+                        <?php }else{ ?>
+                            <td class="text-center"  style="font-size:12px !important; padding:2px; width:120px; color:green;">
+                         Not Notifiable
+                        <?php } ?>
+                    </td>
+
+                    <td style="font-size:12px !important; padding:2px; width:150px;">
+                   
+                    <button type="button" class="btn bg-info btn-sm" data-toggle="modal" data-target="#update_slh<?php echo $row['d_id'];?>">Edit</button>
+                    <button type="button" class="btn bg-danger btn-sm" data-toggle="modal" data-target="#delete_slh<?php echo $row['d_id'];?>">Delete</button>
+
+
+
+                    <div id="delete_slh<?php echo $row['d_id'];  ?>" class="modal fade text-center" tabindex="-1" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                <br>
+                                <br>
+                                                    <input type="hidden" name="d_id" value="<?php echo $row['d_id'];  ?>">
+                                                   <p style="font-size:20px;"> Are you sure you want to delete <?php echo $row['disease_code'] ?></b> <?php echo $row['disease_description'] ?>? </p>
+                                                    <br>
+                                                <button type="submit" class="btn bg-success" name="btn_delete_slh_disease">Yes</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No &nbsp;</button>
+                                                  
+                                             </div>
+                                            <div class="modal-footer">
+                                               
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+
+
+                    </td>
+
+                                <div id="update_slh<?php echo $row['d_id'];  ?>" class="modal fade" tabindex="-1" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-info">
+                                                <h6 class="modal-title"><?php echo $row['disease_description']  ?></h6>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                                    <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label> Disease Code</label>
+                                                            <input type="text" value="<?php echo $row['disease_code'] ?>" name="disease_code" class="form-control" required>
+                                                            <input type="hidden" value="<?php echo $row['d_id'] ?>" name="disease_id" class="form-control" required>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <label>Disease / Condition</label>
+                                                            <input type="text" value="<?php echo $row['disease_description'] ?>" name="disease_description" class="form-control" required>
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                            <label>Organs / Parts</label>
+
+                                                            <select class="form-control" name="disease_kind_of_meat" required>
+                                                                <option value="<?php echo $row['disease_kind_of_meat'] ?>"><?php echo $row['disease_kind_of_meat'] ?></option>
+                                                                <option value="Carcass">Carcass</option>
+                                                                <option value="Lungs">Lungs</option>
+                                                                <option value="Liver">Liver</option>
+                                                                <option value="Heart">Heart</option>
+                                                                <option value="Intestines">Intestines</option>
+                                                                <option value="Feet">Feet</option>
+                                                                <option value="Kidneys">Kidneys</option>
+                                                                <option value="Spleen">Spleen</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label>Judgement</label>
+
+                                                            <select class="form-control" name="judgement" required>
+                                                                <option value="<?php echo $row['disease_judgement'] ?>"><?php echo $row['disease_judgement'] ?></option>
+                                                                <option value="Suspect">Suspect</option>
+                                                                <option value="Rejected">Rejected</option>
+                                                                <option value="Condemned">Condemned</option>
+                                                                <option value="Passed for Sterilization">Passed for Sterilization</option>
+                                                                <option value="Passed for Refrigeration">Passed for Refrigeration</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label>Species</label>
+
+                                                            <select class="form-control" name="disease_kind_of_species" required>
+                                                                <option value="<?php echo $row['disease_species'] ?>"><?php echo $row['disease_species'] ?></option>
+                                                                <option value="Chicken">Chicken</option>
+                                                                <option value="Duck">Duck</option>
+                                                                <option value="Pigeon">Pigeon</option>
+                                                            </select>
+                                                        </div>
+                                                        
+
+                                                         
+                                                    </div>
+                                                </div>
+
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="row">
+
+
+
+
+                                                            <?php if($row['disease_notifiable'] == '0'){ ?>
+
+
+
+                                                                 <div class="col-sm-6">
+                                                                   <div class="form-group mb-3 mb-md-2">
+                                                                        <label class="d-block font-weight-semibold">Disease Status</label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" checked>
+                                                                                Notifiable
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1">
+                                                                                Not Notifiable
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                          
+                                                            <?php }else{ ?>
+                                                                 <div class="col-sm-6">
+                                                                   <div class="form-group mb-3 mb-md-2">
+                                                                        <label class="d-block font-weight-semibold">Disease Status</label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="0" >
+                                                                                Notifiable
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio" class="form-check-input" name="notifiable" value="1" checked>
+                                                                                Not Notifiable
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+                                                                </div>
+                                                                </div>
+
+                                                  
+                                             </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn bg-primary" name="btn_update_pdp_disease_postmortem">Save Changes</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                </tr>
+        <?php
+        
+        if(isset($_POST['btn_update_pdp_disease_postmortem']))
+        {
+            $disease_code = mysqli_real_escape_string($con, $_POST['disease_code']);
+            $disease_description = mysqli_real_escape_string($con, $_POST['disease_description']);
+            $disease_level = mysqli_real_escape_string($con, $_POST['disease_level']);
+            $disease_kind_of_meat = mysqli_real_escape_string($con, $_POST['disease_kind_of_meat']);
+            $disease_kind_of_species = mysqli_real_escape_string($con, $_POST['disease_kind_of_species']);
+            $disease_status = mysqli_real_escape_string($con, $_POST['disease_status']);
+            $notifiable = mysqli_real_escape_string($con, $_POST['notifiable']);
+            $disease_id = mysqli_real_escape_string($con, $_POST['disease_id']);
+            $judgement = mysqli_real_escape_string($con, $_POST['judgement']);
+            
+
+            $sql = mysqli_query($con, "UPDATE disease_tbl SET disease_code='$disease_code', disease_description='$disease_description',
+            disease_notifiable='$notifiable',
+            disease_kind_of_meat='$disease_kind_of_meat',
+            disease_species='$disease_kind_of_species',
+            disease_level='Critical', disease_judgement='$judgement' WHERE d_id ='$disease_id'");
+
+
+                ?>
+                <script type="text/javascript">
+                    window.location = "postmortem_pdp.php";
+                </script>
+                <?php
+        }
+
+        if(isset($_POST['btn_delete_slh_disease']))
+        {
+            $d_id = mysqli_real_escape_string($con, $_POST['d_id']);
+            $sqls = mysqli_query($con, "UPDATE disease_tbl SET disease_delete_status='1' WHERE d_id ='$d_id'");
+
+                ?>
+                <script type="text/javascript">
+                    window.location = "postmortem_pdp.php";
+                </script>
+                <?php
+        }
+        
+    }
+}
+?>
+
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <div class="text-right">
+                        <ul class=" twbs-default pagination">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : '';?>"
+                                <?= ($page_no > 1) ? 'href=?code='.$_GET['code'].'&&page_no=' .$previous_page : '';?>> Previous</a>
+                            </li>
+
+                            <?php for($counter = 1; $counter <= $total_no_of_pages; $counter ++) {?>
+
+                                <?php if($page_no !== $counter) {?>
+                                    <li class="page-item "><a href="?code=<?= $_GET['code'] ?>&&page_no=<?= $counter; ?>" class="page-link"><?= $counter; ?></a></li>
+                                    
+                                <?php }else{ ?>
+                                    <li class="page-item "><a class="page-link active"><?= $counter; ?></a></li>
+
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : '';?>" 
+                                <?= ($page_no < $total_no_of_pages) ? 'href=?code='. $_GET['code'].'&&page_no='.$next_page : '';?>
+                                
+                                >
+                                
+                                Next</a>
+                            </li>
+
+
+                        </ul>
+                    <br>
+                    <strong>Page <?= $page_no; ?> of <?= $total_records_per_page; ?></strong>
+                    </div>
+    <?php
 }
 
 

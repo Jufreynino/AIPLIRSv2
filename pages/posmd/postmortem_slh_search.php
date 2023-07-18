@@ -36,7 +36,7 @@ else{
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Automated In-Plant Line Inspection Reporting System</title>
+	<title>Automated In-Line Inspection Reporting System</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
 	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -50,11 +50,13 @@ else{
 	<script src="../../global_assets/js/plugins/tables/datatables/datatables.min.js"></script>  
 	<script src="../../global_assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../global_assets/js/plugins/notifications/pnotify.min.js"></script>
 	<script src="../../assets/js/app.js"></script>
 	<script src="../../global_assets/js/demo_pages/dashboard.js"></script>
-   
+  
 
-	<script src="../../global_assets/js/demo_pages/datatables_disesase.js"></script>
+	<script src="../../global_assets/js/demo_pages/datatables_disease_postmortem.js"></script>
+
     <script src="../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="../../global_assets/js/plugins/forms/styling/switch.min.js"></script>
@@ -66,9 +68,9 @@ else{
 	<script src="../../global_assets/js/demo_pages/form_multiselect.js"></script>
 
 	<script src="../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
-	<script src="../../global_assets/js/plugins/notifications/pnotify.min.js"></script>
 	<script src="../../global_assets/js/demo_pages/extra_pnotify.js"></script>
 
+	
 </head>
 
 <body>
@@ -221,7 +223,7 @@ else{
 					<ul class="nav nav-sidebar" data-nav-type="accordion">
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="dashboard.php" class="nav-link">
+							<a href="dashboard.php" class="nav-link ">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard
@@ -248,6 +250,8 @@ else{
 								</span>
 							</a>
 						</li>
+
+
 						<li class="nav-item">
 							<a href="meat_establishment.php" class="nav-link ">
 								<i class="icon-office"></i>
@@ -256,37 +260,37 @@ else{
 								</span>
 							</a>
 						</li>
-
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu  nav-item-expanded nav-item-open">
 							<a href="#" class="nav-link"><i class="icon-file-check2"></i> <span>Diseases or Conditions</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Menu levels">
 
 
-								<li class="nav-item nav-item-submenu">
+								<li class="nav-item nav-item-submenu  nav-item-expanded nav-item-open ">
 									<a href="#" class="nav-link"><i class="icon-home7"></i> Slaughterhouse</a>
 									<ul class="nav nav-group-sub">
 										
-										<li class="nav-item"><a href="antemortem_slh.php" class="nav-link"><i class="icon-files-empty"></i>Antemortem</a></li>
-										<li class="nav-item"><a href="postmortem_slh.php" class="nav-link"><i class="icon-files-empty"></i>Postmortem</a></li>
+										<li class="nav-item"><a href="antemortem_slh.php" class="nav-link "><i class="icon-files-empty"></i>Antemortem</a></li>
+										<li class="nav-item"><a href="postmortem_slh.php" class="nav-link active"><i class="icon-files-empty"></i>Postmortem</a></li>
 									</ul>
 								</li>
 
 								
-								<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+								<li class="nav-item nav-item-submenu">
 									<a href="#" class="nav-link"><i class="icon-home7"></i> Poultry Dressing Plant</a>
 									<ul class="nav nav-group-sub">
-										<li class="nav-item"><a href="antemortem_pdp.php" class="nav-link active"><i class="icon-files-empty"></i>Antemortem</a></li>
+										<li class="nav-item"><a href="antemortem_pdp.php" class="nav-link"><i class="icon-files-empty"></i>Antemortem</a></li>
 										<li class="nav-item"><a href="postmortem_pdp.php" class="nav-link"><i class="icon-files-empty"></i>Postmortem</a></li>
 										
 									</ul>
 								</li>
 							</ul>
 						</li>
-<br>
+
+						<br>
 						<br>
 						<li class="nav-item-header text-center" style="background-color:#833737;"><div class="text-uppercase font-size-xs line-height-xs " style="font-size: 15px; color:white;">Meat Inspection Report</div> <i class="icon-menu" title="Data visualization"></i></li>
 							<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-file-text3"></i> <span>Receiving of  Animals</span>
+							<a href="#" class="nav-link"><i class="icon-file-text3"></i> <span>Receiving of Animals</span>
 							</a>
 							<ul class="nav nav-group-sub" data-submenu-title="Form components">
 								<li class="nav-item">
@@ -310,16 +314,12 @@ else{
 									<a href="by_national_fit_report.php" class="nav-link">National Data
 									</a>
 								</li>
-
-								
 								<li class="nav-item">
 									<a href="by_meat_establishment_fit_report.php" class="nav-link">Meat Establishment Data
 									</a>
 								</li>
-
 							</ul>
 						</li>
-
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link"><i class="icon-file-text3"></i> <span>Fit for Human Consumption</span>
 							</a>
@@ -328,15 +328,12 @@ else{
 									<a href="by_national_fhc_report.php" class="nav-link">National Data
 									</a>
 								</li>
-								
 								<li class="nav-item">
 									<a href="by_meat_establishment_fhc_report.php" class="nav-link">Meat Establishment Data
 									</a>
 								</li>
-
 							</ul>
 						</li>
-
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link"><i class="icon-file-text3"></i> <span>Condemnation Report</span>
 							</a>
@@ -351,7 +348,6 @@ else{
 								</li>
 							</ul>
 						</li>
-
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link"><i class="icon-file-text3"></i> <span>Meat Inspection Report Summary</span>
 							</a>
@@ -360,125 +356,135 @@ else{
 									<a href="by_national_summary_report.php" class="nav-link">National Data
 									</a>
 								</li>
-							
-								
 							</ul>
 						</li>
-
-
-						
-					
-							
-						
-
-						
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="content-wrapper">
 			<div class="page-header page-header-light">
-				
 			</div>
 			<div class="content">
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="card">
-
 							<div class="card-header header-elements-inline" style="background-color:#26a69a; color: #ffffff;">
-								<h5 class="card-title" style=" font-weight:bold !important;">Diseases and Conditions during Antemortem Inspection in Poultry Dressing Plant </h5>
-								
+								<h5 class="card-title" style=" font-weight:bold !important;">Diseases and Conditions during Postmortem Inspection in Slaughterhouse </h5>
 							</div>
-
-							
-							<div class="card-body py-0">
+						
+							<div class="card-body py-0">	
 								<br>
-								<div class="text-right">
-									<button type="button" class="btn bg-primary-600" data-toggle="modal" data-target="#modal_theme_primary">Add Disease or Condition </button>
-
-								</div>				
+								<div class="text-right">			
+									<button type="button" class="btn bg-primary-600" data-toggle="modal" data-target="#modal_theme_primary">Add Disease or Condition</button>
+								</div>
 								<div class="row">	
-                                    
-
-                                
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="card-body">
-
                                                 	<br>
-                                                                                            <?php echo add_antemortem_pdp_disease() ?>
-
-
-
                                                                             <div id="modal_theme_primary" class="modal fade" data-backdrop="static" tabindex="-1">
                                                                                     <div class="modal-dialog">
                                                                                         <div class="modal-content">
                                                                                             <div class="modal-header bg-primary">
-                                                                                                <h6 class="modal-title">Add Disease or Condition </h6>
+                                                                                                <h6 class="modal-title">Add Disease or Condition</h6>
                                                                                             </div>
                                                                                             <div class="modal-body">
                                                                                                     <form method="POST">
+															<?php echo add_postmortem_slaughter_disease() ?>
                                                                                                             <div class="form-group">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-sm-3">
                                                                                                                         <label>Code</label>
-                                                                                                                        <input type="text" placeholder="code" name="disease_code" id="disease_code" class="form-control text-capitalize-css" required>
-                                                                                                                        
-                                                                                                                        <input type="hidden" value="SLH" name="disease_type"  id="disease_type" class="form-control" >
-                                                                                                                       
-                                                                                                                        <input type="hidden" value="Antemortem" name="disease_category"  id="disease_category" class="form-control" >
-                                                                                                                        
+                                                                                                                        <input type="text" placeholder="Disease Code" name="disease_code" id="disease_code" class="form-control text-capitalize-css" required>
                                                                                                                     </div>
-
                                                                                                                     <div class="col-sm-5">
                                                                                                                         <label>Disease / Condition</label>
-                                                                                                                        <input type="text" placeholder="Disease" name="disease_description"  id="disease_description" class="form-control text-capitalize-css" required>
+                                                                                                                        <input type="text" placeholder="Disease" name="disease_description" id="disease_description" class="form-control text-capitalize-css" required>
                                                                                                                     </div>
-
 																													<div class="col-sm-4">
                                                                                                                         <label>Judgement</label>
+																														<select class="form-control "  name="judgement" id="judgement"  >
 
-                                                                                                                        <select class="form-control" name="disease_kind_of_meat"  id="disease_kind_of_meat" required>
-                                                                                                                            <option value="Suspect">Suspect</option>
+                                                                                                                           	<option value="Suspect">Suspect</option>
                                                                                                                             <option value="Rejected">Rejected</option>
                                                                                                                             <option value="Condemned">Condemned</option>
+                                                                                                                            <option value="Passed for Sterilization">Passed for Sterilization</option>
+                                                                                                                            <option value="Passed for Refrigeration">Passed for Refrigeration</option>
                                                                                                                         </select>
                                                                                                                     </div>
-
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                            
                                                                                                             <div class="form-group">
                                                                                                                 <div class="row">
-																													
-																												<div class="col-sm-6">
+																													<div class="col-sm-6">
+                                                                                                                        <label class="kom">Organs / Parts</label>
+                                                                                                                        <select class="form-control  multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_meat" name="disease_kind_of_meat[]" required data-fouc>
+                                                                                                                            <option value="Carcass">Carcass</option>
+                                                                                                                            <option value="Lungs">Lungs</option>
+                                                                                                                            <option value="Liver">Liver</option>
+                                                                                                                            <option value="Heart">Heart</option>
+                                                                                                                            <option value="Intestines">Intestines</option>
+                                                                                                                            <option value="Feet">Feet</option>
+                                                                                                                            <option value="Kidneys">Kidneys</option>
+                                                                                                                            <option value="Spleen">Spleen</option>
+                                                                                                                        </select>
+                                                                                                                         <label id="label_hide" style="display:none;">Please specify:</label>
+                                                            															<input type="text" class="form-control" id="others" style="display:none;" ></input>
+                                                                                                                    </div>
+
+																													<div class="col-sm-6">
                                                                                                                         <label>Species</label>
-																														<select class="form-control multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_species" name="disease_kind_of_species[]" >
-                                                                                                                            <option value="Chicken">Chicken</option>
-                                                                                                                            <option value="Duck">Duck</option>
-                                                                                                                            <option value="Pigeon">Pigeon</option>
+																														<select class="form-control multiselect-select-all-filtering" multiple="multiple" id="disease_kind_of_species" name="disease_kind_of_species[]" data-fouc>
+                                                                                                                           <option value="Hog">Hog</option>
+                                                                                                                            <option value="Cattle">Cattle</option>
+                                                                                                                            <option value="Carabao">Carabao</option>
+                                                                                                                            <option value="Horse">Horse</option>
+                                                                                                                            <option value="Goat">Goat</option>
+                                                                                                                            <option value="Sheep">Sheep</option>
+                                                                                                                            <option value="Crocodile">Crocodile</option>
+                                                                                                                            <option value="Rabbit">Rabbit</option>
+                                                                                                                            <option value="Ostrich">Ostrich</option>
                                                                                                                         </select>
                                                                                                                     </div>
+
+                                                                                                                   
+
+                                                                                                                    
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="form-group">
+                                                                                                                <div class="row">
+																														<div class="col-sm-6">
+																																<div class="form-group mb-3 mb-md-2">
+																																	<label class="d-block font-weight-semibold">Disease Status</label>
+																																	<div class="form-check form-check-inline">
+																																		<label class="form-check-label">
+																																			<input type="radio" class="form-check-input" name="notifiable"   id="notifiable"  value="0" checked>
+																																			Notifiable
+																																		</label>
+																																	</div>
+
+																																	<div class="form-check form-check-inline">
+																																		<label class="form-check-label">
+																																			<input type="radio" class="form-check-input" name="notifiable"  id="notifiable"  value="1">
+																																			Not Notifiable
+																																		</label>
+																																	</div>
+																																</div>
+																														</div>
+
+
+
+
 																													
-                                                                                                                	 <div class="col-sm-6">
-
-                                                                                                                        <div class="form-group mb-3 mb-md-2">
-                                                                                                                            <label class="d-block font-weight-semibold">Disease Status</label>
-                                                                                                                                <input type="radio" name="notifiable"  id="notifiable" value="0"  checked>
-                                                                                                                                <label class="position-static"  >Notifiable</label>
-
-                                                                                                                                <input type="radio"  value="1"   id="notifiable" name="notifiable" >
-                                                                                                                                <label class=" position-static" >Not Notifiable</label>
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-
-                                                                                                        	</div>
-                                                                                                        </div>
+                                                                                                            </div>
+                                                                                                            </div>
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
-                                                                                                            <a href="antemortem_pdp.php" class="btn btn-link" >Close</a>
-                                                                                                            <button type="button" name="btn_add_pdp" id="save_ante_pdp" class="btn bg-primary">Submit</button>
+                                                                                                            <a href="postmortem_slh.php" class="btn btn-link" >Close</a>
+                                                                                                            <button type="button"   id="save" class="btn bg-primary">Submit</button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     </form>
@@ -486,38 +492,29 @@ else{
                                                                                                 </div>
                                                                                         </div>
 
-
-
-																			<form action="antemortem_pdp_search.php" method="get">
+																			<form action="postmortem_slh_search.php" method="get">
 																			<input type="text"  name="code">
 																			<button type="submit" class="btn bg-primary-600 "  >Filter </button>
-																			</form>   
+																			</form>
                                                                             <table style="width: 100%; margin-top:20px;" class="table  table-bordered table-striped ">
                                                                                 <thead>
                                                                                     <tr style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
-                                                                                          <th style=" font-weight:bold !important;" class="text-center">Code</th>
+                                                                                        <th style=" font-weight:bold !important;" class="text-center">Code</th>
                                                                                         <th style=" font-weight:bold !important;" class="text-center">Disease / Condition</th>
-                                                                                        <th style=" font-weight:bold !important;" class="text-center">Judgement</th>
+																						<th style=" font-weight:bold !important;" class="text-center">Judgement</th>
+                                                                                        <th style=" font-weight:bold !important;" class="text-center">Organs / Parts</th>
                                                                                         <th style=" font-weight:bold !important;" class="text-center">Species</th>
                                                                                         <th style=" font-weight:bold !important;" class="text-center">Disease Status</th>
                                                                                         <th style=" font-weight:bold !important;" class="text-center">Action</th>
-                                                                                    
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <?php echo show_pdp_disease_antemortem() ?>
-                                                                              
+                                                                                    <?php echo show_postmortem_slh_disease_search() ?>
+                                                                                </tbody>
+                                                                            </table>
                                                 </div>
                                             </div>
                                         </div>
-                            <!-- /colored tabs -->
-								
-
-
-
-								
-
-								
 								</div>
 							</div>
 						</div>
@@ -540,83 +537,12 @@ else{
 		</div>
 	</div>
 
-	
-<script>
-
-$('#save_ante_pdp').click(function(){
-	var code = $('#code').val();
-	var disease_code = $('#disease_code').val();
-	var disease_type = $('#disease_type').val();
-	var disease_description = $('#disease_description').val();
-	var disease_kind_of_species = $('#disease_kind_of_species').val();
-	var disease_kind_of_meat = $('#disease_kind_of_meat').val();
-	var disease_category = $('#disease_category').val();
-	var notifiable = $('#notifiable:checked').val();
-
-
-	
-	var btn_add_am_disease_slh = '0';
-	var btn_add_am_disease_pdp = '1';
-	var btn_add_mio = '0';
-	var btn_add_meat_establishment  = '0';
-	var btn_add_posms  = '0';
-
-
-	// if(disease_code == '')
-	// {
-	// 	$('#disease_code').css('border-color', '#ff0000');
-	// 	$('#error_code').text('Required');
-
-	// }
-	// else
-	// {
-		$.ajax({
-				url: "../../pages/ajax/ajax.php",
-				method: "POST",
-				dataType : 'json',
-				data:{
-					disease_code:disease_code,
-					disease_description:disease_description,
-					disease_kind_of_meat: disease_kind_of_meat,
-					disease_category: disease_category,
-					notifiable: notifiable,
-					disease_kind_of_species:disease_kind_of_species,
-
-					btn_add_am_disease_slh: btn_add_am_disease_slh,
-					btn_add_am_disease_pdp: btn_add_am_disease_pdp,
-					btn_add_posms: btn_add_posms,
-					btn_add_mio: btn_add_mio,
-					btn_add_meat_establishment:btn_add_meat_establishment, 
-
-				},
-				success:function(data)
-				{
-					// console.log(data);
-					new PNotify({
-						title: data.title,
-						text: data.msg,
-						icon: data.icon,
-						type: data.alert
-					});
-					
-					
-				},
-				error:function(response)
-				{
-					console.log(response);
-				}
-				
-			});
-});
-
-</script>
-
-
 	<script>
 		$('.datatable-responsive').dataTable( {
 			"order": [],
+
 			initComplete: function() {
-	this.api().columns([0, 1, 2,3,  4]).every(function() {
+	this.api().columns([0, 1, 2,3,4,5]).every(function() {
 	  var column = this;
 	  var ddmenu = cbDropdown($(column.header()))
 		.on('change', ':checkbox', function() {
@@ -672,6 +598,101 @@ function cbDropdown(column) {
 	'class': 'cb-dropdown-wrap'
   }).appendTo(column));
 }
+
+
 	</script>
+	<script type="text/javascript">
+		$(".cities").change(function(){
+        if($(this).find("option:selected").text() == "Others"){
+            $("#others").show();
+            $("#label_hide").show();
+            $(".cities").hide();
+            $(".kom").hide();
+        }
+        else{
+            $("#others").hide();
+            $("#label_hide").hide();
+        }
+    });
+	</script>
+
+
+
+
+<script>
+		$('#save').click(function(){
+			var code = $('#code').val();
+			var disease_code = $('#disease_code').val();
+			var disease_type = $('#disease_type').val();
+			var disease_description = $('#disease_description').val();
+			
+			var disease_category = $('#disease_category').val();
+			var notifiable = $('#notifiable:checked').val();
+			var judgement = $('#judgement').val();
+			
+
+			var disease_kind_of_species = $('#disease_kind_of_species').val();
+			var disease_kind_of_meat = $('#disease_kind_of_meat').val();
+			
+			var btn_add_am_disease_slh = '0';
+			var btn_add_am_disease_pdp = '0';
+
+			var btn_add_pm_disease_pdp = '0';
+			var btn_add_pm_disease_slh = '1';
+			var btn_add_mio = '0';
+			var btn_add_meat_establishment  = '0';
+			var btn_add_posms  = '0';
+
+
+			
+				$.ajax({
+						url: "../../pages/ajax/ajax.php",
+						method: "POST",
+						dataType : 'json',
+						data:{
+							disease_code:disease_code,
+							disease_description:disease_description,
+							disease_kind_of_meat: disease_kind_of_meat,
+							notifiable: notifiable,
+							judgement: judgement,
+
+
+							disease_kind_of_species:disease_kind_of_species,
+
+
+							btn_add_am_disease_slh: btn_add_am_disease_slh,
+							btn_add_pm_disease_pdp: btn_add_pm_disease_pdp,
+							btn_add_am_disease_pdp: btn_add_am_disease_pdp,
+							btn_add_pm_disease_slh: btn_add_pm_disease_slh,
+							btn_add_posms: btn_add_posms,
+							btn_add_mio: btn_add_mio,
+							btn_add_meat_establishment:btn_add_meat_establishment, 
+
+						},
+						success:function(data)
+						{
+							console.log(data);
+							new PNotify({
+								title: data.title,
+								text: data.msg,
+								icon: data.icon,
+								type: data.alert
+							});
+							
+							
+						},
+						error:function(response)
+						{
+							console.log(response);
+						}
+						
+					});
+			
+		});
+
+</script>
+
+
+
 </body>
 </html>

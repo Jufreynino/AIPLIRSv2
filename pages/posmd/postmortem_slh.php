@@ -454,9 +454,9 @@ else{
                                                                                                                 </div>
                                                                                                             </div>
 
-                                                                                                            <div class="form-group">
-                                                                                                                <div class="row">
-																														<div class="col-sm-6">
+                                                                                                            		<div class="form-group">
+                                                                                                                		<div class="row">
+																															<div class="col-sm-6">
 																																<div class="form-group mb-3 mb-md-2">
 																																	<label class="d-block font-weight-semibold">Disease Status</label>
 																																	<div class="form-check form-check-inline">
@@ -473,31 +473,14 @@ else{
 																																		</label>
 																																	</div>
 																																</div>
-																														</div>
-
-
-
-
-																													<div class="col-sm-6">
-																														<div class="form-group mb-3 mb-md-2">
-																																<label class="d-block font-weight-semibold">Disease Claassification</label>
-																																<div class="form-check form-check-inline">
-																																	<label class="form-check-label">
-																																		<input type="radio" class="form-check-input" name="classification" id="classification" value="0" checked>
-																																		Generalized
-																																	</label>
-																																</div>
-
-																																<div class="form-check form-check-inline">
-																																	<label class="form-check-label">
-																																		<input type="radio" class="form-check-input" name="classification" id="classification" value="1">
-																																		Partial
-																																	</label>
-																																</div>
 																															</div>
 																														</div>
-                                                                                                                	</div>
-                                                                                                            </div>
+																													</div>
+
+
+
+
+																													
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
                                                                                                             <a href="postmortem_slh.php" class="btn btn-link" >Close</a>
@@ -508,7 +491,12 @@ else{
                                                                                         <br><br><br><br><br><br>
                                                                                                 </div>
                                                                                         </div>
-                                                                            <table style="width: 100%; margin-top:20px;" class="table  table-bordered table-striped  datatable-disease">
+
+																			<form action="postmortem_slh_search.php" method="get">
+																			<input type="text"  name="code">
+																			<button type="submit" class="btn bg-primary-600 "  >Filter </button>
+																			</form>
+                                                                            <table style="width: 100%; margin-top:20px;" class="table  table-bordered table-striped ">
                                                                                 <thead>
                                                                                     <tr style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
                                                                                         <th style=" font-weight:bold !important;" class="text-center">Code</th>
@@ -639,7 +627,7 @@ function cbDropdown(column) {
 			var disease_description = $('#disease_description').val();
 			
 			var disease_category = $('#disease_category').val();
-			var notifiable = $('#notifiable').val();
+			var notifiable = $('#notifiable:checked').val();
 			var judgement = $('#judgement').val();
 			
 

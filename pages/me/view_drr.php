@@ -263,7 +263,10 @@ $today = strtotime($todays_date);
 													</tr>
 												</thead>
                                                 <?php echo view_drr_me() ?>
+												
                                             </table>
+
+
                             </div></div>
                         </div>
                         </div>
@@ -294,6 +297,23 @@ $today = strtotime($todays_date);
 	</div>
 
 
+
+	<div id="dataModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Daily Receiving Details</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body" id="employee_details">
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	<div id="modal_theme_success" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog">
@@ -356,6 +376,62 @@ $today = strtotime($todays_date);
 		} );
 		
 	</script>
+
+
+
+<script>
+			$(document).ready(function(){
+			
+				$('.view_data').click(function(){
+					var drr_id = $(this).attr("id");
+					var employee_id = <?php echo $_SESSION['me_id'] ?>;
+					var mdate = <?php echo $_GET['mdate'] ?>;
+
+					
+					var view_daily_me = '1';
+					var view_daily_mio = '0';
+					var btn_add_am_disease_slh = '0';
+					var btn_add_am_disease_pdp = '0';
+
+					var btn_add_pm_disease_pdp = '0';
+					var btn_add_pm_disease_slh = '0';
+					var btn_add_mio = '0';
+					var btn_add_meat_establishment  = '0';
+					var btn_add_posms  = '0';
+					$.ajax({
+						url: "../../pages/ajax/ajax.php",
+						method: "POST",
+						data : {employee_id:employee_id,view_daily_mio:view_daily_mio,
+
+							 drr_id :drr_id,
+							 view_daily_me :view_daily_me,
+							 mdate :mdate,
+							 btn_add_am_disease_slh :btn_add_am_disease_slh,
+							btn_add_am_disease_pdp:btn_add_am_disease_pdp,
+
+							btn_add_pm_disease_pdp:btn_add_pm_disease_pdp,
+							btn_add_pm_disease_slh:btn_add_pm_disease_slh,
+							btn_add_mio:btn_add_mio,
+							btn_add_meat_establishment:btn_add_meat_establishment,
+							btn_add_posms:btn_add_posms,
+						
+						
+						
+						
+						},
+						success: function(data){
+							$('#employee_details').html(data);
+						}
+					})
+
+					$('#dataModal').modal("show");
+
+				});
+
+
+			});
+
+		</script>
 
 
 </body>
