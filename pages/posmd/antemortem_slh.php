@@ -545,13 +545,9 @@ else{
 														
 																
 <br>
-												<form action="antemortem_slh_search.php" method="get">
 
-													
-												<input type="text"  name="code">
-												<button type="submit" class="btn bg-primary-600 "  >Filter </button>
-												</form>
-													<table class="table table-bordered table-striped " >
+
+													<table class="table table-bordered table-striped  datatable-disease" >
 														<thead style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
 															<tr >
 																<th style=" font-weight:bold !important;" class="text-center">Code</th>
@@ -564,7 +560,11 @@ else{
 														</thead>
 														<tbody>
 															<?php echo show_slh_disease_antemortem() ?>
-													
+														</tbody>
+														
+													</table>
+
+																
                                                 </div>
                                                 </div>
                                             </div>
@@ -772,7 +772,7 @@ function cbDropdown(column) {
 			var disease_kind_of_species = $('#disease_kind_of_species').val();
 			var disease_kind_of_meat = $('#disease_kind_of_meat').val();
 			var disease_category = $('#disease_category').val();
-			var notifiable = $('#notifiable:checked').val();
+			var notifiable = $('#notifiable').val();
 
 
 			
