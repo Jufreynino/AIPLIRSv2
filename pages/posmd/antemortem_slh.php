@@ -507,7 +507,7 @@ else{
 													<label class="d-block font-weight-semibold">Disease Status</label>
 													<div class="form-check form-check-inline">
 														<label class="form-check-label">
-															<input type="radio" name="notifiable" id="notifiable" value="0" class="form-check-input" name="radio-unstyled-inline-left">
+															<input type="radio" name="notifiable" id="notifiable" value="0" class="form-check-input" name="radio-unstyled-inline-left" checked>
 															Notifiable
 														</label>
 													</div>

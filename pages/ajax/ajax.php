@@ -774,7 +774,7 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                 }
                 else
                 {
-                    $species_sql = "SELECT * FROM disease_tbl WHERE disease_code='$code_clean' AND disease_species='$species_clean' AND disease_kind_of_meat='$disease_kind_of_meat'";
+                    $species_sql = "SELECT * FROM disease_tbl WHERE disease_code='$code_clean' AND disease_species='$species_clean'";
                     $species_sql_data = mysqli_query($con, $species_sql);
                     $coundData= mysqli_num_rows($species_sql_data);
 
@@ -858,7 +858,7 @@ else if($_POST['btn_add_am_disease_pdp'] == 1){
                         }
                         else
                         {
-                            $species_sql = "SELECT * FROM disease_tbl WHERE disease_code='$code_clean' AND disease_species='$species_clean' AND disease_kind_of_meat='$disease_kind_of_meat'";
+                            $species_sql = "SELECT * FROM disease_tbl WHERE disease_code='$code_clean' AND disease_species='$species_clean'";
                             $species_sql_data = mysqli_query($con, $species_sql);
                             $coundData= mysqli_num_rows($species_sql_data);
         
