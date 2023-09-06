@@ -454,9 +454,9 @@ else{
                                                                                                                 </div>
                                                                                                             </div>
 
-                                                                                                            		<div class="form-group">
-                                                                                                                		<div class="row">
-																															<div class="col-sm-6">
+                                                                                                            <div class="form-group">
+                                                                                                                <div class="row">
+																														<div class="col-sm-6">
 																																<div class="form-group mb-3 mb-md-2">
 																																	<label class="d-block font-weight-semibold">Disease Status</label>
 																																	<div class="form-check form-check-inline">
@@ -473,14 +473,14 @@ else{
 																																		</label>
 																																	</div>
 																																</div>
-																															</div>
 																														</div>
-																													</div>
 
 
 
 
 																													
+                                                                                                            </div>
+                                                                                                            </div>
                                                                                                         </div>
                                                                                                         <div class="modal-footer">
                                                                                                             <a href="postmortem_slh.php" class="btn btn-link" >Close</a>
@@ -509,7 +509,7 @@ else{
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <?php echo show_postmortem_slh_disease() ?>
+                                                                                    <?php echo show_postmortem_slh_disease_search() ?>
                                                                                 </tbody>
                                                                             </table>
                                                 </div>

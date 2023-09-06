@@ -516,7 +516,12 @@ else{
                                                                                         <br><br><br><br><br><br>
                                                                                                 </div>
                                                                                         </div>
-                                                                            <table style="width: 100%; margin-top:20px;" class="table  table-bordered table-striped  datatable-disease">
+
+																			<form action="postmortem_pdp_search.php" method="get">
+																			<input type="text"  name="code">
+																			<button type="submit" class="btn bg-primary-600 "  >Filter </button>
+																			</form>
+                                                                            <table style="width: 100%; margin-top:20px;" class="table  table-bordered table-striped ">
                                                                                 <thead>
                                                                                     <tr style="padding:10px !important; height:20px !important; margin:20px !important; border:1px solid #bdb8b8; background-color:#1d2328; color:white;">
                                                                                         <th style=" font-weight:bold !important;" class="text-center">Code</th>
@@ -530,9 +535,7 @@ else{
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <?php echo show_postmortem_pdp_disease() ?>
-                                                                                </tbody>
-                                                                            </table>
-                                                </div>
+                                                                            
                                             </div>
                                         </div>
 								</div>
@@ -568,7 +571,7 @@ else{
 			
 			var disease_kind_of_meat = $('#disease_kind_of_meat').val();
 			var disease_kind_of_species = $('#disease_kind_of_species').val();
-			var notifiable = $('#notifiable').val();
+			var notifiable = $('#notifiable:checked').val();
 			
 			var btn_add_am_disease_slh = '0';
 			var btn_add_am_disease_pdp = '0';

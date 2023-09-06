@@ -419,7 +419,9 @@ else{
 								<div class="text-right">
 									<button type="button" class="btn bg-primary-600 " data-toggle="modal" data-target="#modal_theme_primary">Add Disease or Condition </button>
 									</div>
+
 								<div class="row">	
+
 								<?php echo add_antemortem_slaughter_disease() ?>
 
 
@@ -507,7 +509,7 @@ else{
 													<label class="d-block font-weight-semibold">Disease Status</label>
 													<div class="form-check form-check-inline">
 														<label class="form-check-label">
-															<input type="radio" name="notifiable" id="notifiable" value="0" class="form-check-input" name="radio-unstyled-inline-left" checked>
+															<input type="radio" name="notifiable" id="notifiable" value="0" class="form-check-input" name="radio-unstyled-inline-left">
 															Notifiable
 														</label>
 													</div>
@@ -545,10 +547,9 @@ else{
 														
 																
 <br>
-												<form action="antemortem_slh_search.php" method="get">
 
-													
-												<input type="text"  name="code">
+												<form action="antemortem_slh_search.php" method="get">
+												<input type="text" name="code">
 												<button type="submit" class="btn bg-primary-600 "  >Filter </button>
 												</form>
 													<table class="table table-bordered table-striped " >
@@ -563,7 +564,7 @@ else{
 															</tr>
 														</thead>
 														<tbody>
-															<?php echo show_slh_disease_antemortem() ?>
+															<?php echo show_slh_disease_antemortem_search() ?>
 													
                                                 </div>
                                                 </div>
